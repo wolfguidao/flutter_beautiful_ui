@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/web3wallet/login/widget/login_background.dart';
-import 'package:flutter_beautiful_ui/web3wallet/login/widget/login_form.dart';
+import 'package:flutter_beautiful_ui/web3wallet/presentation/login/widget/login_background.dart';
+import 'package:flutter_beautiful_ui/web3wallet/presentation/login/widget/login_form.dart';
 
 class WalletLoginPage extends StatefulWidget {
   const WalletLoginPage({super.key});

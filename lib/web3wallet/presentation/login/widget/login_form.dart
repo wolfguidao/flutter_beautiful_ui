@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -9,9 +10,11 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
+  late AnimationController _logoController;
   late AnimationController _titleController;
   late AnimationController _inputAndButtonController;
   late AnimationController _typeController;
+  late Animation<double> _logoAnimation;
   late Animation<double> _titleAnimation;
   late Animation<double> _usernameAnimation;
   late Animation<double> _emailAnimation;
@@ -22,6 +25,10 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
   @override
   void initState() {
     //Init AnimationController
+    _logoController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
     _titleController = AnimationController(
       duration: Duration(seconds: 1),
       vsync: this,
@@ -35,6 +42,11 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
       duration: Duration(milliseconds: 500),
     );
 
+    ///Init Logo Animation
+    _logoAnimation=CurvedAnimation(
+      parent: _logoController,
+      curve: Curves.easeIn,
+    );
     ///Init Title Animation
     _titleAnimation = CurvedAnimation(
       parent: _titleController,
@@ -66,6 +78,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
     );
 
     /// Start Animation
+    _logoController.repeat(reverse: true);
     _titleController.forward();
     _titleController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
@@ -82,6 +95,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
 
   @override
   void dispose() {
+    _logoController.dispose();
     _titleController.dispose();
     _inputAndButtonController.dispose();
     _typeController.dispose();
@@ -98,7 +112,16 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // Logo
-          Image.asset(Assets.images.web3wallet.walletLoginRobot.path),
+          AnimatedBuilder(
+            animation: _logoAnimation,
+            builder: (context, child) {
+              return Transform.translate(
+                offset: Offset(0, 10 * (1 - _logoAnimation.value)),
+                child: child,
+              );
+            },
+            child: Image.asset(Assets.images.web3wallet.walletLoginRobot.path),
+          ),
           // Titile
           AnimatedBuilder(
             animation: _titleAnimation,
@@ -167,7 +190,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                   backgroundColor: Color(0xff191C32),
                   minimumSize: Size(w * 0.8, 50),
                 ),
-                onPressed: () {},
+                onPressed: ()=>context.go("/home"),
                 child: Text(
                   "Login",
                   style: TextStyle(

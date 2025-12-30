@@ -33,16 +33,36 @@ class $ImagesWeb3walletGen {
   AssetGenImage get walletGoogle =>
       const AssetGenImage('images/web3wallet/wallet_google.png');
 
+  /// File path: images/web3wallet/wallet_home.svg
+  String get walletHome => 'images/web3wallet/wallet_home.svg';
+
   /// File path: images/web3wallet/wallet_login_robot.png
   AssetGenImage get walletLoginRobot =>
       const AssetGenImage('images/web3wallet/wallet_login_robot.png');
 
+  /// File path: images/web3wallet/wallet_news.svg
+  String get walletNews => 'images/web3wallet/wallet_news.svg';
+
+  /// File path: images/web3wallet/wallet_profile.svg
+  String get walletProfile => 'images/web3wallet/wallet_profile.svg';
+
+  /// File path: images/web3wallet/wallet_rate.svg
+  String get walletRate => 'images/web3wallet/wallet_rate.svg';
+
+  /// File path: images/web3wallet/wallet_wallet.svg
+  String get walletWallet => 'images/web3wallet/wallet_wallet.svg';
+
   /// List of all assets
-  List<AssetGenImage> get values => [
+  List<dynamic> get values => [
     walletApple,
     walletFacebook,
     walletGoogle,
+    walletHome,
     walletLoginRobot,
+    walletNews,
+    walletProfile,
+    walletRate,
+    walletWallet,
   ];
 }
 
