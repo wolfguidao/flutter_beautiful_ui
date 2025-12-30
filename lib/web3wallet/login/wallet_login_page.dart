@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_beautiful_ui/web3wallet/login/widget/login_background.dart';
-import 'package:flutter_beautiful_ui/web3wallet/login/widget/login_foram.dart';
+import 'package:flutter_beautiful_ui/web3wallet/login/widget/login_form.dart';
 
 class WalletLoginPage extends StatefulWidget {
   const WalletLoginPage({super.key});
@@ -16,7 +16,7 @@ class _WalletLoginPageState extends State<WalletLoginPage> {
       backgroundColor: Color(0xfff3f5f6),
       body: SafeArea(
         bottom: false,
-        child: LoginBackground(child: LoginForam()),
+        child: LoginBackground(child: LoginForm()),
       ),
     );
   }
