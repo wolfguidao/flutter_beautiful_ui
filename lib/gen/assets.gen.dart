@@ -21,9 +21,15 @@ class $ImagesGen {
 class $ImagesWeb3walletGen {
   const $ImagesWeb3walletGen();
 
+  /// File path: images/web3wallet/wallet_achain.svg
+  String get walletAchain => 'images/web3wallet/wallet_achain.svg';
+
   /// File path: images/web3wallet/wallet_apple.png
   AssetGenImage get walletApple =>
       const AssetGenImage('images/web3wallet/wallet_apple.png');
+
+  /// File path: images/web3wallet/wallet_bitcoin.svg
+  String get walletBitcoin => 'images/web3wallet/wallet_bitcoin.svg';
 
   /// File path: images/web3wallet/wallet_facebook.png
   AssetGenImage get walletFacebook =>
@@ -44,6 +50,9 @@ class $ImagesWeb3walletGen {
   AssetGenImage get walletLoginRobot =>
       const AssetGenImage('images/web3wallet/wallet_login_robot.png');
 
+  /// File path: images/web3wallet/wallet_neo.svg
+  String get walletNeo => 'images/web3wallet/wallet_neo.svg';
+
   /// File path: images/web3wallet/wallet_news.svg
   String get walletNews => 'images/web3wallet/wallet_news.svg';
 
@@ -58,12 +67,15 @@ class $ImagesWeb3walletGen {
 
   /// List of all assets
   List<dynamic> get values => [
+    walletAchain,
     walletApple,
+    walletBitcoin,
     walletFacebook,
     walletGoogle,
     walletHome,
     walletHomeRobot,
     walletLoginRobot,
+    walletNeo,
     walletNews,
     walletProfile,
     walletRate,
