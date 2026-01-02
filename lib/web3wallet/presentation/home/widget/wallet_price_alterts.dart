@@ -20,7 +20,7 @@ class _WalletPriceAltertsState extends State<WalletPriceAlterts> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(vertical: h*0.01),
+          padding: EdgeInsets.symmetric(vertical: h * 0.01),
           child: Text(
             "Price Alerts",
             style: TextStyle(
@@ -36,6 +36,8 @@ class _WalletPriceAltertsState extends State<WalletPriceAlterts> {
             children: List<Widget>.generate(widget.alertsIcons.length, (index) {
               late double topOffset = 0;
               late double horizontalOffset;
+              late double opacity;
+              bool isStack= index>_alertsNotFoldCount;
               bool isFoldTop = _alertsNotFoldCount == index ? true : false;
               if (isFoldTop || index <= _alertsNotFoldCount) {
                 horizontalOffset = 0;
@@ -44,28 +46,35 @@ class _WalletPriceAltertsState extends State<WalletPriceAlterts> {
               }
               if (index <= _alertsNotFoldCount) {
                 topOffset = (h * 0.15 + 10) * index;
+                opacity = 1;
               } else {
                 topOffset =
-                    h * 0.15 * _alertsNotFoldCount +
+                    (h * 0.15 + 10) * _alertsNotFoldCount +
                     (index - _alertsNotFoldCount) * 20;
+                opacity = 0.8 / (index - _alertsNotFoldCount);
               }
               return AnimatedPositioned(
                 duration: Duration(milliseconds: 500),
                 top: topOffset,
                 left: horizontalOffset,
                 right: horizontalOffset,
-                child: PriceAlertsWidget(
-                  onChangeFold: (value) {
-                    setState(() {
-                      if (value) {
-                        _alertsNotFoldCount--;
-                      } else {
-                        _alertsNotFoldCount++;
-                      }
-                    });
-                  },
-                  icon: widget.alertsIcons[index],
-                  text: "BTCUSDT just went above\n30123.232",
+                child: AnimatedOpacity(
+                  duration: Duration(milliseconds: 500),
+                  opacity: opacity,
+                  child: PriceAlertsWidget(
+                    isStack: isStack,
+                    onChangeFold: (value) {
+                      setState(() {
+                        if (value) {
+                          _alertsNotFoldCount--;
+                        } else {
+                          _alertsNotFoldCount++;
+                        }
+                      });
+                    },
+                    icon: widget.alertsIcons[index],
+                    text: "BTCUSDT just went above\n30123.232",
+                  ),
                 ),
               );
             }).reversed.toList(),
@@ -79,12 +88,14 @@ class _WalletPriceAltertsState extends State<WalletPriceAlterts> {
 class PriceAlertsWidget extends StatefulWidget {
   final String icon;
   final String text;
+  final bool isStack;
   final ValueChanged<bool> onChangeFold;
   const PriceAlertsWidget({
     super.key,
     required this.icon,
     required this.text,
     required this.onChangeFold,
+    required this.isStack,
   });
 
   @override
@@ -106,69 +117,83 @@ class _PriceAlertsWidgetState extends State<PriceAlertsWidget> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Walletcolor.moneyIconColor[widget.icon],
-                  ),
-                  child: SvgPicture.asset(widget.icon),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: w * 0.04),
-                    child: Text(
-                      widget.text,
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                      maxLines: 2,
-                    ),
-                  ),
-                ),
-                AnimatedRotation(
-                  turns: _isFolded ? 0.25 : 0,
-                  duration: Duration(milliseconds: 500),
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        _isFolded = !_isFolded;
-                      });
-                      widget.onChangeFold(_isFolded);
-                    },
-                    child: Icon(
-                      Icons.keyboard_arrow_down,
-                      color: _isFolded ? Color(0xffCED0DE) : Color(0xffF7931A),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            AnimatedSize(
-              duration: Duration(milliseconds: 500),
-              child: _isFolded
-                  ? const SizedBox.shrink()
-                  : Column(
-                      children: [
-                        Divider(color: Color(0xffE5E7F3)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            TextButton(onPressed: () {}, child: Text("Buy")),
-                            TextButton(onPressed: () {}, child: Text("Sell")),
-                            TextButton(onPressed: () {}, child: Text("More")),
-                          ],
+      child: widget.isStack
+          ? SizedBox.shrink()
+          : Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Walletcolor.moneyIconColor[widget.icon],
                         ),
-                      ],
-                    ),
+                        child: SvgPicture.asset(widget.icon),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: w * 0.04),
+                          child: Text(
+                            widget.text,
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                            maxLines: 2,
+                          ),
+                        ),
+                      ),
+                      AnimatedRotation(
+                        turns: _isFolded ? 0.25 : 0,
+                        duration: Duration(milliseconds: 500),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              _isFolded = !_isFolded;
+                            });
+                            widget.onChangeFold(_isFolded);
+                          },
+                          child: Icon(
+                            Icons.keyboard_arrow_down,
+                            color: _isFolded
+                                ? Color(0xffCED0DE)
+                                : Color(0xffF7931A),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  AnimatedSize(
+                    duration: Duration(milliseconds: 500),
+                    child: _isFolded
+                        ? const SizedBox.shrink()
+                        : Column(
+                            children: [
+                              Divider(color: Color(0xffE5E7F3)),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: Text("Buy"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: Text("Sell"),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: Text("More"),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_beautiful_ui/web3wallet/WalletColor.dart';
 import 'package:flutter_svg/svg.dart';
@@ -38,7 +40,7 @@ class _WalletTreadingState extends State<WalletTreading>
     return Container(
       padding: EdgeInsets.all(horizontalPadding),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white.withAlpha(140),
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
