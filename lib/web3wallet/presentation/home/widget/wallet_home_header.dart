@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
 
-class HomeHeader extends StatelessWidget {
-  const HomeHeader({super.key});
+class WalletHomeHeader extends StatelessWidget {
+  const WalletHomeHeader({super.key});
 
   @override
   Widget build(BuildContext context) {

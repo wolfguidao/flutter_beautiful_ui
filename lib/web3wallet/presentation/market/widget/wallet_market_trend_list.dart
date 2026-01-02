@@ -1,102 +1,71 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
 import 'package:flutter_beautiful_ui/web3wallet/wallet_color.dart';
 import 'package:flutter_svg/svg.dart';
 
-class WalletRatePage extends StatefulWidget {
-  const WalletRatePage({super.key});
+class WalletMarketTrendList extends StatefulWidget {
+  final List<String> moneyType;
+  const WalletMarketTrendList({super.key, required this.moneyType});
 
   @override
-  State<WalletRatePage> createState() => _WalletRatePageState();
+  State<WalletMarketTrendList> createState() => _WalletMarketTrendListState();
 }
 
-class _WalletRatePageState extends State<WalletRatePage> {
-  final Map<String, String> _marketType = {
-    Assets.images.web3wallet.walletWahchlists: "Watchlists",
-    Assets.images.web3wallet.walletTrending: "Trending",
-    Assets.images.web3wallet.walleBest: "Best Value",
-  };
+class _WalletMarketTrendListState extends State<WalletMarketTrendList>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController controller;
 
-  final List<String> _moneyType = [
-    Assets.images.web3wallet.walletBitcoin,
-    Assets.images.web3wallet.walletNeo,
-    Assets.images.web3wallet.walletAchain,
-  ];
+  @override
+  void initState() {
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2),
+    );
+    controller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final double horizontalPadding = MediaQuery.sizeOf(context).width * 0.05;
-    final double h = MediaQuery.sizeOf(context).height;
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          backgroundColor: Colors.transparent,
-          centerTitle: false,
-          title: Text(
-            "Market",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: TextTheme.of(context).titleLarge?.fontSize,
-            ),
+    return SliverList.builder(
+      itemCount: widget.moneyType.length,
+      itemBuilder: (context, index) {
+        final Animation<double> animation = CurvedAnimation(
+          parent: controller,
+          curve: Interval(
+            1 / widget.moneyType.length * index,
+            1 / widget.moneyType.length * (index + 1),
           ),
-        ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(bottom: h * 0.01),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        child: Icon(Icons.search_rounded),
-                      ),
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Search",
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: _marketType.keys.map((type) {
-                    return MarketType(
-                      typeIcon: type,
-                      typeText: _marketType[type] ?? "",
-                    );
-                  }).toList(),
-                ),
-              ],
-            ),
-          ),
-        ),
-        SliverList.builder(
-          itemCount: _moneyType.length,
-          itemBuilder: (context, index) {
-            return MoneyItem(moneyType: _moneyType[index]);
+        );
+        return AnimatedBuilder(
+          animation: animation,
+          builder: (context, child) {
+            final double dy = Tween<double>(
+              begin: 20,
+              end: 0,
+            ).evaluate(animation);
+            return Transform.translate(
+              offset: Offset(0, dy),
+              child: Opacity(opacity: animation.value, child: child),
+            );
           },
-        ),
-      ],
+          child: MoneyTrendItem(moneyType: widget.moneyType[index]),
+        );
+      },
     );
   }
 }
 
-class MoneyItem extends StatelessWidget {
+class MoneyTrendItem extends StatelessWidget {
   final String moneyType;
 
-  const MoneyItem({super.key, required this.moneyType});
+  const MoneyTrendItem({super.key, required this.moneyType});
 
   @override
   Widget build(BuildContext context) {
@@ -213,37 +182,6 @@ class MoneyItem extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-}
-
-class MarketType extends StatelessWidget {
-  final String typeIcon;
-  final String typeText;
-  const MarketType({super.key, required this.typeIcon, required this.typeText});
-
-  @override
-  Widget build(BuildContext context) {
-    final double w = MediaQuery.sizeOf(context).width;
-    return Container(
-      width: w * 0.28,
-      height: w * 0.28,
-      decoration: BoxDecoration(
-        color: Colors.white.withAlpha(100),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-              backgroundColor: WalletColor.marketTypeColor[typeIcon],
-              child: SvgPicture.asset(typeIcon, width: w * 0.05),
-            ),
-            Text(typeText, style: TextStyle(fontWeight: FontWeight.w500)),
-          ],
-        ),
       ),
     );
   }

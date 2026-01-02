@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/web3wallet/WalletColor.dart';
+import 'package:flutter_beautiful_ui/web3wallet/wallet_color.dart';
 import 'package:flutter_svg/svg.dart';
 
-class WalletPriceAlterts extends StatefulWidget {
+class WalletHomePriceAlterts extends StatefulWidget {
   final List<String> alertsIcons;
-  const WalletPriceAlterts({super.key, required this.alertsIcons});
+  const WalletHomePriceAlterts({super.key, required this.alertsIcons});
 
   @override
-  State<WalletPriceAlterts> createState() => _WalletPriceAltertsState();
+  State<WalletHomePriceAlterts> createState() => _WalletHomePriceAltertsState();
 }
 
-class _WalletPriceAltertsState extends State<WalletPriceAlterts> {
+class _WalletHomePriceAltertsState extends State<WalletHomePriceAlterts> {
   int _alertsNotFoldCount = 0;
 
   @override
@@ -129,7 +129,7 @@ class _PriceAlertsWidgetState extends State<PriceAlertsWidget> {
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Walletcolor.moneyIconColor[widget.icon],
+                          color: WalletColor.moneyIconColor[widget.icon],
                         ),
                         child: SvgPicture.asset(widget.icon),
                       ),

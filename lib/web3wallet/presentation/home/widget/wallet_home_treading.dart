@@ -1,18 +1,16 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/web3wallet/WalletColor.dart';
+import 'package:flutter_beautiful_ui/web3wallet/wallet_color.dart';
 import 'package:flutter_svg/svg.dart';
 
-class WalletTreading extends StatefulWidget {
+class WalletHomeTreading extends StatefulWidget {
   final List<String> alertsIcons;
-  const WalletTreading({super.key, required this.alertsIcons});
+  const WalletHomeTreading({super.key, required this.alertsIcons});
 
   @override
-  State<WalletTreading> createState() => _WalletTreadingState();
+  State<WalletHomeTreading> createState() => _WalletHomeTreadingState();
 }
 
-class _WalletTreadingState extends State<WalletTreading>
+class _WalletHomeTreadingState extends State<WalletHomeTreading>
     with SingleTickerProviderStateMixin {
   late final AnimationController controller;
 
@@ -102,7 +100,7 @@ class TreadingItem extends StatelessWidget {
             margin: EdgeInsets.only(right: w * 0.04),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Walletcolor.moneyIconColor[icon],
+              color: WalletColor.moneyIconColor[icon],
             ),
             child: SvgPicture.asset(icon),
           ),
