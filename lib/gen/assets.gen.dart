@@ -49,6 +49,10 @@ class $ImagesWeb3walletGen {
   AssetGenImage get walletHomeRobot =>
       const AssetGenImage('images/web3wallet/wallet_home_robot.png');
 
+  /// File path: images/web3wallet/wallet_insights_robot.png
+  AssetGenImage get walletInsightsRobot =>
+      const AssetGenImage('images/web3wallet/wallet_insights_robot.png');
+
   /// File path: images/web3wallet/wallet_login_robot.png
   AssetGenImage get walletLoginRobot =>
       const AssetGenImage('images/web3wallet/wallet_login_robot.png');
@@ -58,6 +62,10 @@ class $ImagesWeb3walletGen {
 
   /// File path: images/web3wallet/wallet_news.svg
   String get walletNews => 'images/web3wallet/wallet_news.svg';
+
+  /// File path: images/web3wallet/wallet_news_image.png
+  AssetGenImage get walletNewsImage =>
+      const AssetGenImage('images/web3wallet/wallet_news_image.png');
 
   /// File path: images/web3wallet/wallet_profile.svg
   String get walletProfile => 'images/web3wallet/wallet_profile.svg';
@@ -84,9 +92,11 @@ class $ImagesWeb3walletGen {
     walletGoogle,
     walletHome,
     walletHomeRobot,
+    walletInsightsRobot,
     walletLoginRobot,
     walletNeo,
     walletNews,
+    walletNewsImage,
     walletProfile,
     walletRate,
     walletTrending,

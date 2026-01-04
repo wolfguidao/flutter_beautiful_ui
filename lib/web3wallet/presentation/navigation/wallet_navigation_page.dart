@@ -1,7 +1,7 @@
 import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
 import 'package:flutter_beautiful_ui/web3wallet/presentation/home/wallet_home_page.dart';
 import 'package:flutter_beautiful_ui/web3wallet/presentation/navigation/widget/wallet_bottom_navigation.dart';
-import 'package:flutter_beautiful_ui/web3wallet/presentation/news/wallet_news_page.dart';
+import 'package:flutter_beautiful_ui/web3wallet/presentation/insights/wallet_insights_page.dart';
 import 'package:flutter_beautiful_ui/web3wallet/presentation/profile/wallet_profile_page.dart';
 import 'package:flutter_beautiful_ui/web3wallet/presentation/market/wallet_market_page.dart';
 import 'package:flutter_beautiful_ui/web3wallet/presentation/history/wallet_history_page.dart';
@@ -27,14 +27,13 @@ class _WalletNavigationPageState extends State<WalletNavigationPage> {
     Assets.images.web3wallet.walletProfile,
   ];
 
-  final List<Widget> _pages=[
+  final List<Widget> _pages = [
     WalletHomePage(),
     WalletMarketPage(),
     WalletHistoryPage(),
-    WalletNewsPage(),
-    WalletProfilePage()
+    WalletInSightsPage(),
+    WalletProfilePage(),
   ];
-  
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +63,10 @@ class _WalletNavigationPageState extends State<WalletNavigationPage> {
                 right: -w * 0.3,
                 child: BlurColorWidget(size: 251, color: Color(0xffFFC2C6)),
               ),
-              _pages[_pageIndex],
-              Positioned(
-                bottom: 0,
-                child: WalletBottomNavigation(
+              Scaffold(
+                backgroundColor: Colors.transparent,
+                body: _pages[_pageIndex],
+                bottomNavigationBar: WalletBottomNavigation(
                   navItems: List<Widget>.generate(_navItemIcon.length, (index) {
                     return SvgPicture.asset(
                       _navItemIcon[index],
@@ -85,6 +84,27 @@ class _WalletNavigationPageState extends State<WalletNavigationPage> {
                   },
                 ),
               ),
+              // _pages[_pageIndex],
+              // Positioned(
+              //   bottom: 0,
+              //   child: WalletBottomNavigation(
+              //     navItems: List<Widget>.generate(_navItemIcon.length, (index) {
+              //       return SvgPicture.asset(
+              //         _navItemIcon[index],
+              //         width: w * 0.06,
+              //         colorFilter: ColorFilter.mode(
+              //           index == _pageIndex ? Colors.black : Color(0xffCED0DE),
+              //           BlendMode.srcIn,
+              //         ),
+              //       );
+              //     }),
+              //     onNavChanged: (index) {
+              //       setState(() {
+              //         _pageIndex = index;
+              //       });
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ),
