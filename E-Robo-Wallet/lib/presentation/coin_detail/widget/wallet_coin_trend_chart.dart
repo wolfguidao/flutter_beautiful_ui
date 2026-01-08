@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/entity/coin.dart';
+import 'package:e_robo_wallet/entity/coin.dart';
 
 class WalletCointTrendChart extends StatefulWidget {
   final Coin coin;

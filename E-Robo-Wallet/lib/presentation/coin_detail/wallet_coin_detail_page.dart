@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/constant/wallet_data.dart';
-import 'package:flutter_beautiful_ui/presentation/coin_detail/widget/wallet_coin_detail_background.dart';
-import 'package:flutter_beautiful_ui/presentation/coin_detail/widget/wallet_coin_trend_chart.dart';
-import 'package:flutter_beautiful_ui/presentation/coin_detail/widget/wallet_market_statistic.dart';
+import 'package:e_robo_wallet/constant/wallet_data.dart';
+import 'package:e_robo_wallet/presentation/coin_detail/widget/wallet_coin_detail_background.dart';
+import 'package:e_robo_wallet/presentation/coin_detail/widget/wallet_coin_trend_chart.dart';
+import 'package:e_robo_wallet/presentation/coin_detail/widget/wallet_market_statistic.dart';
 import 'package:go_router/go_router.dart';
 
 class WalletCoinDetailPage extends StatelessWidget {

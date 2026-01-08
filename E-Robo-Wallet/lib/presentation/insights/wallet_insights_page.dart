@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/constant/wallet_data.dart';
-import 'package:flutter_beautiful_ui/presentation/insights/widget/wallet_news_list.dart';
-import 'package:flutter_beautiful_ui/presentation/insights/widget/wallet_top_news.dart';
+import 'package:e_robo_wallet/constant/wallet_data.dart';
+import 'package:e_robo_wallet/presentation/insights/widget/wallet_news_list.dart';
+import 'package:e_robo_wallet/presentation/insights/widget/wallet_top_news.dart';
 
 class WalletInSightsPage extends StatelessWidget {
   const WalletInSightsPage({super.key});

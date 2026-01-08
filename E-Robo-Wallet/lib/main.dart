@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/router/walle_router.dart';
+import 'package:e_robo_wallet/router/walle_router.dart';
 
 void main() {
   runApp(const MyApp());

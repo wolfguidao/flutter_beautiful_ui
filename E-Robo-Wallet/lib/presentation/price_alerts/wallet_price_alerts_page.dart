@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/presentation/price_alerts/widget/wallet_alerts_list.dart';
-import 'package:flutter_beautiful_ui/presentation/price_alerts/widget/wallet_price_alerts_backgorund.dart';
+import 'package:e_robo_wallet/presentation/price_alerts/widget/wallet_alerts_list.dart';
+import 'package:e_robo_wallet/presentation/price_alerts/widget/wallet_price_alerts_backgorund.dart';
 import 'package:go_router/go_router.dart';
 
 class WalletPriceAlertsPage extends StatelessWidget {

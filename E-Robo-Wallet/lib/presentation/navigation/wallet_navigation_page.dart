@@ -1,12 +1,12 @@
-import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
-import 'package:flutter_beautiful_ui/presentation/home/wallet_home_page.dart';
-import 'package:flutter_beautiful_ui/presentation/navigation/widget/wallet_bottom_navigation.dart';
-import 'package:flutter_beautiful_ui/presentation/insights/wallet_insights_page.dart';
-import 'package:flutter_beautiful_ui/presentation/market/wallet_market_page.dart';
-import 'package:flutter_beautiful_ui/presentation/history/wallet_history_page.dart';
+import 'package:e_robo_wallet/gen/assets.gen.dart';
+import 'package:e_robo_wallet/presentation/home/wallet_home_page.dart';
+import 'package:e_robo_wallet/presentation/navigation/widget/wallet_bottom_navigation.dart';
+import 'package:e_robo_wallet/presentation/insights/wallet_insights_page.dart';
+import 'package:e_robo_wallet/presentation/market/wallet_market_page.dart';
+import 'package:e_robo_wallet/presentation/history/wallet_history_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/widget/blur_color_widget.dart';
+import 'package:e_robo_wallet/widget/blur_color_widget.dart';
 
 class WalletNavigationPage extends StatefulWidget {
   const WalletNavigationPage({super.key});

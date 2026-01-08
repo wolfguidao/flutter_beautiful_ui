@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/constant/wallet_color.dart';
+import 'package:e_robo_wallet/constant/wallet_color.dart';
 import 'package:flutter_svg/svg.dart';
 
 class WalletMarketSearch extends StatelessWidget {

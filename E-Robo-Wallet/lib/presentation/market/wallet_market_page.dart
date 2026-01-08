@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/constant/wallet_data.dart';
-import 'package:flutter_beautiful_ui/entity/coin.dart';
-import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
-import 'package:flutter_beautiful_ui/presentation/market/widget/wallet_market_search.dart';
-import 'package:flutter_beautiful_ui/presentation/market/widget/wallet_market_trend_list.dart';
+import 'package:e_robo_wallet/constant/wallet_data.dart';
+import 'package:e_robo_wallet/entity/coin.dart';
+import 'package:e_robo_wallet/gen/assets.gen.dart';
+import 'package:e_robo_wallet/presentation/market/widget/wallet_market_search.dart';
+import 'package:e_robo_wallet/presentation/market/widget/wallet_market_trend_list.dart';
 
 class WalletMarketPage extends StatelessWidget {
   const WalletMarketPage({super.key});

@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter_beautiful_ui/entity/coin.dart';
+import 'package:e_robo_wallet/entity/coin.dart';
 
 class CoinHistory {
   Coin coin;

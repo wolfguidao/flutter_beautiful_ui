@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/presentation/history/widget/wallet_history_list.dart';
+import 'package:e_robo_wallet/presentation/history/widget/wallet_history_list.dart';
 
 class WalletHistoryPage extends StatelessWidget {
   const WalletHistoryPage({super.key});

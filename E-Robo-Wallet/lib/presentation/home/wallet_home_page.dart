@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/constant/wallet_data.dart';
-import 'package:flutter_beautiful_ui/entity/coin.dart';
-import 'package:flutter_beautiful_ui/presentation/home/widget/wallet_home_header.dart';
-import 'package:flutter_beautiful_ui/presentation/home/widget/wallet_home_price_alterts.dart';
-import 'package:flutter_beautiful_ui/presentation/home/widget/wallet_home_treading.dart';
+import 'package:e_robo_wallet/constant/wallet_data.dart';
+import 'package:e_robo_wallet/entity/coin.dart';
+import 'package:e_robo_wallet/presentation/home/widget/wallet_home_header.dart';
+import 'package:e_robo_wallet/presentation/home/widget/wallet_home_price_alterts.dart';
+import 'package:e_robo_wallet/presentation/home/widget/wallet_home_treading.dart';
 
 class WalletHomePage extends StatelessWidget {
   const WalletHomePage({super.key});

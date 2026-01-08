@@ -1,7 +1,7 @@
-import 'package:flutter_beautiful_ui/presentation/coin_detail/wallet_coin_detail_page.dart';
-import 'package:flutter_beautiful_ui/presentation/navigation/wallet_navigation_page.dart';
-import 'package:flutter_beautiful_ui/presentation/login/wallet_login_page.dart';
-import 'package:flutter_beautiful_ui/presentation/price_alerts/wallet_price_alerts_page.dart';
+import 'package:e_robo_wallet/presentation/coin_detail/wallet_coin_detail_page.dart';
+import 'package:e_robo_wallet/presentation/navigation/wallet_navigation_page.dart';
+import 'package:e_robo_wallet/presentation/login/wallet_login_page.dart';
+import 'package:e_robo_wallet/presentation/price_alerts/wallet_price_alerts_page.dart';
 import 'package:go_router/go_router.dart';
 
 class WalleRouter {

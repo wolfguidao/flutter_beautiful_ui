@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/constant/wallet_color.dart';
-import 'package:flutter_beautiful_ui/entity/coin.dart';
+import 'package:e_robo_wallet/constant/wallet_color.dart';
+import 'package:e_robo_wallet/entity/coin.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 

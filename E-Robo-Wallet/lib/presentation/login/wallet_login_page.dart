@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/presentation/login/widget/wallet_login_background.dart';
-import 'package:flutter_beautiful_ui/presentation/login/widget/wallet_login_form.dart';
+import 'package:e_robo_wallet/presentation/login/widget/wallet_login_background.dart';
+import 'package:e_robo_wallet/presentation/login/widget/wallet_login_form.dart';
 
 class WalletLoginPage extends StatelessWidget {
   const WalletLoginPage({super.key});

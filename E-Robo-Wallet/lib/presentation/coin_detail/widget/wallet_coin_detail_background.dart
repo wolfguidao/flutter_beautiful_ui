@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/widget/blur_color_widget.dart';
+import 'package:e_robo_wallet/widget/blur_color_widget.dart';
 
 class WalletCoinDetailBackground extends StatelessWidget {
   final Widget child;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
+import 'package:e_robo_wallet/gen/assets.gen.dart';
 import 'package:go_router/go_router.dart';
 
 class WalletLoginForm extends StatefulWidget {

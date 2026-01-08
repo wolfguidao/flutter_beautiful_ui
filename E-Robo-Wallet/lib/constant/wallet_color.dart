@@ -1,5 +1,5 @@
+import 'package:e_robo_wallet/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
 
 class WalletColor {
   static final Map<String, Color> moneyIconColor = {

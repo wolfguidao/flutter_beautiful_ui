@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beautiful_ui/entity/coin.dart';
+import 'package:e_robo_wallet/entity/coin.dart';
 
 class WalletMarketStatistic extends StatelessWidget {
   final Coin coin;

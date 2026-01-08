@@ -1,13 +1,13 @@
 import 'dart:math';
 
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter_beautiful_ui/entity/coin.dart';
-import 'package:flutter_beautiful_ui/entity/coin_history.dart';
-import 'package:flutter_beautiful_ui/entity/coin_news.dart';
-import 'package:flutter_beautiful_ui/entity/coin_price_alerts.dart';
-import 'package:flutter_beautiful_ui/entity/news.dart';
-import 'package:flutter_beautiful_ui/entity/price_alerts.dart';
-import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
+import 'package:e_robo_wallet/entity/coin.dart';
+import 'package:e_robo_wallet/entity/coin_history.dart';
+import 'package:e_robo_wallet/entity/coin_news.dart';
+import 'package:e_robo_wallet/entity/coin_price_alerts.dart';
+import 'package:e_robo_wallet/entity/news.dart';
+import 'package:e_robo_wallet/entity/price_alerts.dart';
+import 'package:e_robo_wallet/gen/assets.gen.dart';
 
 final Coin bitcoin = Coin(
   name: "Bitcoin",
