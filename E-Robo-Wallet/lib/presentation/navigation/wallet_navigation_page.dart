@@ -1,0 +1,90 @@
+import 'package:flutter_beautiful_ui/gen/assets.gen.dart';
+import 'package:flutter_beautiful_ui/presentation/home/wallet_home_page.dart';
+import 'package:flutter_beautiful_ui/presentation/navigation/widget/wallet_bottom_navigation.dart';
+import 'package:flutter_beautiful_ui/presentation/insights/wallet_insights_page.dart';
+import 'package:flutter_beautiful_ui/presentation/market/wallet_market_page.dart';
+import 'package:flutter_beautiful_ui/presentation/history/wallet_history_page.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_beautiful_ui/widget/blur_color_widget.dart';
+
+class WalletNavigationPage extends StatefulWidget {
+  const WalletNavigationPage({super.key});
+
+  @override
+  State<WalletNavigationPage> createState() => _WalletNavigationPageState();
+}
+
+class _WalletNavigationPageState extends State<WalletNavigationPage> {
+  int _pageIndex = 0;
+
+  final List<String> _navItemIcon = [
+    Assets.images.walletHome,
+    Assets.images.walletRate,
+    Assets.images.walletWallet,
+    Assets.images.walletNews,
+  ];
+
+  final List<Widget> _pages = [
+    WalletHomePage(),
+    WalletMarketPage(),
+    WalletHistoryPage(),
+    WalletInSightsPage(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final double w = MediaQuery.sizeOf(context).width;
+    final double h = MediaQuery.sizeOf(context).height;
+    return Scaffold(
+      backgroundColor: Color(0xfff3f5f6),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: SafeArea(
+          bottom: false,
+          child: Stack(
+            children: [
+              Positioned(
+                top: h * 0.1,
+                left: -w * 0.35,
+                child: BlurColorWidget(size: 231, color: Color(0xffF3E9FF)),
+              ),
+              Positioned(
+                right: -w * 0.2,
+                bottom: h * 0.2,
+                child: BlurColorWidget(size: 119, color: Color(0xffFFE3C9)),
+              ),
+              Positioned(
+                bottom: -h * 0.1,
+                right: -w * 0.3,
+                child: BlurColorWidget(size: 251, color: Color(0xffFFC2C6)),
+              ),
+              Scaffold(
+                backgroundColor: Colors.transparent,
+                body: _pages[_pageIndex],
+                bottomNavigationBar: WalletBottomNavigation(
+                  navItems: List<Widget>.generate(_navItemIcon.length, (index) {
+                    return SvgPicture.asset(
+                      _navItemIcon[index],
+                      width: w * 0.06,
+                      colorFilter: ColorFilter.mode(
+                        index == _pageIndex ? Colors.black : Color(0xffCED0DE),
+                        BlendMode.srcIn,
+                      ),
+                    );
+                  }),
+                  onNavChanged: (index) {
+                    setState(() {
+                      _pageIndex = index;
+                    });
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
