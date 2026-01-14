@@ -5,6 +5,7 @@ import 'package:saas_dashboard/presentation/analytics/analytics_page.dart';
 import 'package:saas_dashboard/presentation/dashboard/dashboard_page.dart';
 import 'package:saas_dashboard/presentation/home/component/home_navigation.dart';
 import 'package:saas_dashboard/presentation/invoice/invoice_page.dart';
+import 'package:saas_dashboard/presentation/schedule/schedule_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _activeIndex = 0;
-  final List<Widget> _pages = [DashboardPage(),AnalyticsPage(),InvoicePage()];
+  final List<Widget> _pages = [DashboardPage(),AnalyticsPage(),InvoicePage(),SchedulePage()];
 
   @override
   Widget build(BuildContext context) {

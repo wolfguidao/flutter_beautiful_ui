@@ -5,6 +5,7 @@ import 'package:saas_dashboard/constant/app_colors.dart';
 import 'package:saas_dashboard/constant/app_constrain.dart';
 import 'package:saas_dashboard/entity/invoice/invoice.dart';
 import 'package:saas_dashboard/gen/assets.gen.dart';
+import 'package:saas_dashboard/presentation/widgets/cus_checkbox.dart';
 import 'package:saas_dashboard/presentation/widgets/cus_table_title.dart';
 
 class InvoiceTable extends StatefulWidget {
@@ -28,7 +29,7 @@ class _InvoiceTableState extends State<InvoiceTable> {
   OverlayEntry? _moreTools;
   int _activeIndex = -1;
 
-    @override
+  @override
   void initState() {
     final List<InvoiceStatus> statusList = InvoiceStatus.values;
     _invoiceList = List.generate(10, (index) {
@@ -53,7 +54,7 @@ class _InvoiceTableState extends State<InvoiceTable> {
         key.currentContext?.findRenderObject() as RenderBox?;
     if (renderBox == null) return;
     final Offset offset = renderBox.localToGlobal(Offset.zero);
-    _openMoreTools(Offset(offset.dx -20, offset.dy + renderBox.size.height));
+    _openMoreTools(Offset(offset.dx - 20, offset.dy + renderBox.size.height));
   }
 
   void _openMoreTools(Offset offset) {
@@ -252,36 +253,13 @@ class _InvoiceTableState extends State<InvoiceTable> {
                       Expanded(
                         flex: flexSelect,
                         child: Center(
-                          child: GestureDetector(
-                            onTap: (){
+                          child: CusCheckbox(
+                            value: _checkList[index],
+                            onChanged:(value){
                               setState(() {
-                                _checkList[index]=!_checkList[index];
+                                _checkList[index]=value;
                               });
                             },
-                            child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 200),
-                              width: 14,
-                              height: 14,
-                              decoration: BoxDecoration(
-                                color: _checkList[index]
-                                    ? AppColors.secondColor
-                                    : Colors.transparent,
-                                borderRadius: BorderRadius.circular(4),
-                                border: Border.all(
-                                  color: _checkList[index]
-                                      ? AppColors.secondColor
-                                      : const Color(0xffD1D1D6),
-                                  width: 1.5,
-                                ),
-                              ),
-                              child: _checkList[index]
-                                  ? const Icon(
-                                      Icons.check,
-                                      size: 10,
-                                      color: Colors.white,
-                                    )
-                                  : null,
-                            ),
                           ),
                         ),
                       ),

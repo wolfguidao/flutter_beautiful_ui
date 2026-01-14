@@ -37,9 +37,10 @@ class _AnalyticsCustomerState extends State<AnalyticsCustomer>
       builder: (context, child) {
         return Transform.translate(
           offset: Offset(0, 20.0 * (1 - _animation.value)),
-          child: Opacity(opacity: _animation.value, child: CustomerTable()),
+          child: Opacity(opacity: _animation.value, child: child),
         );
       },
+      child: CustomerTable(),
     );
   }
 }
