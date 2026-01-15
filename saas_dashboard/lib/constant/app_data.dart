@@ -10,7 +10,7 @@ List<Task> todoList = [
     iconBackgroundColor: Color(0xffF6EEFF),
     startDate: "03/12/2021",
     endDate: "5/12/2021",
-    member: 2,
+    member: 4,
     status: TaskStatus.pending,
     detail: 'Discussion for management dashboard ui design',
     lever: TaskLever.low,

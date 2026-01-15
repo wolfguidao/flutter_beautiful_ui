@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:saas_dashboard/constant/app_theme.dart';
 import 'package:saas_dashboard/presentation/auth/auth_page.dart';
@@ -24,6 +26,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.touch,
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.trackpad
+        }
+      ),
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
       home: Material(child: HomePage()),

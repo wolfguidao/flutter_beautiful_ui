@@ -5,6 +5,7 @@ import 'package:saas_dashboard/constant/app_constrain.dart';
 import 'package:saas_dashboard/constant/app_data.dart';
 import 'package:saas_dashboard/entity/schedule/task.dart';
 import 'package:saas_dashboard/gen/assets.gen.dart';
+import 'package:saas_dashboard/presentation/schedule/widget/task_timeline.dart';
 
 class ScheduleTimelineView extends StatefulWidget {
   const ScheduleTimelineView({super.key});
@@ -69,10 +70,15 @@ class _ScheduleTimelineViewState extends State<ScheduleTimelineView> {
                       ),
                     ),
                     child: Column(
-                      children: [
-                        ...List.generate(_taskMap.length, (index) {
-                          final String key = _taskMap.keys.elementAt(index);
-                          return Container(
+                      children: List.generate(_taskMap.length, (index) {
+                        final String key = _taskMap.keys.elementAt(index);
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _activeType = key;
+                            });
+                          },
+                          child: Container(
                             padding: EdgeInsets.all(
                               AppConstrain.paddingSmall * 0.8,
                             ),
@@ -104,21 +110,18 @@ class _ScheduleTimelineViewState extends State<ScheduleTimelineView> {
                                 ),
                               ),
                             ),
-                          );
-                        }),
-                      ],
+                          ),
+                        );
+                      }),
                     ),
                   ),
                 ),
               ],
             ),
-            Container(
-              width: width * 0.78,
+            TaskTimeline(
+              width: width,
               height: height,
-              decoration: BoxDecoration(
-                color: AppColors.primaryColor,
-                borderRadius: BorderRadius.circular(AppConstrain.borderRadius),
-              ),
+              taskList: _taskMap[_activeType]!,
             ),
           ],
         );
