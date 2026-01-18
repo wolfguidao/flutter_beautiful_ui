@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:awesome_interaction/ThemeChange/theme_color.dart';
 import 'package:awesome_interaction/ThemeChange/widget/moon_painter.dart';
-import 'package:awesome_interaction/ThemeChange/widget/moonlight_painter.dart';
+import 'package:awesome_interaction/ThemeChange/widget/light_painter.dart';
 import 'package:awesome_interaction/ThemeChange/widget/sparkle_painter.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +38,7 @@ class _DarkMoonState extends State<DarkMoon> {
               animation: widget.animation,
               builder: (context, child) {
                 return Transform.translate(
-                  offset: Offset(0, -100.0 * widget.animation.value),
+                  offset: Offset(100.0 * widget.animation.value, 0),
                   child: Opacity(
                     opacity: 1.0 - widget.animation.value,
                     child: child,
@@ -48,8 +48,9 @@ class _DarkMoonState extends State<DarkMoon> {
               child: Center(
                 child: CustomPaint(
                   size: Size.square(420 - index * 65),
-                  painter: MoonlightPainter(
+                  painter: LightPainter(
                     color: ThemeColor.moonlightColor[index],
+                    centerRate: 0.8,
                   ),
                 ),
               ),
@@ -64,7 +65,7 @@ class _DarkMoonState extends State<DarkMoon> {
               animation: widget.animation,
               builder: (context, child) {
                 return Transform.translate(
-                  offset: Offset(0, -100.0 * widget.animation.value),
+                  offset: Offset(-100.0 * widget.animation.value, 0),
                   child: child,
                 );
               },

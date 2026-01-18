@@ -27,6 +27,9 @@ class ThemeColor {
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
+    static final List<BoxShadow> lightButtonShadow = [
+    BoxShadow(color: const Color.fromARGB(255, 198, 197, 197), spreadRadius: 1, blurRadius: 15),
+  ];
   static final List<Color> cloudColor = [Color(0xffa3c2d6), Color(0xfff3fdff)];
   static final List<Color> sunlightColor = [
     Color(0xff548cb6),

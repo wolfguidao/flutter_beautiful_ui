@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
-class MoonlightPainter extends CustomPainter {
+class LightPainter extends CustomPainter {
+  final double centerRate;
   final Color color;
 
-  MoonlightPainter({super.repaint, required this.color});
+  LightPainter({super.repaint, required this.color, required this.centerRate});
   @override
   void paint(Canvas canvas, Size size) {
     final Paint paint = Paint()..color = color;
     final Path path = Path();
     path.addOval(
       Rect.fromCenter(
-        center: Offset(size.width*0.8, size.height / 2),
-        width: size.width/2,
-        height: size.width/2,
+        center: Offset(size.width * centerRate, size.height / 2),
+        width: size.width / 2,
+        height: size.width / 2,
       ),
     );
     canvas.drawPath(path, paint);

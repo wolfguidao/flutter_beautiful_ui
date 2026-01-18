@@ -20,11 +20,11 @@ class MoonPainter extends CustomPainter {
       ..color = moonMainColor
       ..style = PaintingStyle.fill
       ..maskFilter = MaskFilter.blur(BlurStyle.normal, 1);
-    final Paint moonLightPaint = Paint()
+    final Paint moonShadowPaint = Paint()
       ..shader = moonShadowColor.createShader(
         Rect.fromLTWH(0, 0, size.width, size.height),
       );
-    final Path moonLightPath = Path()
+    final Path moonShadowPath = Path()
       ..addOval(
         Rect.fromCircle(
           center: Offset(width / 2 - 2, height / 2),
@@ -38,7 +38,7 @@ class MoonPainter extends CustomPainter {
           radius: width / 2,
         ),
       );
-    canvas.drawPath(moonLightPath, moonLightPaint);
+    canvas.drawPath(moonShadowPath, moonShadowPaint);
     canvas.drawPath(moonPath, moonPaint);
     _drawCrater(Offset(width * 0.3, height * 0.575), width * 0.5 * 0.4, canvas);
     _drawCrater(Offset(width * 0.5, height * 0.28), width * 0.5 * 0.2, canvas);
