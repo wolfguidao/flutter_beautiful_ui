@@ -57,7 +57,6 @@ class _ThemeChangeState extends State<ThemeChange>
             setState(() {
               _isDark = !_isDark;
             });
-
             if (_isDark) {
               _controller.reverse();
             } else {
@@ -71,17 +70,17 @@ class _ThemeChangeState extends State<ThemeChange>
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               color: _isDark
-                  ? ThemeColor.darkBackground
+                  ? ThemeColor.darkButtonBackgroundColor
                   : ThemeColor.lightBackground,
+              borderRadius: BorderRadius.circular(100),
               boxShadow: _isDark
                   ? ThemeColor.darkButtonShadow
                   : ThemeColor.lightButtonShadow,
-              borderRadius: BorderRadius.circular(100),
             ),
             child: Stack(
               children: [
                 DarkMoon(animation: _moonAnimation),
-                LightSun(animation: _sunAnimation),
+                LightSun(animation: _sunAnimation)
               ],
             ),
           ),

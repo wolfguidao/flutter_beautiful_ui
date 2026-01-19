@@ -13,23 +13,18 @@ class MessagePage extends StatefulWidget {
 class _MessagePageState extends State<MessagePage>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
-  late Animation _sessionAnimation;
-  late Animation _messageAnimation;
+  late Animation _animation;
   ImSession? _openSession;
 
   @override
   void initState() {
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 1),
+      duration: Duration(milliseconds: 500),
     );
-    _sessionAnimation = CurvedAnimation(
+    _animation = CurvedAnimation(
       parent: _controller,
-      curve: Interval(0, 0.5),
-    );
-    _messageAnimation = CurvedAnimation(
-      parent: _controller,
-      curve: Interval(0.5, 1),
+      curve: Curves.easeIn,
     );
     _controller.forward();
     super.initState();
@@ -50,19 +45,19 @@ class _MessagePageState extends State<MessagePage>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             AnimatedBuilder(
-              animation: _sessionAnimation,
+              animation: _animation,
               builder: (context, child) {
                 return Transform.translate(
-                  offset: Offset(-20.0 * (1 - _sessionAnimation.value), 0),
+                  offset: Offset(-20.0 * (1 - _animation.value), 0),
                   child: Opacity(
-                    opacity: _sessionAnimation.value,
+                    opacity: _animation.value,
                     child: child,
                   ),
                 );
               },
               child: SessionList(
                 width: width,
-                tapSession: (ImSession value) {
+                tapSession: (value) {
                   setState(() {
                     _openSession = value;
                   });
@@ -70,12 +65,12 @@ class _MessagePageState extends State<MessagePage>
               ),
             ),
             AnimatedBuilder(
-              animation: _messageAnimation,
+              animation: _animation,
               builder: (context, child) {
                 return Transform.translate(
-                  offset: Offset(20.0 * (1 - _sessionAnimation.value), 0),
+                  offset: Offset(20.0 * (1 - _animation.value), 0),
                   child: Opacity(
-                    opacity: _sessionAnimation.value,
+                    opacity: _animation.value,
                     child: child,
                   ),
                 );

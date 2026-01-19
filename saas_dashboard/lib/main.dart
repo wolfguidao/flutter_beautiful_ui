@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:saas_dashboard/constant/app_theme.dart';
 import 'package:saas_dashboard/presentation/auth/auth_page.dart';
-import 'package:saas_dashboard/presentation/home/home_page.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: Material(child: HomePage()),
+      home: Material(child: AuthPage()),
     );
   }
 }

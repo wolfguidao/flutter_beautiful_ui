@@ -29,24 +29,27 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.backgroundColor,
-      child: Row(
-        children: [
-          HomeNavigation(
-            onChanged: (value) {
-              setState(() {
-                _activeIndex = value;
-              });
-            },
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsetsGeometry.all(AppConstrain.paddingLarge),
-              child: _pages[_activeIndex],
+    return Material(
+      color: Colors.transparent,
+      child: ColoredBox(
+        color: AppColors.backgroundColor,
+        child: Row(
+          children: [
+            HomeNavigation(
+              onChanged: (value) {
+                setState(() {
+                  _activeIndex = value;
+                });
+              },
             ),
-          ),
-        ],
+            Expanded(
+              child: Padding(
+                padding: EdgeInsetsGeometry.all(AppConstrain.paddingLarge),
+                child: _pages[_activeIndex],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
