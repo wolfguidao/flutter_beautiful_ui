@@ -1,19 +1,41 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
+import 'package:crm_woorkroom/presentation/home/components/sign_success.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_checkbox.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_label_textfile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  final VoidCallback toSignUp;
+  const SignIn({super.key, required this.toSignUp});
 
   @override
   State<SignIn> createState() => _SignInState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignInState extends State<SignIn> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation _animation;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+    _animation = CurvedAnimation(curve: Curves.easeIn, parent: _controller);
+    _controller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.sizeOf(context).width;
@@ -69,73 +91,97 @@ class _SignInState extends State<SignIn> {
             ),
           ),
           Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: width * 0.1,
-                vertical: height * 0.15,
-              ),
-              child: Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Sign In to Woorkroom",
-                      style: TextTheme.of(context).displayMedium,
-                    ),
-                    (height * 0.05).heightBox,
-                    CusLabelTextfile(
-                      label: "Email Address",
-                      hintText: "yourmail@gmail.com",
-                    ),
-                    (height * 0.025).heightBox,
-                    CusLabelTextfile(
-                      label: "Password",
-                      hintText: "Enter your password",
-                    ),
-                    (height * 0.05).heightBox,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            CusCheckbox(value: true, onChanged: (value) {}),
-                            AppLayout.paddingSmall.widthBox,
-                            Text(
-                              "Remeber me",
-                              style: TextTheme.of(context).labelMedium,
-                            ),
-                          ],
-                        ),
-                        Text(
-                          "Forgot Password?",
-                          style: TextTheme.of(context).labelMedium,
-                        ),
-                      ],
-                    ),
-                    (height * 0.08).heightBox,
-                    TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        maximumSize: Size(width * 0.115, height),
+            child: AnimatedBuilder(
+              animation: _animation,
+              builder: (context, child) {
+                return Transform.translate(
+                  offset: Offset(0, 20.0 * (1 - _animation.value)),
+                  child: Opacity(opacity: _animation.value, child: child),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.1,
+                  vertical: height * 0.15,
+                ),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Sign In to Woorkroom",
+                        style: TextTheme.of(context).displayMedium,
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      (height * 0.05).heightBox,
+                      CusLabelTextfile(
+                        label: "Email Address",
+                        hintText: "yourmail@gmail.com",
+                      ),
+                      (height * 0.025).heightBox,
+                      CusLabelTextfile(
+                        label: "Password",
+                        hintText: "Enter your password",
+                      ),
+                      (height * 0.05).heightBox,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Sign In", style: TextStyle(fontSize: 12)),
-                          AppLayout.paddingSmall.widthBox,
-                          Icon(Icons.arrow_forward_rounded, size: 15),
+                          Row(
+                            children: [
+                              CusCheckbox(value: true, onChanged: (value) {}),
+                              AppLayout.paddingSmall.widthBox,
+                              Text(
+                                "Remeber me",
+                                style: TextTheme.of(context).labelMedium,
+                              ),
+                            ],
+                          ),
+                          Text(
+                            "Forgot Password?",
+                            style: TextTheme.of(context).labelMedium,
+                          ),
                         ],
                       ),
-                    ),
-                    (height * 0.025).heightBox,
-                    Text(
-                      "Don't have an account?",
-                      style: TextStyle(
-                        fontSize: TextTheme.of(context).labelMedium?.fontSize,
-                        color: AppColor.primaryColor,
+                      (height * 0.08).heightBox,
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignSuccess(),
+                            ),
+                          );
+                        },
+                        style: TextButton.styleFrom(
+                          maximumSize: Size(width * 0.115, height),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Sign In", style: TextStyle(fontSize: 12)),
+                            AppLayout.paddingSmall.widthBox,
+                            Icon(Icons.arrow_forward_rounded, size: 15),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      (height * 0.025).heightBox,
+                      TextButton(
+                        onPressed: () => widget.toSignUp(),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                        ),
+                        child: Text(
+                          "Don't have an account?",
+                          style: TextStyle(
+                            fontSize: TextTheme.of(
+                              context,
+                            ).labelMedium?.fontSize,
+                            color: AppColor.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

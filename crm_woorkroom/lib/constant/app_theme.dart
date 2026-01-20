@@ -7,6 +7,7 @@ class AppTheme {
       textTheme: TextTheme(
         displayLarge: AppTextStyle.h1,
         displayMedium: AppTextStyle.h2,
+        displaySmall: AppTextStyle.h3,
         bodyMedium: AppTextStyle.bodyMedium,
         labelMedium: AppTextStyle.caption,
       ),
@@ -26,14 +27,18 @@ class AppTheme {
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: TextStyle(color: AppColor.hintColor, fontSize: 12),
+        hintStyle: TextStyle(
+          color: AppColor.hintColor,
+          fontSize: 12,
+          fontWeight: FontWeight.normal,
+        ),
         fillColor: Colors.white,
         filled: true,
         focusColor: Colors.transparent,
         hoverColor: Colors.transparent,
         isCollapsed: true,
         contentPadding: EdgeInsets.symmetric(
-          horizontal: AppLayout.paddingSmall*0.5,
+          horizontal: AppLayout.paddingSmall * 0.5,
           vertical: AppLayout.paddingSmall * 1.2,
         ),
         border: OutlineInputBorder(

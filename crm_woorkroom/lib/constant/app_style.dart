@@ -18,14 +18,20 @@ class AppLayout {
 
 class AppTextStyle {
   static final TextStyle h1 = TextStyle(
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: FontWeight.bold,
     color: AppColor.textColor,
   );
 
-    static final TextStyle h2 = TextStyle(
-    fontSize: 18,
+  static final TextStyle h2 = TextStyle(
+    fontSize: 16,
     fontWeight: FontWeight.w700,
+    color: AppColor.textColor,
+  );
+
+  static final TextStyle h3 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
     color: AppColor.textColor,
   );
 
