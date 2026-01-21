@@ -1,11 +1,11 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
-import 'package:crm_woorkroom/presentation/home/components/sign_success.dart';
-import 'package:crm_woorkroom/presentation/home/widgets/step_four_form.dart';
-import 'package:crm_woorkroom/presentation/home/widgets/step_one_form.dart';
-import 'package:crm_woorkroom/presentation/home/widgets/step_three_form.dart';
-import 'package:crm_woorkroom/presentation/home/widgets/step_two_form.dart';
+import 'package:crm_woorkroom/presentation/auth/components/sign_success.dart';
+import 'package:crm_woorkroom/presentation/auth/widgets/step_four_form.dart';
+import 'package:crm_woorkroom/presentation/auth/widgets/step_one_form.dart';
+import 'package:crm_woorkroom/presentation/auth/widgets/step_three_form.dart';
+import 'package:crm_woorkroom/presentation/auth/widgets/step_two_form.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_step_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

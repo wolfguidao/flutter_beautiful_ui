@@ -1,5 +1,6 @@
 import 'package:crm_woorkroom/constant/app_theme.dart';
-import 'package:crm_woorkroom/presentation/home/auth_page.dart';
+import 'package:crm_woorkroom/presentation/auth/auth_page.dart';
+import 'package:crm_woorkroom/presentation/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -7,8 +8,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
   WindowOptions windowOptions = WindowOptions(
-    size: Size(1000, 600),
-    minimumSize: Size(1000, 600),
+    size: Size(1100, 800),
+    minimumSize: Size(1100, 800),
     titleBarStyle: TitleBarStyle.hidden,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
@@ -24,6 +25,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.theme, home: AuthPage());
+      theme: AppTheme.theme,
+      home: HomePage(),
+    );
   }
 }

@@ -10,6 +10,7 @@ class AppTheme {
         displaySmall: AppTextStyle.h3,
         bodyMedium: AppTextStyle.bodyMedium,
         labelMedium: AppTextStyle.caption,
+        labelSmall: AppTextStyle.captionSmall
       ),
       textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
       textButtonTheme: TextButtonThemeData(

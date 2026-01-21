@@ -23,19 +23,55 @@ class $ImagesGen {
   /// File path: images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('images/avatar.jpg');
 
+  /// File path: images/calendar.svg
+  String get calendar => 'images/calendar.svg';
+
+  /// File path: images/dashboard.svg
+  String get dashboard => 'images/dashboard.svg';
+
+  /// File path: images/employees.svg
+  String get employees => 'images/employees.svg';
+
   /// File path: images/logo.svg
   String get logo => 'images/logo.svg';
 
+  /// File path: images/logo_blue.svg
+  String get logoBlue => 'images/logo_blue.svg';
+
+  /// File path: images/messenger.svg
+  String get messenger => 'images/messenger.svg';
+
   /// File path: images/nav_illus.svg
   String get navIllus => 'images/nav_illus.svg';
+
+  /// File path: images/portal.svg
+  String get portal => 'images/portal.svg';
+
+  /// File path: images/projectImage.svg
+  String get projectImage => 'images/projectImage.svg';
+
+  /// File path: images/projects.svg
+  String get projects => 'images/projects.svg';
+
+  /// File path: images/vacations.svg
+  String get vacations => 'images/vacations.svg';
 
   /// List of all assets
   List<dynamic> get values => [
     addEmployeeIllus,
     authIllus,
     avatar,
+    calendar,
+    dashboard,
+    employees,
     logo,
+    logoBlue,
+    messenger,
     navIllus,
+    portal,
+    projectImage,
+    projects,
+    vacations,
   ];
 }
 

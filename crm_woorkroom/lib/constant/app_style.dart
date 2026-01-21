@@ -45,4 +45,9 @@ class AppTextStyle {
     fontSize: 10,
     color: AppColor.hintColor,
   );
+
+  static final TextStyle captionSmall = TextStyle(
+    fontSize: 8,
+    color: AppColor.hintColor,
+  );
 }
