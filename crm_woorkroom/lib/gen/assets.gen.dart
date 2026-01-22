@@ -23,6 +23,9 @@ class $ImagesGen {
   /// File path: images/avatar.jpg
   AssetGenImage get avatar => const AssetGenImage('images/avatar.jpg');
 
+  /// File path: images/board.svg
+  String get board => 'images/board.svg';
+
   /// File path: images/calendar.svg
   String get calendar => 'images/calendar.svg';
 
@@ -31,6 +34,9 @@ class $ImagesGen {
 
   /// File path: images/employees.svg
   String get employees => 'images/employees.svg';
+
+  /// File path: images/list.svg
+  String get list => 'images/list.svg';
 
   /// File path: images/logo.svg
   String get logo => 'images/logo.svg';
@@ -53,6 +59,9 @@ class $ImagesGen {
   /// File path: images/projects.svg
   String get projects => 'images/projects.svg';
 
+  /// File path: images/timeline.svg
+  String get timeline => 'images/timeline.svg';
+
   /// File path: images/vacations.svg
   String get vacations => 'images/vacations.svg';
 
@@ -61,9 +70,11 @@ class $ImagesGen {
     addEmployeeIllus,
     authIllus,
     avatar,
+    board,
     calendar,
     dashboard,
     employees,
+    list,
     logo,
     logoBlue,
     messenger,
@@ -71,6 +82,7 @@ class $ImagesGen {
     portal,
     projectImage,
     projects,
+    timeline,
     vacations,
   ];
 }

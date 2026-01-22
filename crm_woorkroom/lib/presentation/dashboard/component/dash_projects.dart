@@ -139,7 +139,7 @@ class DashProjects extends StatelessWidget {
                                       style: TextTheme.of(context).labelSmall,
                                     ),
                                     Text(
-                                      project.taskTotal.toString(),
+                                      project.tasks.length.toString(),
                                       style: TextTheme.of(context).bodySmall,
                                     ),
                                   ],
@@ -154,7 +154,13 @@ class DashProjects extends StatelessWidget {
                                       style: TextTheme.of(context).labelSmall,
                                     ),
                                     Text(
-                                      project.taskActive.toString(),
+                                      project.tasks
+                                          .map(
+                                            (e) =>
+                                                e.taskStatus.text == "Done",
+                                          )
+                                          .length
+                                          .toString(),
                                       style: TextTheme.of(context).bodySmall,
                                     ),
                                   ],
@@ -172,7 +178,7 @@ class DashProjects extends StatelessWidget {
                                       height: 20,
                                       child: Stack(
                                         children: List.generate(
-                                          project.assigneeNumber,
+                                          project.tasks.length,
                                           (index) {
                                             return Positioned(
                                               left: 15.0 * index,

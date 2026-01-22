@@ -1,5 +1,6 @@
-import 'dart:ui';
 
+
+import 'package:crm_woorkroom/constant/app_enum.dart';
 class Event {
   final String title;
   final String time;
@@ -14,13 +15,3 @@ class Event {
   });
 }
 
-enum EventLever {
-  low(text: "Low", color: Color(0xff0AC947)),
-  medium(text: "Medium", color: Color(0xffFFBD21)),
-  high(text: "High", color: Color(0xffDE92EB));
-
-  final String text;
-  final Color color;
-
-  const EventLever({required this.text, required this.color});
-}

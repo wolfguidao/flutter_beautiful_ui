@@ -1,7 +1,6 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class DashActivityStream extends StatelessWidget {

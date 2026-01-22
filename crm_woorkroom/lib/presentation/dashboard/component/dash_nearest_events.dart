@@ -48,7 +48,7 @@ class DashNearestEvents extends StatelessWidget {
               ),
             ],
           ),
-          ...AppMock.eventList.map((event) {
+          ...AppMock.eventList.sublist(0,3).map((event) {
             return Container(
               padding: EdgeInsets.symmetric(
                 horizontal: AppLayout.paddingSmall,
@@ -58,7 +58,7 @@ class DashNearestEvents extends StatelessWidget {
               height: height * 0.1,
               decoration: BoxDecoration(
                 border: Border(
-                  left: BorderSide(color: event.lever.color, width: 2),
+                  left: BorderSide(color: event.lever.color, width: AppLayout.borderWidth),
                 ),
               ),
               child: Column(
