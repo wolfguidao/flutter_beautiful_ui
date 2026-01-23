@@ -3,7 +3,9 @@ import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_bar.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_board_view.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_list_view.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -113,9 +115,18 @@ class _ProjectsPageState extends State<ProjectsPage> {
                         ),
                         AppLayout.paddingSmall.heightBox,
                         Expanded(
-                          child: ProjectsListView(
-                            project: AppMock.projectList[0],
-                          ),
+                          child: switch (_activeType) {
+                            0 => ProjectsListView(
+                              project: AppMock.projectList[0],
+                            ),
+                            1 => ProjectsBoardView(
+                              project: AppMock.projectList[0],
+                            ),
+                            2 => ProjectsTimeline(
+                              project: AppMock.projectList[0],
+                            ),
+                            _ => SizedBox.shrink(),
+                          },
                         ),
                       ],
                     ),

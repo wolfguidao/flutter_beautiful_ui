@@ -2,14 +2,15 @@ import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/entity/user.dart';
 
 class Task {
-  final String name;
-  final String estimate;
-  final String spentTime;
-  final Priority priority;
-  final TaskStatus taskStatus;
-  final List<User> assignee;
-  final TaskType taskType;
-  final double progress;
+  String id;
+  String name;
+  String estimate;
+  String spentTime;
+  Priority priority;
+  TaskStatus taskStatus;
+  List<User> assignee;
+  TaskType taskType;
+  double progress;
 
   Task({
     required this.estimate,
@@ -20,5 +21,6 @@ class Task {
     required this.taskType,
     required this.name,
     required this.progress,
+    required this.id,
   });
 }

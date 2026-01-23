@@ -136,6 +136,7 @@ class AppMock {
   // 任务数据
   static List<Task> taskList = [
     Task(
+      id: "TS0000001",
       name: "User Authentication System",
       estimate: "120h",
       spentTime: "80h",
@@ -146,6 +147,7 @@ class AppMock {
       progress: 0.67,
     ),
     Task(
+      id: "TS0000002",
       name: "Dashboard Analytics Integration",
       estimate: "200h",
       spentTime: "205h",
@@ -156,6 +158,7 @@ class AppMock {
       progress: 1.0,
     ),
     Task(
+      id: "TS0000003",
       name: "Logo Design and Branding",
       estimate: "40h",
       spentTime: "5h",
@@ -166,6 +169,7 @@ class AppMock {
       progress: 0.12,
     ),
     Task(
+      id: "TS0000004",
       name: "Responsive Layout Implementation",
       estimate: "150h",
       spentTime: "140h",
@@ -176,6 +180,7 @@ class AppMock {
       progress: 0.93,
     ),
     Task(
+      id: "TS0000005",
       name: "Unit Test Coverage",
       estimate: "60h",
       spentTime: "0h",
@@ -186,6 +191,7 @@ class AppMock {
       progress: 0.0,
     ),
     Task(
+      id: "TS0000006",
       name: "Performance Optimization",
       estimate: "80h",
       spentTime: "75h",
@@ -196,6 +202,7 @@ class AppMock {
       progress: 0.94,
     ),
     Task(
+      id: "TS0000007",
       name: "Payment Gateway Integration",
       estimate: "300h",
       spentTime: "150h",
@@ -206,6 +213,7 @@ class AppMock {
       progress: 0.50,
     ),
     Task(
+      id: "TS0000008",
       name: "Admin Panel Development",
       estimate: "90h",
       spentTime: "90h",
@@ -216,6 +224,7 @@ class AppMock {
       progress: 1.0,
     ),
     Task(
+      id: "TS0000009",
       name: "Mobile App UI/UX Design",
       estimate: "180h",
       spentTime: "160h",
@@ -226,6 +235,7 @@ class AppMock {
       progress: 0.89,
     ),
     Task(
+      id: "TS0000010",
       name: "Documentation Writing",
       estimate: "25h",
       spentTime: "0h",
@@ -236,6 +246,7 @@ class AppMock {
       progress: 0.0,
     ),
     Task(
+      id: "TS0000011",
       name: "Database Schema Design",
       estimate: "220h",
       spentTime: "100h",
@@ -246,6 +257,7 @@ class AppMock {
       progress: 0.45,
     ),
     Task(
+      id: "TS0000012",
       name: "Chatbot Training Data",
       estimate: "50h",
       spentTime: "10h",

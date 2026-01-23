@@ -3,7 +3,7 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/task.dart';
-import 'package:crm_woorkroom/presentation/projects/widgets/project_list_item.dart';
+import 'package:crm_woorkroom/presentation/projects/widgets/task_list_item.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsListView extends StatefulWidget {
@@ -39,6 +39,7 @@ class _ProjectsListViewState extends State<ProjectsListView> {
             toolbarHeight: 30,
             actionsPadding: EdgeInsets.zero,
             titleSpacing: 0,
+            backgroundColor: AppColor.backgroundColor,
             title: Container(
               height: 30,
               width: double.infinity,
@@ -59,13 +60,14 @@ class _ProjectsListViewState extends State<ProjectsListView> {
             itemCount: _activeTask.length,
             itemBuilder: (context, index) {
               final Task task = _activeTask[index];
-              return ProjectListItem(task: task);
+              return TaskListItem(task: task);
             },
           ),
           SliverAppBar(
             toolbarHeight: 30,
             actionsPadding: EdgeInsets.zero,
             titleSpacing: 0,
+            backgroundColor: AppColor.backgroundColor,
             title: Container(
               height: 30,
               width: double.infinity,
@@ -74,7 +76,10 @@ class _ProjectsListViewState extends State<ProjectsListView> {
                 borderRadius: BorderRadius.circular(AppLayout.borderRadius),
               ),
               child: Center(
-                child: Text("Backlog", style: TextTheme.of(context).displaySmall),
+                child: Text(
+                  "Backlog",
+                  style: TextTheme.of(context).displaySmall,
+                ),
               ),
             ),
           ),
@@ -83,7 +88,7 @@ class _ProjectsListViewState extends State<ProjectsListView> {
             itemCount: _backlogTask.length,
             itemBuilder: (context, index) {
               final Task task = _backlogTask[index];
-              return ProjectListItem(task: task);
+              return TaskListItem(task: task);
             },
           ),
         ],

@@ -3,9 +3,9 @@ import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:flutter/material.dart';
 
-class ProjectListItem extends StatelessWidget {
+class TaskListItem extends StatelessWidget {
   final Task task;
-  const ProjectListItem({super.key, required this.task});
+  const TaskListItem({super.key, required this.task});
 
   @override
   Widget build(BuildContext context) {
