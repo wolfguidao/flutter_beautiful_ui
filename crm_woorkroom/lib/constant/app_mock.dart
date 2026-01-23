@@ -134,12 +134,14 @@ class AppMock {
   ];
 
   // 任务数据
+  // 2026年1月 任务数据 Mock
   static List<Task> taskList = [
     Task(
       id: "TS0000001",
       name: "User Authentication System",
-      estimate: "120h",
-      spentTime: "80h",
+      createTime: DateTime(2026, 1, 1),
+      estimateTime: 120,
+      spentTime: 80,
       priority: Priority.high,
       taskStatus: TaskStatus.progress,
       assignee: [userList[0], userList[1], userList[2]],
@@ -149,8 +151,9 @@ class AppMock {
     Task(
       id: "TS0000002",
       name: "Dashboard Analytics Integration",
-      estimate: "200h",
-      spentTime: "205h",
+      createTime: DateTime(2026, 1, 3),
+      estimateTime: 200,
+      spentTime: 205,
       priority: Priority.medium,
       taskStatus: TaskStatus.done,
       assignee: [userList[1], userList[3], userList[4], userList[5]],
@@ -160,8 +163,9 @@ class AppMock {
     Task(
       id: "TS0000003",
       name: "Logo Design and Branding",
-      estimate: "40h",
-      spentTime: "5h",
+      createTime: DateTime(2026, 1, 5),
+      estimateTime: 40,
+      spentTime: 5,
       priority: Priority.low,
       taskStatus: TaskStatus.todo,
       assignee: [userList[2], userList[0]],
@@ -171,8 +175,9 @@ class AppMock {
     Task(
       id: "TS0000004",
       name: "Responsive Layout Implementation",
-      estimate: "150h",
-      spentTime: "140h",
+      createTime: DateTime(2026, 1, 7),
+      estimateTime: 150,
+      spentTime: 140,
       priority: Priority.high,
       taskStatus: TaskStatus.review,
       assignee: [userList[3], userList[1], userList[4], userList[2]],
@@ -182,8 +187,9 @@ class AppMock {
     Task(
       id: "TS0000005",
       name: "Unit Test Coverage",
-      estimate: "60h",
-      spentTime: "0h",
+      createTime: DateTime(2026, 1, 8),
+      estimateTime: 60,
+      spentTime: 0,
       priority: Priority.medium,
       taskStatus: TaskStatus.todo,
       assignee: [userList[4], userList[5], userList[0]],
@@ -193,8 +199,9 @@ class AppMock {
     Task(
       id: "TS0000006",
       name: "Performance Optimization",
-      estimate: "80h",
-      spentTime: "75h",
+      createTime: DateTime(2026, 1, 10),
+      estimateTime: 80,
+      spentTime: 75,
       priority: Priority.high,
       taskStatus: TaskStatus.progress,
       assignee: [userList[5], userList[1]],
@@ -204,8 +211,9 @@ class AppMock {
     Task(
       id: "TS0000007",
       name: "Payment Gateway Integration",
-      estimate: "300h",
-      spentTime: "150h",
+      createTime: DateTime(2026, 1, 12),
+      estimateTime: 300,
+      spentTime: 150,
       priority: Priority.high,
       taskStatus: TaskStatus.progress,
       assignee: [userList[6], userList[7], userList[8], userList[9]],
@@ -215,8 +223,9 @@ class AppMock {
     Task(
       id: "TS0000008",
       name: "Admin Panel Development",
-      estimate: "90h",
-      spentTime: "90h",
+      createTime: DateTime(2026, 1, 15),
+      estimateTime: 90,
+      spentTime: 90,
       priority: Priority.medium,
       taskStatus: TaskStatus.done,
       assignee: [userList[10], userList[11]],
@@ -226,8 +235,9 @@ class AppMock {
     Task(
       id: "TS0000009",
       name: "Mobile App UI/UX Design",
-      estimate: "180h",
-      spentTime: "160h",
+      createTime: DateTime(2026, 1, 18),
+      estimateTime: 180,
+      spentTime: 160,
       priority: Priority.high,
       taskStatus: TaskStatus.review,
       assignee: [userList[12], userList[13], userList[14], userList[0]],
@@ -237,8 +247,9 @@ class AppMock {
     Task(
       id: "TS0000010",
       name: "Documentation Writing",
-      estimate: "25h",
-      spentTime: "0h",
+      createTime: DateTime(2026, 1, 20),
+      estimateTime: 25,
+      spentTime: 0,
       priority: Priority.low,
       taskStatus: TaskStatus.todo,
       assignee: [userList[1], userList[3]],
@@ -248,8 +259,9 @@ class AppMock {
     Task(
       id: "TS0000011",
       name: "Database Schema Design",
-      estimate: "220h",
-      spentTime: "100h",
+      createTime: DateTime(2026, 1, 22),
+      estimateTime: 220,
+      spentTime: 100,
       priority: Priority.medium,
       taskStatus: TaskStatus.progress,
       assignee: [userList[2], userList[4], userList[6], userList[8]],
@@ -259,8 +271,9 @@ class AppMock {
     Task(
       id: "TS0000012",
       name: "Chatbot Training Data",
-      estimate: "50h",
-      spentTime: "10h",
+      createTime: DateTime(2026, 1, 23),
+      estimateTime: 50,
+      spentTime: 10,
       priority: Priority.low,
       taskStatus: TaskStatus.todo,
       assignee: [userList[7], userList[9], userList[11]],

@@ -59,7 +59,7 @@ class TaskBoardItem extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      task.estimate,
+                      "${task.estimateTime}h",
                       style: TextTheme.of(context).labelSmall,
                     ),
                   ),

@@ -76,14 +76,14 @@ class TaskListItem extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  task.estimate,
+                  "${task.estimateTime}h",
                   style: TextTheme.of(context).bodyMedium,
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Text(
-                  task.spentTime,
+                  "${task.spentTime}h",
                   style: TextTheme.of(context).bodyMedium,
                 ),
               ),

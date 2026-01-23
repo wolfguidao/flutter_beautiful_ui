@@ -12,6 +12,8 @@ class AppTheme {
         labelMedium: AppTextStyle.caption,
         labelSmall: AppTextStyle.captionSmall,
       ),
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
       progressIndicatorTheme: ProgressIndicatorThemeData(
         circularTrackColor: Color(0xffE5E6E9),
         color: AppColor.primaryColor,
@@ -21,6 +23,9 @@ class AppTheme {
       textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
       iconButtonTheme: IconButtonThemeData(
         style: IconButton.styleFrom(
+          hoverColor: Colors.transparent,
+          focusColor: Colors.transparent,
+          overlayColor: Colors.transparent,
           padding: EdgeInsets.zero,
           minimumSize: Size(30, 30),
           maximumSize: Size(30, 30),
@@ -36,6 +41,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppLayout.borderRadius),
           ),
+
           shadowColor: Color(0xffDFECFF),
           foregroundColor: Colors.white,
           textStyle: TextStyle(

@@ -4,8 +4,9 @@ import 'package:crm_woorkroom/entity/user.dart';
 class Task {
   String id;
   String name;
-  String estimate;
-  String spentTime;
+  DateTime createTime;
+  int estimateTime;
+  int spentTime;
   Priority priority;
   TaskStatus taskStatus;
   List<User> assignee;
@@ -13,7 +14,8 @@ class Task {
   double progress;
 
   Task({
-    required this.estimate,
+    required this.createTime,
+    required this.estimateTime,
     required this.spentTime,
     required this.priority,
     required this.taskStatus,
@@ -23,4 +25,6 @@ class Task {
     required this.progress,
     required this.id,
   });
+
+  DateTime get deadline => createTime.add(Duration(hours: estimateTime));
 }
