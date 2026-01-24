@@ -92,7 +92,7 @@ class TaskListItem extends StatelessWidget {
                 child: Align(
                   alignment: AlignmentGeometry.centerLeft,
                   child: ClipOval(
-                    child: Image.asset(task.assignee.first.avatar,width: 30,),
+                    child: Image.asset(task.assignee.avatar,width: 30,),
                   ),
                 ),
               ),

@@ -9,7 +9,9 @@ class Task {
   int spentTime;
   Priority priority;
   TaskStatus taskStatus;
-  List<User> assignee;
+  TaskGroup taskGroup;
+  User reporter;
+  User assignee;
   TaskType taskType;
   double progress;
 
@@ -24,6 +26,8 @@ class Task {
     required this.name,
     required this.progress,
     required this.id,
+    required this.taskGroup,
+    required this.reporter,
   });
 
   DateTime get deadline => createTime.add(Duration(hours: estimateTime));

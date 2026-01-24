@@ -71,7 +71,7 @@ class TaskBoardItem extends StatelessWidget {
                   ),
                   Spacer(),
                   ClipOval(
-                    child: Image.asset(task.assignee[0].avatar, width: 20),
+                    child: Image.asset(task.assignee.avatar, width: 20),
                   ),
                 ],
               ),

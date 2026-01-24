@@ -55,7 +55,15 @@ enum TaskStatus {
   });
 }
 
-enum TaskType{
-  active,
-  backlog
+enum TaskType { active, backlog }
+
+enum TaskGroup {
+  design(text: "Design"),
+  development(text: "Development"),
+  testing(text: "Testing"),
+  marketing(text: "Marketing"),
+  projectManagement(text: "Project Managament");
+
+  final String text;
+  const TaskGroup({required this.text});
 }

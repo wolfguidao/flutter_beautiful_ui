@@ -1,9 +1,11 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
+import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_bar.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_board_view.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_filters.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_list_view.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_timeline.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,8 @@ class _ProjectsPageState extends State<ProjectsPage>
   ];
 
   int _activeType = 0;
+
+  Project _activeProject = AppMock.projectList[0];
 
   @override
   void initState() {
@@ -148,27 +152,15 @@ class _ProjectsPageState extends State<ProjectsPage>
                                   );
                                 }),
                               ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.filter_list_outlined,
-                                  size: 20,
-                                ),
-                              ),
+                              ProjectsFilters(project: _activeProject),
                             ],
                           ),
                           AppLayout.paddingSmall.heightBox,
                           Expanded(
                             child: switch (_activeType) {
-                              0 => ProjectsListView(
-                                project: AppMock.projectList[0],
-                              ),
-                              1 => ProjectsBoardView(
-                                project: AppMock.projectList[0],
-                              ),
-                              2 => ProjectsTimeline(
-                                project: AppMock.projectList[0],
-                              ),
+                              0 => ProjectsListView(project: _activeProject),
+                              1 => ProjectsBoardView(project: _activeProject),
+                              2 => ProjectsTimeline(project: _activeProject),
                               _ => SizedBox.shrink(),
                             },
                           ),
