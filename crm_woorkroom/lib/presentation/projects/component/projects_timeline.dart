@@ -4,15 +4,15 @@ import 'package:crm_woorkroom/presentation/projects/widgets/task_timeline.dart';
 import 'package:crm_woorkroom/presentation/projects/widgets/task_timeline_bar.dart';
 import 'package:flutter/material.dart';
 
-class ProjectsTimeline extends StatefulWidget {
+class ProjectsTimeline extends StatelessWidget {
   final Project project;
-  const ProjectsTimeline({super.key, required this.project});
+  final ValueChanged onTapTask;
+  const ProjectsTimeline({
+    super.key,
+    required this.project,
+    required this.onTapTask,
+  });
 
-  @override
-  State<ProjectsTimeline> createState() => _ProjectsTimelineState();
-}
-
-class _ProjectsTimelineState extends State<ProjectsTimeline> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -27,11 +27,12 @@ class _ProjectsTimelineState extends State<ProjectsTimeline> {
             children: [
               TaskTimelineBar(
                 width: width,
-                taskList: widget.project.tasks.take(14).toList(),
+                taskList: project.tasks.take(14).toList(),
+                onTapTask: (value) => onTapTask(value),
               ),
               Expanded(
                 child: TaskTimeline(
-                  taskList: widget.project.tasks.take(14).toList(),
+                  taskList: project.tasks.take(14).toList(),
                 ),
               ),
             ],

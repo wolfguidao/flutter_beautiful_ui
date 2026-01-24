@@ -1,6 +1,7 @@
 import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/entity/activity.dart';
 import 'package:crm_woorkroom/entity/event.dart';
+import 'package:crm_woorkroom/entity/file.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/entity/user.dart';
@@ -137,6 +138,8 @@ class AppMock {
     Task(
       id: "TS0000001",
       name: "User Authentication System",
+      description:
+          "Implement a robust and secure multi-factor authentication system. This includes integrating OAuth2 for Google and Apple logins, setting up JWT token refresh logic on the backend, and designing the frontend UI for login, password recovery, and biometric prompts to ensure a seamless user experience.",
       createTime: DateTime(2026, 1, 1),
       estimateTime: 120,
       spentTime: 80,
@@ -147,10 +150,25 @@ class AppMock {
       assignee: userList[0],
       taskType: TaskType.active,
       progress: 0.67,
+      activityList: [activityList[1], activityList[6]],
+      attachments: [
+        TaskFile(
+          name: "Auth_Flow_Diagram.png",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 2),
+        ),
+        TaskFile(
+          name: "Security_Specs.pdf",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 2),
+        ),
+      ],
     ),
     Task(
       id: "TS0000002",
       name: "Dashboard Analytics Integration",
+      description:
+          "Develop the data visualization layer for the executive dashboard. This task involves mapping real-time data from the analytics engine to various chart types, ensuring that filters for date ranges and categories work instantaneously, and optimizing the data fetching layer to minimize latency during peak traffic periods.",
       createTime: DateTime(2026, 1, 3),
       estimateTime: 200,
       spentTime: 205,
@@ -161,10 +179,20 @@ class AppMock {
       assignee: userList[1],
       taskType: TaskType.active,
       progress: 1.0,
+      activityList: [activityList[2]],
+      attachments: [
+        TaskFile(
+          name: "Analytics_UI_Final.jpg",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 4),
+        ),
+      ],
     ),
     Task(
       id: "TS0000003",
       name: "Logo Design and Branding",
+      description:
+          "Create a modern and cohesive visual identity for the brand. The scope includes designing the primary logo, secondary marks, and a complete color palette. Additionally, a brand guidelines document must be produced to specify typography, spacing, and icon usage across all digital and print platforms.",
       createTime: DateTime(2026, 1, 5),
       estimateTime: 40,
       spentTime: 5,
@@ -175,10 +203,25 @@ class AppMock {
       assignee: userList[2],
       taskType: TaskType.backlog,
       progress: 0.12,
+      activityList: [activityList[2]],
+      attachments: [
+        TaskFile(
+          name: "Brand_Moodboard.pdf",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 5),
+        ),
+        TaskFile(
+          name: "Logo_Drafts.zip",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 6),
+        ),
+      ],
     ),
     Task(
       id: "TS0000004",
       name: "Responsive Layout Implementation",
+      description:
+          "Refactor the existing frontend code to support a fully responsive design across all major screen sizes. This involves implementing a mobile-first grid system, optimizing navigation menus for touch interfaces, and testing on various browsers (Chrome, Safari, Firefox) to ensure visual consistency and performance.",
       createTime: DateTime(2026, 1, 7),
       estimateTime: 150,
       spentTime: 140,
@@ -189,10 +232,20 @@ class AppMock {
       assignee: userList[3],
       taskType: TaskType.active,
       progress: 0.93,
+      activityList: [activityList[0], activityList[3]],
+      attachments: [
+        TaskFile(
+          name: "Responsive_Breakpoints.xlsx",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 8),
+        ),
+      ],
     ),
     Task(
       id: "TS0000005",
       name: "Unit Test Coverage",
+      description:
+          "Increase the overall reliability of the codebase by implementing comprehensive unit tests for all core business logic. Focus on edge cases in the payment and authentication modules, ensuring that test coverage reaches at least 80% and that all tests are integrated into the automated CI/CD pipeline.",
       createTime: DateTime(2026, 1, 8),
       estimateTime: 60,
       spentTime: 0,
@@ -203,10 +256,14 @@ class AppMock {
       assignee: userList[4],
       taskType: TaskType.backlog,
       progress: 0.0,
+      activityList: [activityList[4]],
+      attachments: [],
     ),
     Task(
       id: "TS0000006",
       name: "Performance Optimization",
+      description:
+          "Analyze and resolve performance bottlenecks within the application. Key activities include optimizing SQL queries to reduce execution time, implementing server-side caching mechanisms, and minifying frontend assets to improve the First Contentful Paint (FCP) and overall User Experience (UX) metrics.",
       createTime: DateTime(2026, 1, 10),
       estimateTime: 80,
       spentTime: 75,
@@ -217,10 +274,20 @@ class AppMock {
       assignee: userList[5],
       taskType: TaskType.active,
       progress: 0.94,
+      activityList: [activityList[5], activityList[6]],
+      attachments: [
+        TaskFile(
+          name: "Benchmark_Results.pdf",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 11),
+        ),
+      ],
     ),
     Task(
       id: "TS0000007",
       name: "Payment Gateway Integration",
+      description:
+          "Integrate multi-currency payment support via Stripe and PayPal. This task covers setting up secure webhooks to handle transaction status updates, implementing a subscription management portal for users, and ensuring full compliance with PCI-DSS security standards for handling sensitive financial data.",
       createTime: DateTime(2026, 1, 12),
       estimateTime: 300,
       spentTime: 150,
@@ -231,10 +298,20 @@ class AppMock {
       assignee: userList[6],
       taskType: TaskType.active,
       progress: 0.50,
+      activityList: [activityList[6]],
+      attachments: [
+        TaskFile(
+          name: "API_Documentation_Stripe.pdf",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 13),
+        ),
+      ],
     ),
     Task(
       id: "TS0000008",
       name: "Admin Panel Development",
+      description:
+          "Build a comprehensive administration interface for system moderators. Features include user account management, role-based access control (RBAC) settings, system activity logs, and a content management system (CMS) to update public-facing website information without requiring code deployments.",
       createTime: DateTime(2026, 1, 15),
       estimateTime: 90,
       spentTime: 90,
@@ -245,10 +322,20 @@ class AppMock {
       assignee: userList[10],
       taskType: TaskType.active,
       progress: 1.0,
+      activityList: [activityList[0], activityList[7]],
+      attachments: [
+        TaskFile(
+          name: "Admin_Panel_Sitemap.png",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 16),
+        ),
+      ],
     ),
     Task(
       id: "TS0000009",
       name: "Mobile App UI/UX Design",
+      description:
+          "Design high-fidelity interactive prototypes for the native mobile application. The process includes conducting user research, creating wireframes for all major user journeys, and final visual design that adheres to the established brand identity while following Material Design and iOS Human Interface Guidelines.",
       createTime: DateTime(2026, 1, 18),
       estimateTime: 180,
       spentTime: 160,
@@ -259,10 +346,25 @@ class AppMock {
       assignee: userList[12],
       taskType: TaskType.active,
       progress: 0.89,
+      activityList: [activityList[2]],
+      attachments: [
+        TaskFile(
+          name: "Mobile_Prototypes_V1.fig",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 19),
+        ),
+        TaskFile(
+          name: "User_Research_Summary.docx",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 19),
+        ),
+      ],
     ),
     Task(
       id: "TS0000010",
       name: "Documentation Writing",
+      description:
+          "Create detailed documentation for both technical and non-technical stakeholders. This includes an API reference guide for developers, a system architecture overview, and an end-user manual that explains how to use each feature of the application with screenshots and step-by-step tutorials.",
       createTime: DateTime(2026, 1, 20),
       estimateTime: 25,
       spentTime: 0,
@@ -273,10 +375,20 @@ class AppMock {
       assignee: userList[1],
       taskType: TaskType.backlog,
       progress: 0.0,
+      activityList: [activityList[7]],
+      attachments: [
+        TaskFile(
+          name: "User_Manual_Draft.pdf",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 21),
+        ),
+      ],
     ),
     Task(
       id: "TS0000011",
       name: "Database Schema Design",
+      description:
+          "Design and normalize the relational database schema to support high-scale operations. This involves defining table structures for users, projects, and tasks, establishing efficient indexing strategies for search queries, and setting up foreign key constraints to maintain data integrity throughout the system lifecycle.",
       createTime: DateTime(2026, 1, 22),
       estimateTime: 220,
       spentTime: 100,
@@ -287,10 +399,20 @@ class AppMock {
       assignee: userList[2],
       taskType: TaskType.backlog,
       progress: 0.45,
+      activityList: [activityList[6], activityList[5]],
+      attachments: [
+        TaskFile(
+          name: "ER_Diagram_Final.png",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 22),
+        ),
+      ],
     ),
     Task(
       id: "TS0000012",
       name: "Chatbot Training Data",
+      description:
+          "Collect and curate a high-quality dataset for training the customer support AI chatbot. This includes cleaning historical support tickets, categorizing common user intents, and formatting the data into JSON structures compatible with the Natural Language Processing (NLP) engine to improve response accuracy.",
       createTime: DateTime(2026, 1, 23),
       estimateTime: 50,
       spentTime: 10,
@@ -301,15 +423,27 @@ class AppMock {
       assignee: userList[7],
       taskType: TaskType.backlog,
       progress: 0.20,
+      activityList: [activityList[4], activityList[7]],
+      attachments: [
+        TaskFile(
+          name: "Training_Sample.json",
+          url: Assets.images.taskFile.path,
+          uploadTime: DateTime(2026, 1, 24),
+        ),
+      ],
     ),
   ];
-  // 项目数据（根据Project实体类结构）
+
   static List<Project> projectList = [
     Project(
       id: "PN0001245",
       name: "CRM Mobile App",
       icon: Assets.images.projectImage,
       createTime: "Sep 12, 2020",
+      deadline: "Dec 12, 2020",
+      description:
+          "Developing a comprehensive CRM mobile application for real-time client management.",
+      reporter: userList[0],
       priority: Priority.high,
       tasks: taskList,
     ),
@@ -318,6 +452,10 @@ class AppMock {
       name: "Admin Dashboard",
       icon: Assets.images.projectImage,
       createTime: "Sep 10, 2020",
+      deadline: "Nov 30, 2020",
+      description:
+          "Internal dashboard for monitoring system performance and user activity.",
+      reporter: userList[1],
       priority: Priority.medium,
       tasks: [taskList[1], taskList[7]],
     ),
@@ -326,6 +464,10 @@ class AppMock {
       name: "Brand Identity",
       icon: Assets.images.projectImage,
       createTime: "Sep 8, 2020",
+      deadline: "Oct 20, 2020",
+      description:
+          "Rebranding initiative including logo design and style guide creation.",
+      reporter: userList[2],
       priority: Priority.low,
       tasks: [taskList[2], taskList[9], taskList[11]],
     ),
@@ -334,6 +476,10 @@ class AppMock {
       name: "Website Redesign",
       icon: Assets.images.projectImage,
       createTime: "Sep 15, 2020",
+      deadline: "Dec 01, 2020",
+      description:
+          "Modernizing the corporate website with a focus on responsive design.",
+      reporter: userList[0],
       priority: Priority.high,
       tasks: [taskList[4], taskList[8]],
     ),
@@ -342,6 +488,10 @@ class AppMock {
       name: "QA Testing",
       icon: Assets.images.projectImage,
       createTime: "Sep 20, 2020",
+      deadline: "Sep 30, 2020",
+      description:
+          "End-to-end testing phase for the upcoming software release.",
+      reporter: userList[3],
       priority: Priority.medium,
       tasks: [taskList[5]],
     ),
@@ -350,6 +500,10 @@ class AppMock {
       name: "API Integration",
       icon: Assets.images.projectImage,
       createTime: "Sep 25, 2020",
+      deadline: "Oct 15, 2020",
+      description:
+          "Connecting third-party payment gateways and logistics APIs.",
+      reporter: userList[1],
       priority: Priority.high,
       tasks: [taskList[6]],
     ),
@@ -358,6 +512,10 @@ class AppMock {
       name: "E-commerce Platform",
       icon: Assets.images.projectImage,
       createTime: "Oct 1, 2020",
+      deadline: "Jan 15, 2021",
+      description:
+          "Building a scalable B2B e-commerce solution with multi-vendor support.",
+      reporter: userList[2],
       priority: Priority.high,
       tasks: [taskList[10]],
     ),
@@ -366,6 +524,10 @@ class AppMock {
       name: "Data Analytics Tool",
       icon: Assets.images.projectImage,
       createTime: "Oct 5, 2020",
+      deadline: "Dec 20, 2020",
+      description:
+          "A tool for visualizing complex datasets and generating automated reports.",
+      reporter: userList[4],
       priority: Priority.medium,
       tasks: [],
     ),
@@ -374,6 +536,10 @@ class AppMock {
       name: "Security Audit",
       icon: Assets.images.projectImage,
       createTime: "Oct 10, 2020",
+      deadline: "Oct 25, 2020",
+      description:
+          "Comprehensive security assessment and vulnerability patching.",
+      reporter: userList[0],
       priority: Priority.high,
       tasks: [],
     ),
@@ -382,6 +548,10 @@ class AppMock {
       name: "Mobile Banking App",
       icon: Assets.images.projectImage,
       createTime: "Oct 15, 2020",
+      deadline: "Mar 10, 2021",
+      description:
+          "Secure mobile banking application with biometric authentication.",
+      reporter: userList[5],
       priority: Priority.high,
       tasks: [],
     ),
@@ -390,6 +560,10 @@ class AppMock {
       name: "Cloud Migration",
       icon: Assets.images.projectImage,
       createTime: "Oct 20, 2020",
+      deadline: "Nov 15, 2020",
+      description:
+          "Moving legacy infrastructure to a secure cloud-based environment.",
+      reporter: userList[1],
       priority: Priority.medium,
       tasks: [],
     ),
@@ -398,12 +572,14 @@ class AppMock {
       name: "AI Chatbot",
       icon: Assets.images.projectImage,
       createTime: "Oct 25, 2020",
+      deadline: "Dec 30, 2020",
+      description:
+          "Implementing an AI-driven chatbot for automated customer support.",
+      reporter: userList[2],
       priority: Priority.low,
       tasks: [],
     ),
   ];
-
-  // 活动数据
   static List<Activity> activityList = [
     Activity(
       username: "Evan Yates",

@@ -12,6 +12,7 @@ class TaskDragArea extends StatelessWidget {
   final Function(Task, TaskStatus, TaskType) onTaskDropped;
   final ValueChanged<Task> onDragStarted;
   final VoidCallback onDragEnd;
+  final ValueChanged onTapTask;
   const TaskDragArea({
     super.key,
     required this.tasks,
@@ -21,6 +22,7 @@ class TaskDragArea extends StatelessWidget {
     required this.onDragEnd,
     required this.taskType,
     this.draggingTask,
+    required this.onTapTask,
   });
 
   @override
@@ -29,7 +31,6 @@ class TaskDragArea extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(TaskStatus.values.length, (index) {
         final TaskStatus status = TaskStatus.values[index];
-
         final bool showTarget =
             draggingTask == null ||
             (draggingTask?.taskStatus == status &&
@@ -39,11 +40,14 @@ class TaskDragArea extends StatelessWidget {
           child: Column(
             children: [
               ...tasks.where((e) => e.taskStatus == status).map((task) {
-                return TaskBoardItem(
-                  task: task,
-                  width: width,
-                  onDragStarted: () => onDragStarted(task),
-                  onDragEnd: onDragEnd,
+                return GestureDetector(
+                  onTap: () => onTapTask(task),
+                  child: TaskBoardItem(
+                    task: task,
+                    width: width,
+                    onDragStarted: () => onDragStarted(task),
+                    onDragEnd: onDragEnd,
+                  ),
                 );
               }),
               if (!showTarget)

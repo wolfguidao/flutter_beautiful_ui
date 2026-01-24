@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 
 class ProjectsListView extends StatefulWidget {
   final Project project;
-  const ProjectsListView({super.key, required this.project});
+  final ValueChanged onTapTask;
+  const ProjectsListView({
+    super.key,
+    required this.project,
+    required this.onTapTask,
+  });
 
   @override
   State<ProjectsListView> createState() => _ProjectsListViewState();
@@ -27,6 +32,21 @@ class _ProjectsListViewState extends State<ProjectsListView> {
         .where((e) => e.taskType == TaskType.backlog)
         .toList();
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant ProjectsListView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.project != widget.project) {
+      setState(() {
+        _activeTask = widget.project.tasks
+            .where((e) => e.taskType == TaskType.active)
+            .toList();
+        _backlogTask = widget.project.tasks
+            .where((e) => e.taskType == TaskType.backlog)
+            .toList();
+      });
+    }
   }
 
   @override
@@ -60,7 +80,10 @@ class _ProjectsListViewState extends State<ProjectsListView> {
             itemCount: _activeTask.length,
             itemBuilder: (context, index) {
               final Task task = _activeTask[index];
-              return TaskListItem(task: task);
+              return GestureDetector(
+                onTap: () => widget.onTapTask(task),
+                child: TaskListItem(task: task),
+              );
             },
           ),
           SliverAppBar(
@@ -88,7 +111,10 @@ class _ProjectsListViewState extends State<ProjectsListView> {
             itemCount: _backlogTask.length,
             itemBuilder: (context, index) {
               final Task task = _backlogTask[index];
-              return TaskListItem(task: task);
+              return GestureDetector(
+                onTap: () => widget.onTapTask(task),
+                child: TaskListItem(task: task),
+              );
             },
           ),
         ],

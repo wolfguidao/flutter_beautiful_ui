@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 
 class ProjectsBoardView extends StatefulWidget {
   final Project project;
-  const ProjectsBoardView({super.key, required this.project});
+  final ValueChanged onTapTask;
+  const ProjectsBoardView({
+    super.key,
+    required this.project,
+    required this.onTapTask,
+  });
 
   @override
   State<ProjectsBoardView> createState() => _ProjectsBoardViewState();
@@ -98,6 +103,7 @@ class _ProjectsBoardViewState extends State<ProjectsBoardView> {
               ),
               SliverToBoxAdapter(
                 child: TaskDragArea(
+                  onTapTask: (value) => widget.onTapTask(value),
                   draggingTask: _draggingTask,
                   tasks: _getFilteredTasks(TaskType.active),
                   taskType: TaskType.active,
@@ -126,6 +132,7 @@ class _ProjectsBoardViewState extends State<ProjectsBoardView> {
                         ),
                         AppLayout.paddingSmall.heightBox,
                         TaskDragArea(
+                          onTapTask: (value) => widget.onTapTask(value),
                           tasks: _getFilteredTasks(TaskType.backlog),
                           taskType: TaskType.backlog,
                           width: width,

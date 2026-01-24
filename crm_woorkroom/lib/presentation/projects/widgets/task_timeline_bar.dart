@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 class TaskTimelineBar extends StatelessWidget {
   final double width;
   final List<Task> taskList;
+  final ValueChanged onTapTask;
   const TaskTimelineBar({
     super.key,
     required this.width,
     required this.taskList,
+    required this.onTapTask,
   });
 
   @override
@@ -41,23 +43,24 @@ class TaskTimelineBar extends StatelessWidget {
             ),
           ),
           ...taskList.map((task) {
-            return Container(
-              height: 40,
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                horizontal: AppLayout.paddingSmall,
-              ),
-              decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Color(0xffE6EBF5))),
-              ),
-              child: Align(
-                alignment: AlignmentGeometry.centerLeft,
-                child: Text(
-                  task.name,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: TextTheme.of(context).labelMedium?.fontSize,
+            return GestureDetector(
+              onTap: () => onTapTask(task),
+              child: Container(
+                height: 40,
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(horizontal: AppLayout.paddingSmall),
+                decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Color(0xffE6EBF5))),
+                ),
+                child: Align(
+                  alignment: AlignmentGeometry.centerLeft,
+                  child: Text(
+                    task.name,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: TextTheme.of(context).labelMedium?.fontSize,
+                    ),
                   ),
                 ),
               ),

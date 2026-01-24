@@ -59,6 +59,9 @@ class $ImagesGen {
   /// File path: images/projects.svg
   String get projects => 'images/projects.svg';
 
+  /// File path: images/task_file.png
+  AssetGenImage get taskFile => const AssetGenImage('images/task_file.png');
+
   /// File path: images/timeline.svg
   String get timeline => 'images/timeline.svg';
 
@@ -82,6 +85,7 @@ class $ImagesGen {
     portal,
     projectImage,
     projects,
+    taskFile,
     timeline,
     vacations,
   ];

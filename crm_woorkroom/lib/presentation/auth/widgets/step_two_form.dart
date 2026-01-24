@@ -12,7 +12,7 @@ class StepTwoForm extends StatefulWidget {
 }
 
 class _StepTwoFormState extends State<StepTwoForm> {
-  bool _isYes = true;
+  final bool _isYes = true;
 
   @override
   Widget build(BuildContext context) {

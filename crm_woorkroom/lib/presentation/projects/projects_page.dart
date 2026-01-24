@@ -2,14 +2,13 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
-import 'package:crm_woorkroom/gen/assets.gen.dart';
+import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_bar.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_board_view.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_filters.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_list_view.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_timeline.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_detail_bar.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_task_details.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_task_info.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_task_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ProjectsPage extends StatefulWidget {
   const ProjectsPage({super.key});
@@ -18,36 +17,10 @@ class ProjectsPage extends StatefulWidget {
   State<ProjectsPage> createState() => _ProjectsPageState();
 }
 
-class _ProjectsPageState extends State<ProjectsPage>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late Animation _animation;
-  final List<String> _viewTypes = [
-    Assets.images.list,
-    Assets.images.board,
-    Assets.images.timeline,
-  ];
-
-  int _activeType = 0;
-
+class _ProjectsPageState extends State<ProjectsPage> {
   Project _activeProject = AppMock.projectList[0];
-
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 500),
-    );
-    _animation = CurvedAnimation(curve: Curves.easeIn, parent: _controller);
-    _controller.forward();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
+  bool _showProjectDetail = false;
+  Task? _activeTask;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +29,111 @@ class _ProjectsPageState extends State<ProjectsPage>
         final double width = constraints.maxWidth;
         return Column(
           children: [
-            Row(
+            _builderHeader(),
+            AppLayout.paddingSmall.heightBox,
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _showProjectDetail
+                      ? ProjectsDetailBar(width: width, project: _activeProject)
+                      : ProjectsBar(
+                          width: width,
+                          toDetail: () {
+                            setState(() {
+                              _showProjectDetail = true;
+                            });
+                          },
+                          onChanged: (value) {
+                            setState(() {
+                              _activeProject = value;
+                              _activeTask=null;
+                            });
+                          },
+                        ),
+                  AppLayout.paddingMedium.widthBox,
+                  Expanded(
+                    child: _activeTask == null
+                        ? ProjectsTaskView(
+                            activeProject: _activeProject,
+                            onTapTask: (value) {
+                              setState(() {
+                                _activeTask = value;
+                              });
+                            },
+                          )
+                        : ProjectsTaskDetails(task: _activeTask!),
+                  ),
+                  if (_activeTask != null) AppLayout.paddingMedium.widthBox,
+                  if (_activeTask != null)
+                    ProjectsTaskInfo(width: width, task: _activeTask!),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _builderHeader() {
+    return AnimatedSwitcher(
+      duration: Duration(seconds: 10),
+      child: _showProjectDetail
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _showProjectDetail = false;
+                        });
+                      },
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.arrow_back,
+                            color: AppColor.primaryColor,
+                            size: 15,
+                          ),
+                          Text(
+                            "Back to Project",
+                            style: TextStyle(
+                              fontSize: TextTheme.of(
+                                context,
+                              ).labelMedium?.fontSize,
+                              color: AppColor.primaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      _activeProject.name,
+                      style: TextTheme.of(context).displayMedium,
+                    ),
+                  ],
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Row(
+                    children: [
+                      Icon(Icons.add, size: 15),
+                      Text(
+                        "Add Task",
+                        style: TextStyle(
+                          fontSize: TextTheme.of(context).labelMedium?.fontSize,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          : Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Projects", style: TextTheme.of(context).displayMedium),
@@ -76,104 +153,6 @@ class _ProjectsPageState extends State<ProjectsPage>
                 ),
               ],
             ),
-            AppLayout.paddingSmall.heightBox,
-            Expanded(
-              child: Row(
-                children: [
-                  AnimatedBuilder(
-                    animation: _animation,
-                    builder: (context, child) {
-                      return Transform.translate(
-                        offset: Offset(-20.0 * (1 - _animation.value), 0),
-                        child: Opacity(opacity: _animation.value, child: child),
-                      );
-                    },
-                    child: ProjectsBar(width: width),
-                  ),
-                  AppLayout.paddingMedium.widthBox,
-                  Expanded(
-                    child: AnimatedBuilder(
-                      animation: _animation,
-                      builder: (context, child) {
-                        return Transform.translate(
-                          offset: Offset(20.0 * (1 - _animation.value), 0),
-                          child: Opacity(
-                            opacity: _animation.value,
-                            child: child,
-                          ),
-                        );
-                      },
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Task",
-                                style: TextTheme.of(context).displayMedium,
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: List.generate(_viewTypes.length, (
-                                  index,
-                                ) {
-                                  return Padding(
-                                    padding: AppLayout
-                                        .paddingSmall
-                                        .horizontalPadding,
-                                    child: IconButton(
-                                      style: IconButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                          side: BorderSide(
-                                            color: _activeType == index
-                                                ? AppColor.primaryColor
-                                                : AppColor.secondColor,
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                            AppLayout.borderRadius,
-                                          ),
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _activeType = index;
-                                        });
-                                      },
-                                      icon: SvgPicture.asset(
-                                        _viewTypes[index],
-                                        colorFilter: ColorFilter.mode(
-                                          _activeType == index
-                                              ? AppColor.primaryColor
-                                              : Colors.black,
-                                          BlendMode.srcIn,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }),
-                              ),
-                              ProjectsFilters(project: _activeProject),
-                            ],
-                          ),
-                          AppLayout.paddingSmall.heightBox,
-                          Expanded(
-                            child: switch (_activeType) {
-                              0 => ProjectsListView(project: _activeProject),
-                              1 => ProjectsBoardView(project: _activeProject),
-                              2 => ProjectsTimeline(project: _activeProject),
-                              _ => SizedBox.shrink(),
-                            },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
-      },
     );
   }
 }
