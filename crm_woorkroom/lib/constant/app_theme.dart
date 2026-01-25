@@ -12,6 +12,9 @@ class AppTheme {
         labelMedium: AppTextStyle.caption,
         labelSmall: AppTextStyle.captionSmall,
       ),
+      dialogTheme: DialogThemeData(
+        barrierColor: AppColor.barrierColor,
+      ),
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       progressIndicatorTheme: ProgressIndicatorThemeData(

@@ -7,6 +7,7 @@ class AppColor {
   static final Color hintColor = Color(0xff7D8592);
   static final Color textColor = Color(0xff0A1629);
   static final Color borderColor = Color(0xffD8E0F0);
+  static final Color barrierColor = Color(0xffD2DFEF).withAlpha(125);
 }
 
 class AppLayout {
@@ -14,7 +15,7 @@ class AppLayout {
   static final double paddingSmall = 10;
   static final double paddingMedium = 15;
   static final double paddingLarge = 20;
-  static final double borderWidth=2;
+  static final double borderWidth = 2;
 }
 
 class AppTextStyle {

@@ -117,7 +117,7 @@ class _ProjectsFiltersOverlayState extends State<ProjectsFiltersOverlay>
           Positioned.fill(
             child: GestureDetector(
               onTap: () async => await _handleRemove(),
-              child: ColoredBox(color: Color(0xffD2DFEF).withAlpha(125)),
+              child: ColoredBox(color: AppColor.barrierColor),
             ),
           ),
           Positioned(
@@ -129,10 +129,7 @@ class _ProjectsFiltersOverlayState extends State<ProjectsFiltersOverlay>
               builder: (context, child) {
                 return FractionalTranslation(
                   translation: Offset(1.0 - _animation.value, 0),
-                  child: Opacity(
-                    opacity: _animation.value,
-                    child: child,
-                  ),
+                  child: Opacity(opacity: _animation.value, child: child),
                 );
               },
               child: Container(

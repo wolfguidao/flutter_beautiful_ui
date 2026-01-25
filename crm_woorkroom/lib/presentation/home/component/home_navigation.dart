@@ -1,6 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
+import 'package:crm_woorkroom/presentation/home/widget/support_dialog.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,6 +22,15 @@ class HomeNavigation extends StatelessWidget {
       CusNavigationItem(text: "Info Protal", icon: Assets.images.portal),
     ];
 
+    void openSupportDialog() {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return SupportDialog();
+        },
+      );
+    }
+
     return Container(
       width: 140,
       decoration: BoxDecoration(
@@ -38,7 +48,7 @@ class HomeNavigation extends StatelessWidget {
             child: CusNavigation(
               items: navigationItem,
               activeIndex: 0,
-              onChanged: (int value)=>onChanged(value),
+              onChanged: (int value) => onChanged(value),
             ),
           ),
           Align(
@@ -61,7 +71,7 @@ class HomeNavigation extends StatelessWidget {
                     child: SvgPicture.asset(Assets.images.navIllus, width: 100),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () => openSupportDialog(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

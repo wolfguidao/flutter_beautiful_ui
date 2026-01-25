@@ -1,14 +1,12 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_label_textfile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class LogTimeDialog extends StatelessWidget {
-  final Task task;
-  const LogTimeDialog({super.key, required this.task});
+class SupportDialog extends StatelessWidget {
+  const SupportDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class LogTimeDialog extends StatelessWidget {
       ),
       child: Container(
         width: width * 0.4,
-        height: height * 0.7,
+        height: height * 0.65,
         padding: AppLayout.paddingLarge.allPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +28,7 @@ class LogTimeDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Time Tracking",
+                  "Need some Help?",
                   style: TextTheme.of(context).displayMedium,
                 ),
                 IconButton(
@@ -45,80 +43,51 @@ class LogTimeDialog extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            Container(
               width: double.infinity,
               height: height * 0.15,
+              margin: AppLayout.paddingMedium.verticalPadding,
               child: Stack(
                 alignment: AlignmentGeometry.bottomCenter,
+                clipBehavior: Clip.none,
                 children: [
-                  SvgPicture.asset(
-                    Assets.images.timeTrackingIllus,
-                    width: double.infinity,
-                    fit: BoxFit.fill,
-                  ),
                   Container(
-                    padding: AppLayout.paddingMedium.allPadding,
-                    margin: AppLayout.paddingLarge.horizontalPadding,
-                    height: height * 0.075,
+                    width: double.infinity,
                     decoration: BoxDecoration(
-                      color: AppColor.backgroundColor,
+                      color: Color(0xffECF3FF),
                       borderRadius: BorderRadius.circular(
                         AppLayout.borderRadius,
                       ),
                     ),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 30,
-                            height: 30,
-                            child: CircularProgressIndicator(
-                              value: task.progress,
-                            ),
-                          ),
-                          AppLayout.paddingLarge.widthBox,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("${task.spentTime} h logged"),
-                              Text(
-                                "Original Estimate${task.estimateTime} h",
-                                style: TextTheme.of(context).labelMedium,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                  ),
+                  Positioned(
+                    top: -20,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: SvgPicture.asset(
+                      Assets.images.navIllus,
+                      width: double.infinity,
+                      fit: BoxFit.fitHeight,
+                      height: height * 0.1,
                     ),
                   ),
                 ],
               ),
             ),
-            AppLayout.paddingMedium.heightBox,
-            CusLabelTextfile(
-              label: "Time Spent",
-              hintText: "${task.spentTime} h ",
-            ),
-            AppLayout.paddingMedium.heightBox,
-            Row(
-              children: [
-                Expanded(
-                  child: CusLabelTextfile(
-                    label: "Date",
-                    hintText: "Dec 20 ,2020",
-                  ),
-                ),
-                AppLayout.paddingMedium.widthBox,
-                Expanded(
-                  child: CusLabelTextfile(label: "Time", hintText: "2:00 PM"),
-                ),
-              ],
+            Text(
+              "Describe your question and our specialists will answer you within 24 hours.",
+              style: TextTheme.of(context).labelMedium,
             ),
             AppLayout.paddingMedium.heightBox,
             CusLabelTextfile(
-              label: "Work Description",
-              hintText: "Add some description of the task",
+              label: "Request Subject",
+              hintText: "Technical difficulites",
+            ),
+            AppLayout.paddingMedium.heightBox,
+            CusLabelTextfile(
+              label: "Description",
+              hintText: "Add some description of the request",
               minLines: 5,
             ),
             Spacer(),
