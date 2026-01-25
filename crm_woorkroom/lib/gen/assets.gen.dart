@@ -62,6 +62,9 @@ class $ImagesGen {
   /// File path: images/task_file.png
   AssetGenImage get taskFile => const AssetGenImage('images/task_file.png');
 
+  /// File path: images/time_tracking_illus.svg
+  String get timeTrackingIllus => 'images/time_tracking_illus.svg';
+
   /// File path: images/timeline.svg
   String get timeline => 'images/timeline.svg';
 
@@ -86,6 +89,7 @@ class $ImagesGen {
     projectImage,
     projects,
     taskFile,
+    timeTrackingIllus,
     timeline,
     vacations,
   ];

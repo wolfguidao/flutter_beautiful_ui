@@ -6,11 +6,13 @@ class CusLabelTextfile extends StatelessWidget {
   final String label;
   final String hintText;
   final bool isObscure;
+  final int minLines;
   const CusLabelTextfile({
     super.key,
     required this.label,
     required this.hintText,
-    this.isObscure=false,
+    this.isObscure = false,
+    this.minLines = 1,
   });
 
   @override
@@ -23,7 +25,9 @@ class CusLabelTextfile extends StatelessWidget {
         TextField(
           style: TextTheme.of(context).bodyMedium,
           obscureText: isObscure,
-          decoration: InputDecoration(hintText:hintText),
+          minLines: minLines,
+          maxLines: minLines,
+          decoration: InputDecoration(hintText: hintText),
         ),
       ],
     );

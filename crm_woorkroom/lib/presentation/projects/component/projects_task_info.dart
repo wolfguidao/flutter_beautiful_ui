@@ -1,6 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/task.dart';
+import 'package:crm_woorkroom/presentation/projects/widgets/log_time_dialog.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_label_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +33,15 @@ class _ProjectsTaskInfoState extends State<ProjectsTaskInfo>
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  void logTime() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return LogTimeDialog(task: widget.task);
+      },
+    );
   }
 
   @override
@@ -155,7 +165,7 @@ class _ProjectsTaskInfoState extends State<ProjectsTaskInfo>
                       minimumSize: Size(100, 40),
                       maximumSize: Size(100, 40),
                     ),
-                    onPressed: () {},
+                    onPressed: () => logTime(),
                     child: Row(
                       children: [
                         Icon(Icons.access_time_rounded),
