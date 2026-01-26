@@ -1,5 +1,6 @@
 import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/entity/activity.dart';
+import 'package:crm_woorkroom/entity/calendar.dart';
 import 'package:crm_woorkroom/entity/event.dart';
 import 'package:crm_woorkroom/entity/file.dart';
 import 'package:crm_woorkroom/entity/project.dart';
@@ -9,7 +10,101 @@ import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class AppMock {
-  // 用户数据
+  static final DateTime _now = DateTime.now();
+
+  static List<Calendar> calendarList = [
+    Calendar(
+      title: "Client Requirements Meeting",
+      priority: Priority.high,
+      spentTime: "2h",
+      createTime: DateTime(_now.year, _now.month, 3),
+    ),
+    Calendar(
+      title: "UI Design Review",
+      priority: Priority.medium,
+      spentTime: "3.5h",
+      createTime: DateTime(_now.year, _now.month, 5),
+    ),
+    Calendar(
+      title: "Fix Critical Bugs",
+      priority: Priority.low,
+      spentTime: "1h",
+      createTime: DateTime(_now.year, _now.month, 5),
+    ),
+    Calendar(
+      title: "Sprint Sync Session",
+      priority: Priority.high,
+      spentTime: "1.5h",
+      createTime: DateTime(_now.year, _now.month, 5),
+    ),
+    Calendar(
+      title: "Technical Proposal Review",
+      priority: Priority.medium,
+      spentTime: "4h",
+      createTime: DateTime(_now.year, _now.month, 5),
+    ),
+    Calendar(
+      title: "Weekly Report Archiving",
+      priority: Priority.low,
+      spentTime: "0.5h",
+      createTime: DateTime(_now.year, _now.month, 12),
+    ),
+    Calendar(
+      title: "Product Retrospective",
+      priority: Priority.high,
+      spentTime: "2h",
+      createTime: DateTime(_now.year, _now.month, 15),
+    ),
+    Calendar(
+      title: "Feature Code Review",
+      priority: Priority.medium,
+      spentTime: "1h",
+      createTime: DateTime(_now.year, _now.month, 15),
+    ),
+    Calendar(
+      title: "Database Maintenance",
+      priority: Priority.high,
+      spentTime: "5h",
+      createTime: DateTime(_now.year, _now.month, 18),
+    ),
+    Calendar(
+      title: "Design Detail Polishing",
+      priority: Priority.low,
+      spentTime: "2.5h",
+      createTime: DateTime(_now.year, _now.month, 20),
+    ),
+    Calendar(
+      title: "New Client Demo",
+      priority: Priority.high,
+      spentTime: "1.5h",
+      createTime: DateTime(_now.year, _now.month, 22),
+    ),
+    Calendar(
+      title: "API Documentation Update",
+      priority: Priority.medium,
+      spentTime: "2h",
+      createTime: DateTime(_now.year, _now.month, 24),
+    ),
+    Calendar(
+      title: "Annual Strategy Rehearsal",
+      priority: Priority.high,
+      spentTime: "3h",
+      createTime: DateTime(_now.year, _now.month, 26),
+    ),
+    Calendar(
+      title: "Team Building Event",
+      priority: Priority.low,
+      spentTime: "4h",
+      createTime: DateTime(_now.year, _now.month, 28),
+    ),
+    Calendar(
+      title: "Monthly Financial Settlement",
+      priority: Priority.high,
+      spentTime: "1h",
+      createTime: DateTime(_now.year, _now.month, 30),
+    ),
+  ];
+
   static List<User> userList = [
     User(
       "John Smith",
@@ -58,7 +153,6 @@ class AppMock {
     User("Ryan Clark", Assets.images.avatar.path, "DevOps Engineer", "Mid"),
   ];
 
-  // 事件数据
   static List<Event> eventList = [
     Event(
       title: "Presentation of the new department",

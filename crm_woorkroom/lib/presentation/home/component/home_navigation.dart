@@ -1,7 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
-import 'package:crm_woorkroom/presentation/home/widget/support_dialog.dart';
+import 'package:crm_woorkroom/presentation/home/widgets/support_dialog.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
