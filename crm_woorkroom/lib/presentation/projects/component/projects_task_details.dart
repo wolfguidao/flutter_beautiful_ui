@@ -1,6 +1,8 @@
+import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/task.dart';
+import 'package:crm_woorkroom/presentation/widgets/cus_dropdown.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsTaskDetails extends StatefulWidget {
@@ -15,6 +17,7 @@ class _ProjectsTaskDetailsState extends State<ProjectsTaskDetails>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation _animation;
+  final GlobalKey _statusKey = GlobalKey();
   @override
   void initState() {
     _controller = AnimationController(
@@ -91,25 +94,35 @@ class _ProjectsTaskDetailsState extends State<ProjectsTaskDetails>
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(widget.task.name),
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: AppLayout.paddingSmall / 2,
-                                    horizontal: AppLayout.paddingSmall,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color:
-                                        widget.task.taskStatus.backgroundColor,
-                                    borderRadius: BorderRadius.circular(
-                                      AppLayout.borderRadius / 2,
+                                CusDropdown(
+                                  childKey: _statusKey,
+                                  item: TaskStatus.values
+                                      .map((value) => value.text)
+                                      .toList(),
+                                  activeValue: widget.task.taskStatus.text,
+                                  child: Container(
+                                    key: _statusKey,
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: AppLayout.paddingSmall / 2,
+                                      horizontal: AppLayout.paddingSmall,
                                     ),
-                                  ),
-                                  child: Text(
-                                    widget.task.taskStatus.text,
-                                    style: TextStyle(
-                                      color: widget.task.taskStatus.color,
-                                      fontSize: TextTheme.of(
-                                        context,
-                                      ).labelMedium?.fontSize,
+                                    decoration: BoxDecoration(
+                                      color: widget
+                                          .task
+                                          .taskStatus
+                                          .backgroundColor,
+                                      borderRadius: BorderRadius.circular(
+                                        AppLayout.borderRadius / 2,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      widget.task.taskStatus.text,
+                                      style: TextStyle(
+                                        color: widget.task.taskStatus.color,
+                                        fontSize: TextTheme.of(
+                                          context,
+                                        ).labelMedium?.fontSize,
+                                      ),
                                     ),
                                   ),
                                 ),

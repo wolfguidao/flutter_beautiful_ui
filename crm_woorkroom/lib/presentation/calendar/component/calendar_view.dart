@@ -125,7 +125,6 @@ class _CalendarViewState extends State<CalendarView> {
                       index + 1 - _firstDayOffset,
                     );
                   }
-                  print(date);
                   return CalendarItem(
                     text: text,
                     textStyle: textStyle,
