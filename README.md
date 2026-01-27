@@ -16,7 +16,9 @@
 Welcome to my creative space! This repository is more than just code; it's a deep exploration of **Aesthetics**, **Motion**, and **User Experience**. Every line of code is dedicated to pushing the boundaries of what Flutter can achieve visually.
 
    💎 **Pixel Perfection**: Meticulously designed interfaces that prioritize visual harmony.
+
    🌊 **Fluid Motion**: Smooth, high-frame-rate animations that feel natural and responsive.
+
    🖋️ **Handcrafted Core**: Pure Dart implementation for core UI components, minimizing reliance on heavy third-party libraries.
 
 </div>
@@ -73,12 +75,18 @@ Watch these projects in action and stay updated with my latest Flutter explorati
 
 #### 📺 Video Platforms
   <a href="https://space.bilibili.com/183378030"><img src="https://img.shields.io/badge/Bilibili-00A1D6?style=flat-square&logo=bilibili&logoColor=white" alt="Bilibili"></a> **Bilibili**: 小玖的code日常
+
   <a href="https://www.youtube.com/@jiushuang"><img src="https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=youtube&logoColor=white" alt="YouTube"></a> **YouTube**: 小玖code日常
+
   <a href="https://www.tiktok.com/@jiushuang0"><img src="https://img.shields.io/badge/TikTok-000000?style=flat-square&logo=tiktok&logoColor=white" alt="TikTok"></a> **TikTok**: 小玖的code日常
 
 #### 📱 Social Media
    <a href="https://x.com/JiuShuangLv"><img src="https://img.shields.io/badge/X-000000?style=flat-square&logo=x&logoColor=white" alt="X"></a> **X (Twitter)**: @JiuShuangLv
+
    <img src="https://img.shields.io/badge/Douyin-000000?style=flat-square&logo=tiktok&logoColor=white" alt="Douyin"></a> **Douyin**: 小玖的日常 (ID: 1008696655)
+
    <img src="https://img.shields.io/badge/Red-FF0000?style=flat-square&logo=xiaohongshu&logoColor=white" alt="Xiaohongshu"></a> **Xiaohongshu**: 6368583406
+
    <img src="https://img.shields.io/badge/WeChat-07C160?style=flat-square&logo=wechat&logoColor=white" alt="WeChat"></a> **WeChat**: WiveHYL
+
   <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a> **Email**: 1017299634@qq.com
