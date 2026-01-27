@@ -68,4 +68,29 @@ enum TaskGroup {
   const TaskGroup({required this.text});
 }
 
+enum VacationType {
+  sickLeave(
+    text: "Sick Leave",
+    approvedColor: Color(0xffF65160),
+    pendingColor: Color(0xffFEEAEC),
+  ),
+  workRemotely(
+    text: "Work Remotely",
+    approvedColor: Color(0xff6D5DD3),
+    pendingColor: Color(0xffEAE8F9),
+  ),
+  vacation(
+    text: "Vacation",
+    approvedColor: Color(0xff15C0E6),
+    pendingColor: Color(0xffE4F8FC),
+  );
 
+  final String text;
+  final Color approvedColor;
+  final Color pendingColor;
+  const VacationType({
+    required this.text,
+    required this.approvedColor,
+    required this.pendingColor,
+  });
+}

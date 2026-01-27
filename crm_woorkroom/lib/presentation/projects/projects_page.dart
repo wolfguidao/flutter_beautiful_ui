@@ -46,12 +46,13 @@ class _ProjectsPageState extends State<ProjectsPage> {
                           },
                           onChanged: (value) {
                             setState(() {
+                              _showProjectDetail = false;
                               _activeProject = value;
                               _activeTask=null;
                             });
                           },
                         ),
-                  AppLayout.paddingMedium.widthBox,
+                  AppLayout.paddingSmall.widthBox,
                   Expanded(
                     child: _activeTask == null
                         ? ProjectsTaskView(
@@ -64,7 +65,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                           )
                         : ProjectsTaskDetails(task: _activeTask!),
                   ),
-                  if (_activeTask != null) AppLayout.paddingMedium.widthBox,
+                  if (_activeTask != null) AppLayout.paddingSmall.widthBox,
                   if (_activeTask != null)
                     ProjectsTaskInfo(width: width, task: _activeTask!),
                 ],

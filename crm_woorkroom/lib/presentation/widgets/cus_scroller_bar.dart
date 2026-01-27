@@ -65,7 +65,10 @@ class _CusScrollerBarState extends State<CusScrollerBar> {
         double maxMovableWidth = trackWidth - thumWidth;
         double leftOffset = _scrollProgress * maxMovableWidth;
         return Container(
-          width: thumWidth,
+          width: trackWidth,
+          constraints: BoxConstraints(
+            minWidth: trackWidth
+          ),
           height: 10,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppLayout.borderRadius),

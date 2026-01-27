@@ -8,7 +8,7 @@ import 'package:crm_woorkroom/presentation/home/component/home_navigation.dart';
 import 'package:crm_woorkroom/presentation/messenger/messenger_page.dart';
 import 'package:crm_woorkroom/presentation/portal/portal_page.dart';
 import 'package:crm_woorkroom/presentation/projects/projects_page.dart';
-import 'package:crm_woorkroom/presentation/vacations/vacation_page.dart';
+import 'package:crm_woorkroom/presentation/vacations/vacations_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
     DashboardPage(),
     ProjectsPage(),
     CalendarPage(),
-    VacationPage(),
+    VacationsPage(),
     EmployeesPage(),
     MessengerPage(),
     PortalPage(),

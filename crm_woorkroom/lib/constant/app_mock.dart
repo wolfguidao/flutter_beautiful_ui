@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/entity/activity.dart';
 import 'package:crm_woorkroom/entity/calendar.dart';
@@ -11,6 +13,7 @@ import 'package:flutter/material.dart';
 
 class AppMock {
   static final DateTime _now = DateTime.now();
+  static final Random _random = Random();
 
   static List<Calendar> calendarList = [
     Calendar(
@@ -106,52 +109,50 @@ class AppMock {
   ];
 
   static List<User> userList = [
-    User(
-      "John Smith",
-      Assets.images.avatar.path,
-      "Frontend Developer",
-      "Senior",
-    ),
-    User(
-      "Sarah Johnson",
-      Assets.images.avatar.path,
-      "Backend Developer",
-      "Mid",
-    ),
-    User("Mike Chen", Assets.images.avatar.path, "UI/UX Designer", "Senior"),
-    User("Emily Davis", Assets.images.avatar.path, "Project Manager", "Lead"),
-    User("Alex Wilson", Assets.images.avatar.path, "QA Engineer", "Mid"),
-    User("Lisa Brown", Assets.images.avatar.path, "DevOps Engineer", "Senior"),
-    User(
-      "David Rodriguez",
-      Assets.images.avatar.path,
-      "Full Stack Developer",
-      "Senior",
-    ),
-    User("Anna Thompson", Assets.images.avatar.path, "Product Owner", "Lead"),
-    User("James Lee", Assets.images.avatar.path, "Mobile Developer", "Mid"),
-    User("Rachel Green", Assets.images.avatar.path, "Data Analyst", "Junior"),
-    User(
-      "Tom Anderson",
-      Assets.images.avatar.path,
-      "Security Engineer",
-      "Senior",
-    ),
-    User("Maria Garcia", Assets.images.avatar.path, "Scrum Master", "Mid"),
-    User(
-      "Kevin Park",
-      Assets.images.avatar.path,
-      "Frontend Developer",
-      "Junior",
-    ),
-    User(
-      "Sophie Miller",
-      Assets.images.avatar.path,
-      "Backend Developer",
-      "Senior",
-    ),
-    User("Ryan Clark", Assets.images.avatar.path, "DevOps Engineer", "Mid"),
+    _generateUser("John Smith", "Frontend Developer", "Senior"),
+    _generateUser("Sarah Johnson", "Backend Developer", "Mid"),
+    _generateUser("Mike Chen", "UI/UX Designer", "Senior"),
+    _generateUser("Emily Davis", "Project Manager", "Lead"),
+    _generateUser("Alex Wilson", "QA Engineer", "Mid"),
+    _generateUser("Lisa Brown", "DevOps Engineer", "Senior"),
+    _generateUser("David Rodriguez", "Full Stack Developer", "Senior"),
+    _generateUser("Anna Thompson", "Product Owner", "Lead"),
+    _generateUser("James Lee", "Mobile Developer", "Mid"),
+    _generateUser("Rachel Green", "Data Analyst", "Junior"),
+    _generateUser("Tom Anderson", "Security Engineer", "Senior"),
+    _generateUser("Maria Garcia", "Scrum Master", "Mid"),
+    _generateUser("Kevin Park", "Frontend Developer", "Junior"),
+    _generateUser("Sophie Miller", "Backend Developer", "Senior"),
+    _generateUser("Ryan Clark", "DevOps Engineer", "Mid"),
   ];
+
+  static User _generateUser(String name, String role, String lever) {
+    String email = "${name.replaceAll(' ', '.').toLowerCase()}@company.com";
+
+    return User(
+      name,
+      Assets.images.avatar.path, // 假设 Assets 类已定义
+      role,
+      lever,
+      email,
+      _generateRandomVacations(20),
+    );
+  }
+
+  static List<UserVacation> _generateRandomVacations(int count) {
+    return List.generate(count, (index) {
+      DateTime randomDate = DateTime(
+        _now.year,
+        _now.month,
+        _random.nextInt(28) + 1,
+      );
+      return UserVacation(
+        type: VacationType.values[_random.nextInt(VacationType.values.length)],
+        date: randomDate,
+        isApproved: _random.nextBool(),
+      );
+    });
+  }
 
   static List<Event> eventList = [
     Event(
@@ -674,6 +675,7 @@ class AppMock {
       tasks: [],
     ),
   ];
+
   static List<Activity> activityList = [
     Activity(
       username: "Evan Yates",
