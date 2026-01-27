@@ -5,7 +5,7 @@ import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_board_view.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_filters.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_list_view.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_timeline.dart';
+import 'package:crm_woorkroom/presentation/projects/component/projects_timeline_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -117,7 +117,7 @@ class _ProjectsTaskViewState extends State<ProjectsTaskView>
                 project: widget.activeProject,
                 onTapTask: (value) => widget.onTapTask(value),
               ),
-              2 => ProjectsTimeline(
+              2 => ProjectsTimelineView(
                 project: widget.activeProject,
                 onTapTask: (value) => widget.onTapTask(value),
               ),

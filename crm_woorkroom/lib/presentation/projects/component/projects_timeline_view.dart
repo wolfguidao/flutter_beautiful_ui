@@ -1,13 +1,14 @@
+import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/presentation/projects/widgets/task_timeline.dart';
 import 'package:crm_woorkroom/presentation/projects/widgets/task_timeline_bar.dart';
 import 'package:flutter/material.dart';
 
-class ProjectsTimeline extends StatelessWidget {
+class ProjectsTimelineView extends StatelessWidget {
   final Project project;
   final ValueChanged onTapTask;
-  const ProjectsTimeline({
+  const ProjectsTimelineView({
     super.key,
     required this.project,
     required this.onTapTask,
@@ -27,12 +28,12 @@ class ProjectsTimeline extends StatelessWidget {
             children: [
               TaskTimelineBar(
                 width: width,
-                taskList: project.tasks.take(14).toList(),
-                onTapTask: (value) => onTapTask(value),
+                taskList: AppMock.taskList.take(14).toList(),
+                onTapTask: onTapTask,
               ),
               Expanded(
                 child: TaskTimeline(
-                  taskList: project.tasks.take(14).toList(),
+                  taskList: AppMock.taskList.take(14).toList(),
                 ),
               ),
             ],
