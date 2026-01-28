@@ -1,7 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_project_card.dart';
+import 'package:crm_woorkroom/presentation/widgets/component/project_card.dart';
 import 'package:flutter/material.dart';
 
 class DashProjects extends StatelessWidget {
@@ -20,7 +20,7 @@ class DashProjects extends StatelessWidget {
           Text("Projects", style: TextTheme.of(context).bodyMedium),
           AppLayout.paddingSmall.heightBox,
           ...AppMock.projectList.sublist(0, 3).map((project) {
-            return CusProjectCard(project: project);
+            return ProjectCard(project: project);
           }),
         ],
       ),

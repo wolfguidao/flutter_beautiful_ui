@@ -2,7 +2,7 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/presentation/projects/widgets/log_time_dialog.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_label_widget.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_label_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsTaskInfo extends StatefulWidget {

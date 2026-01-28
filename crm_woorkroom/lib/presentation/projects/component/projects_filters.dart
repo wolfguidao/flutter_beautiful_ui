@@ -3,8 +3,8 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_checkbox.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_label_textfile.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_checkbox.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_label_textfile.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsFilters extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/task.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_dropdown.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_dropdown.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsTaskDetails extends StatefulWidget {

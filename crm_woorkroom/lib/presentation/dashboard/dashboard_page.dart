@@ -1,6 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/presentation/dashboard/component/dash_activity_stream.dart';
+import 'package:crm_woorkroom/presentation/dashboard/component/dash_header.dart';
 import 'package:crm_woorkroom/presentation/dashboard/component/dash_nearest_events.dart';
 import 'package:crm_woorkroom/presentation/dashboard/component/dash_projects.dart';
 import 'package:crm_woorkroom/presentation/dashboard/component/dash_workload.dart';
@@ -62,41 +63,7 @@ class _DashboardPageState extends State<DashboardPage>
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Welcome back,Evan!",
-              style: TextTheme.of(context).labelMedium,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Dashboard", style: TextTheme.of(context).displayMedium),
-                Container(
-                  width: 180,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: AppLayout.paddingSmall,
-                    vertical: AppLayout.paddingSmall * 0.5,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xffE6EDF5),
-                    borderRadius: BorderRadius.circular(
-                      AppLayout.borderRadius / 2,
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.calendar_month_outlined, size: 15),
-                      Spacer(),
-                      Text(
-                        "Now 16,2020 - Dec 16,2020",
-                        style: TextStyle(
-                          fontSize: TextTheme.of(context).labelMedium?.fontSize,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+            DashHeader(),
             AppLayout.paddingMedium.heightBox,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,7 +118,10 @@ class _DashboardPageState extends State<DashboardPage>
                     animation: _activityAnimation,
                     builder: (context, child) {
                       return Transform.translate(
-                        offset: Offset(-20.0 * (1 - _activityAnimation.value), 0),
+                        offset: Offset(
+                          -20.0 * (1 - _activityAnimation.value),
+                          0,
+                        ),
                         child: Opacity(
                           opacity: _activityAnimation.value,
                           child: child,

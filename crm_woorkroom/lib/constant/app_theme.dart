@@ -4,6 +4,16 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static ThemeData get theme {
     return ThemeData(
+      switchTheme: SwitchThemeData(
+        thumbColor: WidgetStateProperty.all(Colors.white),
+        trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+        trackColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
+            return AppColor.primaryColor;
+          }
+          return Color(0xffCED5E0);
+        }),
+      ),
       textTheme: TextTheme(
         displayLarge: AppTextStyle.h1,
         displayMedium: AppTextStyle.h2,
@@ -12,9 +22,7 @@ class AppTheme {
         labelMedium: AppTextStyle.caption,
         labelSmall: AppTextStyle.captionSmall,
       ),
-      dialogTheme: DialogThemeData(
-        barrierColor: AppColor.barrierColor,
-      ),
+      dialogTheme: DialogThemeData(barrierColor: AppColor.barrierColor),
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       progressIndicatorTheme: ProgressIndicatorThemeData(

@@ -1,7 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/task.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_scroller_bar.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_scroller_bar.dart';
 import 'package:flutter/material.dart';
 
 class TaskTimeline extends StatefulWidget {

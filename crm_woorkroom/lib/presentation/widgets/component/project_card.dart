@@ -2,14 +2,14 @@ import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_avatar_group.dart';
-import 'package:crm_woorkroom/presentation/widgets/cus_label_widget.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_avatar_group.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_label_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CusProjectCard extends StatelessWidget {
+class ProjectCard extends StatelessWidget {
   final Project project;
-  const CusProjectCard({super.key, required this.project});
+  const ProjectCard({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +91,7 @@ class CusProjectCard extends StatelessWidget {
                       ),
                       Expanded(
                         child: CusLabelWidget(
-                          label: "All Tasks",
+                          label: "Active Tasks",
                           child: Text(
                             project.tasks
                                 .where((e) => e.taskType == TaskType.active)

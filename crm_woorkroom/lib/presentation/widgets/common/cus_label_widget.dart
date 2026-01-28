@@ -12,7 +12,7 @@ class CusLabelWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: TextTheme.of(context).labelSmall),
+        Text(label, style: TextTheme.of(context).labelMedium),
         (AppLayout.paddingSmall * 0.5).heightBox,
         child,
       ],
