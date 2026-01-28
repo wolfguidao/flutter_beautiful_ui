@@ -19,5 +19,9 @@ class ActivityItem {
   final IconData iconData;
   final Color iconColor;
 
-  ActivityItem({required this.content, required this.iconData, required this.iconColor});
+  ActivityItem({
+    required this.content,
+    required this.iconData,
+    required this.iconColor,
+  });
 }

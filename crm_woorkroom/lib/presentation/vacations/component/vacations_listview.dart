@@ -22,7 +22,7 @@ class _VacationsListviewState extends State<VacationsListview> {
           SliverList.builder(
             itemCount: AppMock.userList.length,
             itemBuilder: (context, index) {
-              final User user = AppMock.userList[index];
+              final Employee user = AppMock.userList[index];
               final int vacations = user.vacations
                   .where((e) => e.type == VacationType.vacation)
                   .toList()

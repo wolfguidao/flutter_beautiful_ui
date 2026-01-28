@@ -121,7 +121,7 @@ class _ProjectsDetailBarState extends State<ProjectsDetailBar>
                   children: List.generate(widget.project.allReporter.length, (
                     index,
                   ) {
-                    final User assignee = widget.project.allReporter[index];
+                    final Employee assignee = widget.project.allReporter[index];
                     return Positioned(
                       left: 12.0 * index,
                       child: Container(

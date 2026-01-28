@@ -9,7 +9,7 @@ class Project {
   String createTime;
   String deadline;
   String description;
-  User reporter;
+  Employee reporter;
   Priority priority;
   List<Task> tasks;
 
@@ -25,20 +25,28 @@ class Project {
     required this.tasks,
   });
 
-  List<User> get allAssignee {
-    Set<User> assigness = {};
+  List<Employee> get allAssignee {
+    Set<Employee> assigness = {};
     for (Task task in tasks) {
       assigness.add(task.assignee);
     }
     return assigness.toList();
   }
 
-  List<User> get allReporter {
-    Set<User> reporters = {};
+  List<Employee> get allReporter {
+    Set<Employee> reporters = {};
     for (Task task in tasks) {
       reporters.add(task.reporter);
     }
     return reporters.toList();
   }
 
+  double get averageProgress {
+    if (tasks.isEmpty) return 1.0;
+    double totalProgress=0.0;
+    for (Task task in tasks) {
+      totalProgress+=task.progress;
+    }
+    return totalProgress/tasks.length;
+  }
 }

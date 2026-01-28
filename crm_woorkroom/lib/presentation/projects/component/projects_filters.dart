@@ -81,7 +81,7 @@ class ProjectsFiltersOverlay extends StatefulWidget {
 class _ProjectsFiltersOverlayState extends State<ProjectsFiltersOverlay>
     with SingleTickerProviderStateMixin {
   final List<TaskGroup> _activeGroupList = [TaskGroup.design];
-  final List<User> _reporterList = [];
+  final List<Employee> _reporterList = [];
   late final AnimationController _controller;
   late final Animation _animation;
 

@@ -13,8 +13,8 @@ class Task {
   Priority priority;
   TaskStatus taskStatus;
   TaskGroup taskGroup;
-  User reporter;
-  User assignee;
+  Employee reporter;
+  Employee assignee;
   TaskType taskType;
   double progress;
   List<Activity> activityList;

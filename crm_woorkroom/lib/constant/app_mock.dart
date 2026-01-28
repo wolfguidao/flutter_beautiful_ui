@@ -108,7 +108,7 @@ class AppMock {
     ),
   ];
 
-  static List<User> userList = [
+  static List<Employee> userList = [
     _generateUser("John Smith", "Frontend Developer", "Senior"),
     _generateUser("Sarah Johnson", "Backend Developer", "Mid"),
     _generateUser("Mike Chen", "UI/UX Designer", "Senior"),
@@ -126,16 +126,39 @@ class AppMock {
     _generateUser("Ryan Clark", "DevOps Engineer", "Mid"),
   ];
 
-  static User _generateUser(String name, String role, String lever) {
+  // 生成单个员工数据
+  static Employee _generateUser(String name, String role, String lever) {
+    // 生成邮箱（格式：名.姓@company.com）
     String email = "${name.replaceAll(' ', '.').toLowerCase()}@company.com";
+    // 生成手机号（随机10位数字）
+    String mobile = "1${_random.nextInt(900000000) + 100000000}";
+    // 生成生日（随机1970-2000年）
+    DateTime birthday = DateTime(
+      _random.nextInt(30) + 1970,
+      _random.nextInt(12) + 1,
+      _random.nextInt(28) + 1,
+    );
+    // 计算年龄
+    int age = _now.year - birthday.year;
+    if (_now.month < birthday.month ||
+        (_now.month == birthday.month && _now.day < birthday.day)) {
+      age--;
+    }
 
-    return User(
-      name,
-      Assets.images.avatar.path, // 假设 Assets 类已定义
-      role,
-      lever,
-      email,
-      _generateRandomVacations(20),
+    return Employee(
+      name: name,
+      avatar: Assets.images.avatar.path,
+      position: role,
+      lever: lever,
+      email: email,
+      gender: _random.nextBool() ? "Male" : "Female",
+      bitrhday: birthday,
+      age: age,
+      mobile: mobile,
+      skype: "skype.${name.replaceAll(' ', '_').toLowerCase()}",
+      company: "Tech Innovations Inc.",
+      location: _getRandomLocation(),
+      vacations: _generateRandomVacations(20),
     );
   }
 
@@ -152,6 +175,22 @@ class AppMock {
         isApproved: _random.nextBool(),
       );
     });
+  }
+
+  static String _getRandomLocation() {
+    final List<String> locations = [
+      "New York, USA",
+      "London, UK",
+      "Tokyo, Japan",
+      "Berlin, Germany",
+      "Paris, France",
+      "Sydney, Australia",
+      "Toronto, Canada",
+      "Singapore, SG",
+      "Hong Kong, CN",
+      "Dubai, UAE",
+    ];
+    return locations[_random.nextInt(locations.length)];
   }
 
   static List<Event> eventList = [
