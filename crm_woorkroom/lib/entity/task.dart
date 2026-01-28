@@ -1,7 +1,7 @@
 import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/entity/activity.dart';
 import 'package:crm_woorkroom/entity/file.dart';
-import 'package:crm_woorkroom/entity/user.dart';
+import 'package:crm_woorkroom/entity/employee.dart';
 
 class Task {
   String id;

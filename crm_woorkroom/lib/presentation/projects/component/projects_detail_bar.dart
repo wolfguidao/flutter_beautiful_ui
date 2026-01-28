@@ -1,7 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
-import 'package:crm_woorkroom/entity/user.dart';
+import 'package:crm_woorkroom/entity/employee.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_label_widget.dart';
 import 'package:flutter/material.dart';
 

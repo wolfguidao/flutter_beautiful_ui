@@ -2,7 +2,8 @@ import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/entity/user.dart';
+import 'package:crm_woorkroom/entity/employee.dart';
+import 'package:crm_woorkroom/presentation/widgets/cus_circle_avatar.dart';
 import 'package:crm_woorkroom/presentation/widgets/cus_scroller_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -86,9 +87,7 @@ class _VacationsCalendarState extends State<VacationsCalendar> {
                         ),
                         child: Row(
                           children: [
-                            ClipOval(
-                              child: Image.asset(user.avatar, width: 25),
-                            ),
+                            CusCircleAvatar(avatar: user.avatar, size: 25),
                             AppLayout.paddingSmall.widthBox,
                             Text(user.name, maxLines: 1),
                           ],

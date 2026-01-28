@@ -7,7 +7,7 @@ import 'package:crm_woorkroom/entity/event.dart';
 import 'package:crm_woorkroom/entity/file.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/task.dart';
-import 'package:crm_woorkroom/entity/user.dart';
+import 'package:crm_woorkroom/entity/employee.dart';
 import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 

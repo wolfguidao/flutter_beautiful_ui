@@ -1,6 +1,6 @@
 import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/entity/task.dart';
-import 'package:crm_woorkroom/entity/user.dart';
+import 'package:crm_woorkroom/entity/employee.dart';
 
 class Project {
   String id;
@@ -43,10 +43,43 @@ class Project {
 
   double get averageProgress {
     if (tasks.isEmpty) return 1.0;
-    double totalProgress=0.0;
+    double totalProgress = 0.0;
     for (Task task in tasks) {
-      totalProgress+=task.progress;
+      totalProgress += task.progress;
     }
-    return totalProgress/tasks.length;
+    return totalProgress / tasks.length;
+  }
+
+  int get backlogTasks {
+    if (tasks.isEmpty) return 0;
+    int totalTasks = 0;
+    for (Task task in tasks) {
+      if (task.taskType == TaskType.backlog) {
+        totalTasks += 1;
+      }
+    }
+    return totalTasks;
+  }
+
+  int get progressTasks {
+    if (tasks.isEmpty) return 0;
+    int totalTasks = 0;
+    for (Task task in tasks) {
+      if (task.taskStatus == TaskStatus.progress) {
+        totalTasks += 1;
+      }
+    }
+    return totalTasks;
+  }
+
+  int get reviewTasks {
+    if (tasks.isEmpty) return 0;
+    int totalTasks = 0;
+    for (Task task in tasks) {
+      if (task.taskStatus == TaskStatus.review) {
+        totalTasks += 1;
+      }
+    }
+    return totalTasks;
   }
 }

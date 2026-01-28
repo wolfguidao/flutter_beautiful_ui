@@ -3,10 +3,12 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
+import 'package:crm_woorkroom/entity/employee.dart';
 import 'package:flutter/material.dart';
 
 class EmployeesActivity extends StatefulWidget {
-  const EmployeesActivity({super.key});
+  final ValueChanged<Employee> onTap;
+  const EmployeesActivity({super.key, required this.onTap});
 
   @override
   State<EmployeesActivity> createState() => _EmployeesActivityState();
@@ -49,95 +51,98 @@ class _EmployeesActivityState extends State<EmployeesActivity> {
                           .length;
                       progress = project.averageProgress;
                     }
-                    return Container(
-                      width: 165,
-                      padding: AppLayout.paddingSmall.allPadding,
-                      margin: EdgeInsets.only(
-                        right: AppLayout.paddingSmall,
-                        bottom: AppLayout.paddingSmall,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppColor.secondColor,
-                        borderRadius: BorderRadius.circular(
-                          AppLayout.borderRadius,
+                    return GestureDetector(
+                      onTap: () => widget.onTap(user),
+                      child: Container(
+                        width: 165,
+                        padding: AppLayout.paddingSmall.allPadding,
+                        margin: EdgeInsets.only(
+                          right: AppLayout.paddingSmall,
+                          bottom: AppLayout.paddingSmall,
                         ),
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            padding: AppLayout.paddingSmall.allPadding,
-                            decoration: BoxDecoration(
-                              color: AppColor.backgroundColor,
-                              borderRadius: BorderRadius.circular(
-                                AppLayout.borderRadius,
+                        decoration: BoxDecoration(
+                          color: AppColor.secondColor,
+                          borderRadius: BorderRadius.circular(
+                            AppLayout.borderRadius,
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              padding: AppLayout.paddingSmall.allPadding,
+                              decoration: BoxDecoration(
+                                color: AppColor.backgroundColor,
+                                borderRadius: BorderRadius.circular(
+                                  AppLayout.borderRadius,
+                                ),
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    width: 35,
+                                    height: 35,
+                                    child: Stack(
+                                      alignment: AlignmentGeometry.center,
+                                      children: [
+                                        ClipOval(
+                                          child: Image.asset(
+                                            user.avatar,
+                                            width: 30,
+                                          ),
+                                        ),
+                                        CircularProgressIndicator(
+                                          value: progress,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  AppLayout.paddingSmall.heightBox,
+                                  Text(user.name),
+                                  Text(
+                                    user.position,
+                                    style: TextTheme.of(context).labelSmall,
+                                  ),
+                                  AppLayout.paddingSmall.heightBox,
+                                  Container(
+                                    width: 50,
+                                    padding: 2.allPadding,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        AppLayout.borderRadius / 2,
+                                      ),
+                                      border: Border.all(
+                                        color: AppColor.borderColor,
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        user.lever,
+                                        style: TextTheme.of(context).labelSmall,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Stack(
-                                    alignment: AlignmentGeometry.center,
+                            AppLayout.paddingMedium.heightBox,
+                            Row(
+                              children: _taskTypes.map((type) {
+                                return Expanded(
+                                  child: Column(
                                     children: [
-                                      ClipOval(
-                                        child: Image.asset(
-                                          user.avatar,
-                                          width: 30,
-                                        ),
-                                      ),
-                                      CircularProgressIndicator(
-                                        value: progress,
+                                      Text("${taskCount[type]}"),
+                                      Text(
+                                        type,
+                                        style: TextTheme.of(context).labelSmall,
                                       ),
                                     ],
                                   ),
-                                ),
-                                AppLayout.paddingSmall.heightBox,
-                                Text(user.name),
-                                Text(
-                                  user.position,
-                                  style: TextTheme.of(context).labelSmall,
-                                ),
-                                AppLayout.paddingSmall.heightBox,
-                                Container(
-                                  width: 50,
-                                  padding: 2.allPadding,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                      AppLayout.borderRadius / 2,
-                                    ),
-                                    border: Border.all(
-                                      color: AppColor.borderColor,
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      user.lever,
-                                      style: TextTheme.of(context).labelSmall,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                );
+                              }).toList(),
                             ),
-                          ),
-                          AppLayout.paddingMedium.heightBox,
-                          Row(
-                            children: _taskTypes.map((type) {
-                              return Expanded(
-                                child: Column(
-                                  children: [
-                                    Text("${taskCount[type]}"),
-                                    Text(
-                                      type,
-                                      style: TextTheme.of(context).labelSmall,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   }).toList(),

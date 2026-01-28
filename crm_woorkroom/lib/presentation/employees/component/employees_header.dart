@@ -4,7 +4,7 @@ import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:flutter/material.dart';
 
 class EmployeesHeader extends StatefulWidget {
-  final Map<String, Widget> views;
+  final List<String> views;
   final String activeType;
   final ValueChanged<String> onChanged;
   const EmployeesHeader({
@@ -54,7 +54,7 @@ class _EmployeesHeaderState extends State<EmployeesHeader> {
                     top: 0,
                     bottom: 0,
                     left:
-                        widget.views.keys.toList().indexOf(widget.activeType) *
+                        widget.views.indexOf(widget.activeType) *
                         itemWidth,
                     child: Container(
                       width: itemWidth,
@@ -67,19 +67,19 @@ class _EmployeesHeaderState extends State<EmployeesHeader> {
                     ),
                   ),
                   Row(
-                    children: widget.views.entries.map((type) {
+                    children: widget.views.map((type) {
                       return Expanded(
                         flex: 1,
                         child: GestureDetector(
-                          onTap: () => widget.onChanged(type.key),
+                          onTap: () => widget.onChanged(type),
                           child: Center(
                             child: Text(
-                              type.key,
+                              type,
                               style: TextStyle(
                                 fontSize: TextTheme.of(
                                   context,
                                 ).labelMedium?.fontSize,
-                                color: widget.activeType == type.key
+                                color: widget.activeType == type
                                     ? Colors.white
                                     : Colors.black,
                               ),

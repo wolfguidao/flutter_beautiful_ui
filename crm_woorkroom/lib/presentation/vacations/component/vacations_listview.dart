@@ -2,7 +2,8 @@ import 'package:crm_woorkroom/constant/app_enum.dart';
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/entity/user.dart';
+import 'package:crm_woorkroom/entity/employee.dart';
+import 'package:crm_woorkroom/presentation/widgets/cus_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
 class VacationsListview extends StatefulWidget {
@@ -12,7 +13,10 @@ class VacationsListview extends StatefulWidget {
   State<VacationsListview> createState() => _VacationsListviewState();
 }
 
-class _VacationsListviewState extends State<VacationsListview> {
+class _VacationsListviewState extends State<VacationsListview> with SingleTickerProviderStateMixin{
+
+  
+
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
@@ -51,7 +55,7 @@ class _VacationsListviewState extends State<VacationsListview> {
                       flex: 3,
                       child: Row(
                         children: [
-                          ClipOval(child: Image.asset(user.avatar, width: 30)),
+                          CusCircleAvatar(avatar: user.avatar, size: 30),
                           AppLayout.paddingSmall.widthBox,
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
