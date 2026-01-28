@@ -2,7 +2,7 @@
 
 # 🎨 Flutter 精美 UI 与酷炫交互设计 🚀
 
-**一个汇集了使用 Flutter 表达性工具包精心手工打造的移动端与网页端精美 UI 作品集。**
+**一个汇集了使用 Flutter 精心手工打造的精美UI和有趣交互的作品集。**
 
 <p align="center">
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">

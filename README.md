@@ -2,7 +2,7 @@
 
 # 🎨 Flutter Beautiful UI & Awesome Interactions 🚀
 
-**A curated collection of premium mobile & web UIs, meticulously handcrafted with Flutter's expressive toolkit.**
+**A carefully handcrafted portfolio featuring exquisite UIs and engaging interactions built with Flutter.**
 
 <p align="center">
   <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
