@@ -13,9 +13,11 @@ class Employee {
   final String skype;
   final String company;
   final String location;
-  final List<UserVacation> vacations;
+  final List<VacationRequest> vacationsRequest;
+  final List<UserVacation> userVacation;
+  final List<Employee> teamMember;
 
-Employee({
+  Employee({
     required this.name,
     required this.avatar,
     required this.position,
@@ -28,18 +30,36 @@ Employee({
     required this.skype,
     required this.company,
     required this.location,
-    required this.vacations,
+    required this.vacationsRequest,
+    required this.userVacation,
+    required this.teamMember,
   });
 }
 
 class UserVacation {
   final VacationType type;
+  final int used;
+  final int total;
+
+  UserVacation({required this.type, required this.used, required this.total});
+}
+
+class VacationRequest {
+  final VacationType type;
   final DateTime date;
+  final DateTime startDay;
+  final DateTime endDay;
   final bool isApproved;
 
-  UserVacation({
+  VacationRequest({
     required this.type,
     required this.date,
     required this.isApproved,
+    required this.startDay,
+    required this.endDay,
   });
+
+  int get duration {
+    return endDay.difference(startDay).inDays;
+  }
 }

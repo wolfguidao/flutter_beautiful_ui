@@ -1,26 +1,21 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
+import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
 import 'package:crm_woorkroom/presentation/widgets/common/cus_label_textfile.dart';
 import 'package:flutter/material.dart';
 
-class EmployeeDetailBar extends StatefulWidget {
+class ProfileDetailBar extends StatefulWidget {
   final double width;
   final Employee employee;
-  final List<Project> projectList;
-  const EmployeeDetailBar({
-    super.key,
-    required this.width,
-    required this.employee,
-    required this.projectList,
-  });
+  const ProfileDetailBar({super.key, required this.width, required this.employee});
 
   @override
-  State<EmployeeDetailBar> createState() => _EmployeeDetailBarState();
+  State<ProfileDetailBar> createState() => _ProfileDetailBarState();
 }
 
-class _EmployeeDetailBarState extends State<EmployeeDetailBar> {
+class _ProfileDetailBarState extends State<ProfileDetailBar> {
   late double _averageProgress;
 
   @override
@@ -30,14 +25,17 @@ class _EmployeeDetailBarState extends State<EmployeeDetailBar> {
   }
 
   void _initData() {
-    if (widget.projectList.isEmpty) {
+    final List<Project> projectList = AppMock.projectList
+        .where((e) => e.reporter == widget.employee)
+        .toList();
+    if (projectList.isEmpty) {
       _averageProgress = 1.0;
     } else {
       double totalProgress = 0.0;
-      for (Project project in widget.projectList) {
+      for (Project project in projectList) {
         totalProgress += project.averageProgress;
       }
-      _averageProgress = totalProgress / widget.projectList.length;
+      _averageProgress = totalProgress / projectList.length;
     }
   }
 

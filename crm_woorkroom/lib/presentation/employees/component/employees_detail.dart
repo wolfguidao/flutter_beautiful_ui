@@ -1,10 +1,8 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
-import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
-import 'package:crm_woorkroom/presentation/employees/widgets/employee_detail_bar.dart';
-import 'package:crm_woorkroom/presentation/widgets/component/project_card.dart';
+import 'package:crm_woorkroom/presentation/widgets/component/profile/profile_detail.dart';
+import 'package:crm_woorkroom/presentation/widgets/component/profile/profile_detail_bar.dart';
 import 'package:flutter/material.dart';
 
 class EmployeesDetail extends StatefulWidget {
@@ -22,15 +20,11 @@ class EmployeesDetail extends StatefulWidget {
 
 class _EmployeesDetailState extends State<EmployeesDetail>
     with SingleTickerProviderStateMixin {
-  late List<Project> _projectList = [];
   late final AnimationController _controller;
   late final Animation _animation;
 
   @override
   void initState() {
-    _projectList = AppMock.projectList
-        .where((e) => e.reporter == widget.employee)
-        .toList();
     _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 250),
@@ -87,7 +81,6 @@ class _EmployeesDetailState extends State<EmployeesDetail>
             Expanded(
               child: Row(
                 children: [
-                  // DetailBar
                   AnimatedBuilder(
                     animation: _animation,
                     builder: (context, child) {
@@ -96,14 +89,12 @@ class _EmployeesDetailState extends State<EmployeesDetail>
                         child: Opacity(opacity: _animation.value, child: child),
                       );
                     },
-                    child: EmployeeDetailBar(
+                    child: ProfileDetailBar(
                       width: width,
                       employee: widget.employee,
-                      projectList: _projectList,
                     ),
                   ),
                   AppLayout.paddingSmall.widthBox,
-                  // Projects Card
                   Expanded(
                     child: AnimatedBuilder(
                       animation: _animation,
@@ -116,83 +107,7 @@ class _EmployeesDetailState extends State<EmployeesDetail>
                           ),
                         );
                       },
-                      child: Column(
-                        children: [
-                          // Filter
-                          Row(
-                            children: [
-                              Container(
-                                width: width * 0.1,
-                                height: 30,
-                                padding:
-                                    (AppLayout.paddingSmall * 0.3).allPadding,
-                                decoration: BoxDecoration(
-                                  color: Color(0xffE6EDF5),
-                                  borderRadius: BorderRadius.circular(
-                                    AppLayout.borderRadius * 10,
-                                  ),
-                                ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: AppColor.primaryColor,
-                                    borderRadius: BorderRadius.circular(
-                                      AppLayout.borderRadius * 10,
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Projects",
-                                      style: TextStyle(
-                                        color: AppColor.secondColor,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.filter_list_outlined,
-                                  size: 20,
-                                ),
-                              ),
-                              AppLayout.paddingSmall.widthBox,
-                              Container(
-                                padding:
-                                    (AppLayout.paddingSmall * 0.6).allPadding,
-                                decoration: BoxDecoration(
-                                  color: AppColor.secondColor,
-                                  borderRadius: BorderRadius.circular(
-                                    AppLayout.borderRadius / 2,
-                                  ),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Text("Current Projects"),
-                                    Icon(Icons.keyboard_arrow_down, size: 15),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          AppLayout.paddingSmall.heightBox,
-                          Expanded(
-                            child: ScrollConfiguration(
-                              behavior: ScrollConfiguration.of(
-                                context,
-                              ).copyWith(scrollbars: false),
-                              child: ListView.builder(
-                                itemCount: _projectList.length,
-                                itemBuilder: (context, index) {
-                                  final Project project = _projectList[index];
-                                  return ProjectCard(project: project);
-                                },
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: ProfileDetail(employee: widget.employee),
                     ),
                   ),
                 ],

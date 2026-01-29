@@ -126,19 +126,19 @@ class AppMock {
     _generateUser("Ryan Clark", "DevOps Engineer", "Mid"),
   ];
 
-  // 生成单个员工数据
-  static Employee _generateUser(String name, String role, String lever) {
-    // 生成邮箱（格式：名.姓@company.com）
+  static Employee _generateUser(
+    String name,
+    String role,
+    String lever, {
+    List<Employee>? teamMember,
+  }) {
     String email = "${name.replaceAll(' ', '.').toLowerCase()}@company.com";
-    // 生成手机号（随机10位数字）
     String mobile = "1${_random.nextInt(900000000) + 100000000}";
-    // 生成生日（随机1970-2000年）
     DateTime birthday = DateTime(
       _random.nextInt(30) + 1970,
       _random.nextInt(12) + 1,
       _random.nextInt(28) + 1,
     );
-    // 计算年龄
     int age = _now.year - birthday.year;
     if (_now.month < birthday.month ||
         (_now.month == birthday.month && _now.day < birthday.day)) {
@@ -158,21 +158,67 @@ class AppMock {
       skype: "skype.${name.replaceAll(' ', '_').toLowerCase()}",
       company: "Tech Innovations Inc.",
       location: _getRandomLocation(),
-      vacations: _generateRandomVacations(20),
+      vacationsRequest: _generateRandomVacations(20),
+      userVacation: _generateUserVacation(),
+      teamMember: teamMember ?? _generateRandomTeam(_random.nextInt(3) + 2),
     );
   }
 
-  static List<UserVacation> _generateRandomVacations(int count) {
+  static List<Employee> _generateRandomTeam(int count) {
+    final names = [
+      "Alex",
+      "Jordan",
+      "Taylor",
+      "Casey",
+      "Jamie",
+      "Riley",
+      "Quinn",
+    ];
+    final roles = ["Junior Dev", "Junior UI Designer", "Intern", "QA Support"];
+    return List.generate(count, (i) {
+      return _generateUser(
+        names[_random.nextInt(names.length)] + " " + (i + 1).toString(),
+        roles[_random.nextInt(roles.length)],
+        "Junior",
+        teamMember: [],
+      );
+    });
+  }
+
+  static List<UserVacation> _generateUserVacation() {
+    return [
+      UserVacation(
+        type: VacationType.sickLeave,
+        used: _random.nextInt(5),
+        total: 10,
+      ),
+      UserVacation(
+        type: VacationType.vacation,
+        used: _random.nextInt(15),
+        total: 20,
+      ),
+      UserVacation(
+        type: VacationType.workRemotely,
+        used: _random.nextInt(20),
+        total: 50,
+      ),
+    ];
+  }
+
+  static List<VacationRequest> _generateRandomVacations(int count) {
     return List.generate(count, (index) {
       DateTime randomDate = DateTime(
         _now.year,
         _now.month,
         _random.nextInt(28) + 1,
       );
-      return UserVacation(
+      int duration = _random.nextInt(5) + 1;
+      return VacationRequest(
         type: VacationType.values[_random.nextInt(VacationType.values.length)],
         date: randomDate,
         isApproved: _random.nextBool(),
+        startDay: randomDate,
+        endDay: randomDate.add(Duration(days: duration)),
       );
     });
   }

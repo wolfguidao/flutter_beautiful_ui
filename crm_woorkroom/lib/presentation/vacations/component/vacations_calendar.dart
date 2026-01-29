@@ -210,12 +210,12 @@ class _VacationsCalendarState extends State<VacationsCalendar>
                                       color: AppColor.borderColor,
                                     ),
                                     ...AppMock.userList.map((user) {
-                                      int index = user.vacations.indexWhere(
+                                      int index = user.vacationsRequest.indexWhere(
                                         (e) => e.date == date,
                                       );
-                                      UserVacation? userVacation;
+                                      VacationRequest? userVacation;
                                       if (index != -1) {
-                                        userVacation = user.vacations[index];
+                                        userVacation = user.vacationsRequest[index];
                                       }
                                       return Container(
                                         width: _squareSize,

@@ -26,15 +26,15 @@ class _VacationsListviewState extends State<VacationsListview>
             itemCount: AppMock.userList.length,
             itemBuilder: (context, index) {
               final Employee user = AppMock.userList[index];
-              final int vacations = user.vacations
+              final int vacations = user.vacationsRequest
                   .where((e) => e.type == VacationType.vacation)
                   .toList()
                   .length;
-              final int sickLeave = user.vacations
+              final int sickLeave = user.vacationsRequest
                   .where((e) => e.type == VacationType.sickLeave)
                   .toList()
                   .length;
-              final int workRemotely = user.vacations
+              final int workRemotely = user.vacationsRequest
                   .where((e) => e.type == VacationType.workRemotely)
                   .toList()
                   .length;

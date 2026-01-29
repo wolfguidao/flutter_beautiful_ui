@@ -1,6 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_animated_switch.dart';
 import 'package:flutter/material.dart';
 
 class EmployeesHeader extends StatefulWidget {
@@ -24,10 +25,6 @@ class _EmployeesHeaderState extends State<EmployeesHeader> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final double width = constraints.maxWidth;
-        final double totalWidth = width * 0.32;
-        final double horizontalPadding = AppLayout.paddingSmall * 0.3;
-        final double trackWidth = totalWidth - (horizontalPadding * 2);
-        final double itemWidth = trackWidth / widget.views.length;
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -35,62 +32,11 @@ class _EmployeesHeaderState extends State<EmployeesHeader> {
               "Employees(${AppMock.userList.length})",
               style: TextTheme.of(context).displayMedium,
             ),
-            Container(
-              width: totalWidth,
-              height: 35,
-              decoration: BoxDecoration(
-                color: Color(0xffE6EDF5),
-                borderRadius: BorderRadius.circular(
-                  AppLayout.borderRadius * 10,
-                ),
-              ),
-              padding: horizontalPadding.allPadding,
-              alignment: Alignment.center,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  AnimatedPositioned(
-                    duration: Duration(milliseconds: 200),
-                    top: 0,
-                    bottom: 0,
-                    left:
-                        widget.views.indexOf(widget.activeType) *
-                        itemWidth,
-                    child: Container(
-                      width: itemWidth,
-                      decoration: BoxDecoration(
-                        color: AppColor.primaryColor,
-                        borderRadius: BorderRadius.circular(
-                          AppLayout.borderRadius * 10,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Row(
-                    children: widget.views.map((type) {
-                      return Expanded(
-                        flex: 1,
-                        child: GestureDetector(
-                          onTap: () => widget.onChanged(type),
-                          child: Center(
-                            child: Text(
-                              type,
-                              style: TextStyle(
-                                fontSize: TextTheme.of(
-                                  context,
-                                ).labelMedium?.fontSize,
-                                color: widget.activeType == type
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
+            CusAnimatedSwitch(
+              width: width * 0.32,
+              items: widget.views,
+              active: widget.activeType,
+              onChanged: (value) => widget.onChanged(value),
             ),
             Row(
               children: [
