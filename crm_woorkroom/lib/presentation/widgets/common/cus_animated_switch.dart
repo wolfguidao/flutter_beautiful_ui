@@ -70,17 +70,21 @@ class _CusAnimatedSwitchState extends State<CusAnimatedSwitch> {
               return Expanded(
                 flex: 1,
                 child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
                   onTap: () {
                     widget.onChanged(item);
                     setState(() {
                       _active = item;
                     });
                   },
-                  child: Center(
+                  child: Container(
+                    alignment: Alignment.center,
                     child: Text(
                       item,
                       style: TextStyle(
-                        fontSize: TextTheme.of(context).labelMedium?.fontSize,
+                        fontSize: Theme.of(
+                          context,
+                        ).textTheme.labelMedium?.fontSize,
                         color: _active == item ? Colors.white : Colors.black,
                       ),
                     ),

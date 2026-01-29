@@ -65,7 +65,7 @@ class _AddVacationRequestState extends State<AddVacationRequest> {
       ),
       child: Container(
         width: width * 0.4,
-        height: height * 0.8,
+        height: height * 0.82,
         padding: AppLayout.paddingLarge.allPadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,39 +135,54 @@ class _AddVacationRequestState extends State<AddVacationRequest> {
             ),
             AppLayout.paddingSmall.heightBox,
             CusDatePicker(),
-            AppLayout.paddingSmall.heightBox,
-            Row(
-              children: [
-                Expanded(
-                  child: CusLabelTextfile(label: "Form", hintText: "9:00 AM"),
-                ),
-                AppLayout.paddingSmall.widthBox,
-                Expanded(
-                  child: CusLabelTextfile(label: "To", hintText: "1:00 PM"),
-                ),
-              ],
-            ),
-            AppLayout.paddingSmall.heightBox,
-            Container(
-              padding: AppLayout.paddingSmall.allPadding,
-              decoration: BoxDecoration(
-                color: AppColor.backgroundColor,
-                borderRadius: BorderRadius.circular(AppLayout.borderRadius),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            if (_activeType == "Hours")
+              Column(
                 children: [
-                  Text("Time for Vacation"),
-                  Text(
-                    "4h 0m",
-                    style: TextStyle(
-                      fontSize: TextTheme.of(context).displayMedium?.fontSize,
-                      color: Color(0xff15C0E6),
+                  AppLayout.paddingSmall.heightBox,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CusLabelTextfile(
+                          label: "Form",
+                          hintText: "9:00 AM",
+                        ),
+                      ),
+                      AppLayout.paddingSmall.widthBox,
+                      Expanded(
+                        child: CusLabelTextfile(
+                          label: "To",
+                          hintText: "1:00 PM",
+                        ),
+                      ),
+                    ],
+                  ),
+                  AppLayout.paddingSmall.heightBox,
+                  Container(
+                    padding: AppLayout.paddingSmall.allPadding,
+                    decoration: BoxDecoration(
+                      color: AppColor.backgroundColor,
+                      borderRadius: BorderRadius.circular(
+                        AppLayout.borderRadius,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Time for Vacation"),
+                        Text(
+                          "4h 0m",
+                          style: TextStyle(
+                            fontSize: TextTheme.of(
+                              context,
+                            ).displayMedium?.fontSize,
+                            color: Color(0xff15C0E6),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ),
             Spacer(),
             Align(
               alignment: AlignmentGeometry.bottomRight,
