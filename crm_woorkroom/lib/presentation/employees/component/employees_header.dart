@@ -1,6 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
+import 'package:crm_woorkroom/presentation/employees/widgets/add_employees_dialog.dart';
 import 'package:crm_woorkroom/presentation/widgets/common/cus_animated_switch.dart';
 import 'package:flutter/material.dart';
 
@@ -46,7 +47,14 @@ class _EmployeesHeaderState extends State<EmployeesHeader> {
                 ),
                 AppLayout.paddingSmall.widthBox,
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AddEmployeesDialog();
+                      },
+                    );
+                  },
                   child: Row(
                     children: [
                       Icon(Icons.add, size: 15),

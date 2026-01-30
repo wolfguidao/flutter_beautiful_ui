@@ -7,6 +7,7 @@ import 'package:crm_woorkroom/presentation/home/component/home_header.dart';
 import 'package:crm_woorkroom/presentation/home/component/home_navigation.dart';
 import 'package:crm_woorkroom/presentation/messenger/messenger_page.dart';
 import 'package:crm_woorkroom/presentation/portal/portal_page.dart';
+import 'package:crm_woorkroom/presentation/profile/profile_page.dart';
 import 'package:crm_woorkroom/presentation/projects/projects_page.dart';
 import 'package:crm_woorkroom/presentation/vacations/vacations_page.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _showProfile = false;
   int _activeNavIndex = 0;
 
   final List<Widget> _views = [
@@ -43,6 +45,7 @@ class _HomePageState extends State<HomePage> {
               onChanged: (int value) {
                 setState(() {
                   _activeNavIndex = value;
+                  _showProfile = false;
                 });
               },
             ),
@@ -51,9 +54,19 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HomeHeader(),
+                  HomeHeader(
+                    toProfile: () {
+                      setState(() {
+                        _showProfile = true;
+                      });
+                    },
+                  ),
                   AppLayout.paddingLarge.heightBox,
-                  Expanded(child: _views[_activeNavIndex]),
+                  Expanded(
+                    child: _showProfile
+                        ? ProfilePage()
+                        : _views[_activeNavIndex],
+                  ),
                 ],
               ),
             ),

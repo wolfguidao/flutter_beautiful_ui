@@ -14,8 +14,14 @@ import 'package:flutter/widgets.dart';
 class $ImagesGen {
   const $ImagesGen();
 
+  /// File path: images/account.svg
+  String get account => 'images/account.svg';
+
   /// File path: images/add_employee_illus.svg
   String get addEmployeeIllus => 'images/add_employee_illus.svg';
+
+  /// File path: images/apps.svg
+  String get apps => 'images/apps.svg';
 
   /// File path: images/auth_illus.svg
   String get authIllus => 'images/auth_illus.svg';
@@ -28,6 +34,12 @@ class $ImagesGen {
 
   /// File path: images/calendar.svg
   String get calendar => 'images/calendar.svg';
+
+  /// File path: images/company.svg
+  String get company => 'images/company.svg';
+
+  /// File path: images/confidentiality.svg
+  String get confidentiality => 'images/confidentiality.svg';
 
   /// File path: images/dashboard.svg
   String get dashboard => 'images/dashboard.svg';
@@ -50,6 +62,12 @@ class $ImagesGen {
   /// File path: images/nav_illus.svg
   String get navIllus => 'images/nav_illus.svg';
 
+  /// File path: images/notification.svg
+  String get notification => 'images/notification.svg';
+
+  /// File path: images/payment.svg
+  String get payment => 'images/payment.svg';
+
   /// File path: images/portal.svg
   String get portal => 'images/portal.svg';
 
@@ -58,6 +76,9 @@ class $ImagesGen {
 
   /// File path: images/projects.svg
   String get projects => 'images/projects.svg';
+
+  /// File path: images/safety.svg
+  String get safety => 'images/safety.svg';
 
   /// File path: images/task_file.png
   AssetGenImage get taskFile => const AssetGenImage('images/task_file.png');
@@ -73,11 +94,15 @@ class $ImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+    account,
     addEmployeeIllus,
+    apps,
     authIllus,
     avatar,
     board,
     calendar,
+    company,
+    confidentiality,
     dashboard,
     employees,
     list,
@@ -85,9 +110,12 @@ class $ImagesGen {
     logoBlue,
     messenger,
     navIllus,
+    notification,
+    payment,
     portal,
     projectImage,
     projects,
+    safety,
     taskFile,
     timeTrackingIllus,
     timeline,

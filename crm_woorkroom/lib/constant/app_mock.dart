@@ -8,6 +8,7 @@ import 'package:crm_woorkroom/entity/file.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
+import 'package:crm_woorkroom/entity/sys_notification.dart' as entity;
 import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
@@ -917,6 +918,61 @@ class AppMock {
           iconColor: const Color(0xffFF9500),
         ),
       ],
+    ),
+  ];
+
+  static List<entity.SysNotification> notificationList = [
+    entity.SysNotification(
+      employee: userList[0],
+      content:
+          "mentioned you in a comment: 'Great work on the user authentication flow!'",
+      sendTime: "2 hours ago",
+    ),
+    entity.SysNotification(
+      employee: userList[1],
+      content: "assigned you a new task: 'Optimize Database Queries'",
+      sendTime: "3 hours ago",
+    ),
+    entity.SysNotification(
+      employee: userList[2],
+      content: "shared a file with you: 'Dashboard_Wireframes_v2.fig'",
+      sendTime: "5 hours ago",
+    ),
+    entity.SysNotification(
+      employee: userList[3],
+      content: "requested approval for: 'Project Milestone 3'",
+      sendTime: "Yesterday",
+    ),
+    entity.SysNotification(
+      employee: userList[4],
+      content: "updated the status of 'User Login Bug' to 'Resolved'",
+      sendTime: "Yesterday",
+    ),
+    entity.SysNotification(
+      employee: userList[5],
+      content: "added you to the 'Cloud Migration' project team",
+      sendTime: "2 days ago",
+    ),
+    entity.SysNotification(
+      employee: userList[6],
+      content:
+          "sent you a direct message: 'Are we still on for the 3 PM meeting?'",
+      sendTime: "2 days ago",
+    ),
+    entity.SysNotification(
+      employee: userList[7],
+      content: "tagged you in 'Sprint Planning' notes",
+      sendTime: "3 days ago",
+    ),
+    entity.SysNotification(
+      employee: userList[8],
+      content: "posted a new announcement: 'Quarterly Team Building Event'",
+      sendTime: "4 days ago",
+    ),
+    entity.SysNotification(
+      employee: userList[9],
+      content: "reviewed your code for 'Payment Gateway Integration'",
+      sendTime: "Last week",
     ),
   ];
 }
