@@ -3,6 +3,7 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/presentation/widgets/common/cus_dropdown.dart';
+import 'package:crm_woorkroom/presentation/widgets/component/attachment_item.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsTaskDetails extends StatefulWidget {
@@ -141,70 +142,7 @@ class _ProjectsTaskDetailsState extends State<ProjectsTaskDetails>
                             ),
                             Wrap(
                               children: widget.task.attachments.map((value) {
-                                return Stack(
-                                  children: [
-                                    Container(
-                                      clipBehavior: Clip.hardEdge,
-                                      margin: EdgeInsets.only(
-                                        right: AppLayout.paddingSmall,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          AppLayout.borderRadius,
-                                        ),
-                                      ),
-                                      foregroundDecoration: BoxDecoration(
-                                        color: Colors.black.withAlpha(20),
-                                        borderRadius: BorderRadius.circular(
-                                          AppLayout.borderRadius,
-                                        ),
-                                      ),
-                                      child: Image.asset(
-                                        value.url,
-                                        fit: BoxFit.cover,
-                                        width: 100,
-                                        height: 100,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      bottom: 5,
-                                      left: 5,
-                                      right: 15,
-                                      child: Container(
-                                        padding: (AppLayout.paddingSmall / 2)
-                                            .allPadding,
-                                        decoration: BoxDecoration(
-                                          color: AppColor.secondColor,
-                                          borderRadius: BorderRadius.circular(
-                                            AppLayout.borderRadius,
-                                          ),
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              value.name,
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                fontSize: TextTheme.of(
-                                                  context,
-                                                ).labelSmall?.fontSize,
-                                              ),
-                                            ),
-                                            Text(
-                                              value.uploadTime.fullDate,
-                                              style: TextTheme.of(
-                                                context,
-                                              ).labelSmall,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
+                                return AttachmentItem(taskFile: value);
                               }).toList(),
                             ),
                           ],

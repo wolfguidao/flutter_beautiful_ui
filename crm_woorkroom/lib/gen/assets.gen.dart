@@ -47,6 +47,18 @@ class $ImagesGen {
   /// File path: images/employees.svg
   String get employees => 'images/employees.svg';
 
+  /// File path: images/folder01.svg
+  String get folder01 => 'images/folder01.svg';
+
+  /// File path: images/folder02.svg
+  String get folder02 => 'images/folder02.svg';
+
+  /// File path: images/folder03.svg
+  String get folder03 => 'images/folder03.svg';
+
+  /// File path: images/folder04.svg
+  String get folder04 => 'images/folder04.svg';
+
   /// File path: images/list.svg
   String get list => 'images/list.svg';
 
@@ -70,6 +82,9 @@ class $ImagesGen {
 
   /// File path: images/portal.svg
   String get portal => 'images/portal.svg';
+
+  /// File path: images/portal_illus.svg
+  String get portalIllus => 'images/portal_illus.svg';
 
   /// File path: images/projectImage01.svg
   String get projectImage01 => 'images/projectImage01.svg';
@@ -126,6 +141,10 @@ class $ImagesGen {
     confidentiality,
     dashboard,
     employees,
+    folder01,
+    folder02,
+    folder03,
+    folder04,
     list,
     logo,
     logoBlue,
@@ -134,6 +153,7 @@ class $ImagesGen {
     notification,
     payment,
     portal,
+    portalIllus,
     projectImage01,
     projectImage02,
     projectImage03,

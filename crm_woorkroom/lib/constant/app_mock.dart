@@ -6,6 +6,7 @@ import 'package:crm_woorkroom/entity/calendar.dart';
 import 'package:crm_woorkroom/entity/event.dart';
 import 'package:crm_woorkroom/entity/file.dart';
 import 'package:crm_woorkroom/entity/project.dart';
+import 'package:crm_woorkroom/entity/project_folder.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
 import 'package:crm_woorkroom/entity/sys_notification.dart' as entity;
@@ -973,6 +974,33 @@ class AppMock {
       employee: userList[9],
       content: "reviewed your code for 'Payment Gateway Integration'",
       sendTime: "Last week",
+    ),
+  ];
+
+  static List<ProjectFolder> projectFolderList = [
+    ProjectFolder(
+      name: "Mobile Apps",
+      projectList: [projectList[0], projectList[9]],
+    ),
+    ProjectFolder(
+      name: "Web & Branding",
+      projectList: [projectList[2], projectList[3]],
+    ),
+    ProjectFolder(
+      name: "Internal Tools",
+      projectList: [projectList[1], projectList[7]],
+    ),
+    ProjectFolder(
+      name: "Infrastructure",
+      projectList: [projectList[8], projectList[10]],
+    ),
+    ProjectFolder(
+      name: "Customer Service",
+      projectList: [projectList[11], projectList[5]],
+    ),
+    ProjectFolder(
+      name: "Core Products",
+      projectList: [projectList[6], projectList[4]],
     ),
   ];
 }
