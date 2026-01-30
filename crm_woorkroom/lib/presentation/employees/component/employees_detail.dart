@@ -18,28 +18,7 @@ class EmployeesDetail extends StatefulWidget {
   State<EmployeesDetail> createState() => _EmployeesDetailState();
 }
 
-class _EmployeesDetailState extends State<EmployeesDetail>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation _animation;
-
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 250),
-    );
-    _animation = CurvedAnimation(curve: Curves.easeIn, parent: _controller);
-    _controller.forward();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class _EmployeesDetailState extends State<EmployeesDetail> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -47,7 +26,6 @@ class _EmployeesDetailState extends State<EmployeesDetail>
         final double width = constraints.maxWidth;
         return Column(
           children: [
-            // Header
             Row(
               children: [
                 Text(
@@ -81,35 +59,9 @@ class _EmployeesDetailState extends State<EmployeesDetail>
             Expanded(
               child: Row(
                 children: [
-                  AnimatedBuilder(
-                    animation: _animation,
-                    builder: (context, child) {
-                      return Transform.translate(
-                        offset: Offset(-20.0 * (1 - _animation.value), 0),
-                        child: Opacity(opacity: _animation.value, child: child),
-                      );
-                    },
-                    child: ProfileDetailBar(
-                      width: width,
-                      employee: widget.employee,
-                    ),
-                  ),
+                  ProfileDetailBar(width: width, employee: widget.employee),
                   AppLayout.paddingSmall.widthBox,
-                  Expanded(
-                    child: AnimatedBuilder(
-                      animation: _animation,
-                      builder: (context, child) {
-                        return Transform.translate(
-                          offset: Offset(20.0 * (1 - _animation.value), 0),
-                          child: Opacity(
-                            opacity: _animation.value,
-                            child: child,
-                          ),
-                        );
-                      },
-                      child: ProfileDetail(employee: widget.employee),
-                    ),
-                  ),
+                  Expanded(child: ProfileDetail(employee: widget.employee)),
                 ],
               ),
             ),

@@ -71,8 +71,26 @@ class $ImagesGen {
   /// File path: images/portal.svg
   String get portal => 'images/portal.svg';
 
-  /// File path: images/projectImage.svg
-  String get projectImage => 'images/projectImage.svg';
+  /// File path: images/projectImage01.svg
+  String get projectImage01 => 'images/projectImage01.svg';
+
+  /// File path: images/projectImage02.svg
+  String get projectImage02 => 'images/projectImage02.svg';
+
+  /// File path: images/projectImage03.svg
+  String get projectImage03 => 'images/projectImage03.svg';
+
+  /// File path: images/projectImage04.svg
+  String get projectImage04 => 'images/projectImage04.svg';
+
+  /// File path: images/projectImage05.svg
+  String get projectImage05 => 'images/projectImage05.svg';
+
+  /// File path: images/projectImage06.svg
+  String get projectImage06 => 'images/projectImage06.svg';
+
+  /// File path: images/projectImage07.svg
+  String get projectImage07 => 'images/projectImage07.svg';
 
   /// File path: images/projects.svg
   String get projects => 'images/projects.svg';
@@ -88,6 +106,9 @@ class $ImagesGen {
 
   /// File path: images/timeline.svg
   String get timeline => 'images/timeline.svg';
+
+  /// File path: images/uploadImage.svg
+  String get uploadImage => 'images/uploadImage.svg';
 
   /// File path: images/vacations.svg
   String get vacations => 'images/vacations.svg';
@@ -113,12 +134,19 @@ class $ImagesGen {
     notification,
     payment,
     portal,
-    projectImage,
+    projectImage01,
+    projectImage02,
+    projectImage03,
+    projectImage04,
+    projectImage05,
+    projectImage06,
+    projectImage07,
     projects,
     safety,
     taskFile,
     timeTrackingIllus,
     timeline,
+    uploadImage,
     vacations,
   ];
 }

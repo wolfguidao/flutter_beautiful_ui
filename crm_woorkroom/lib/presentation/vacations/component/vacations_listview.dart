@@ -7,15 +7,9 @@ import 'package:crm_woorkroom/presentation/widgets/common/cus_animated_delay_ite
 import 'package:crm_woorkroom/presentation/widgets/common/cus_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
-class VacationsListview extends StatefulWidget {
+class VacationsListview extends StatelessWidget {
   const VacationsListview({super.key});
 
-  @override
-  State<VacationsListview> createState() => _VacationsListviewState();
-}
-
-class _VacationsListviewState extends State<VacationsListview>
-    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(

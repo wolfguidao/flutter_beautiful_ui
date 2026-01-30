@@ -619,7 +619,7 @@ class AppMock {
     Project(
       id: "PN0001245",
       name: "CRM Mobile App",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage01,
       createTime: "Sep 12, 2020",
       deadline: "Dec 12, 2020",
       description:
@@ -631,7 +631,7 @@ class AppMock {
     Project(
       id: "PN0001241",
       name: "Admin Dashboard",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage02,
       createTime: "Sep 10, 2020",
       deadline: "Nov 30, 2020",
       description:
@@ -643,7 +643,7 @@ class AppMock {
     Project(
       id: "PN0001242",
       name: "Brand Identity",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage03,
       createTime: "Sep 8, 2020",
       deadline: "Oct 20, 2020",
       description:
@@ -655,7 +655,7 @@ class AppMock {
     Project(
       id: "PN0001243",
       name: "Website Redesign",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage04,
       createTime: "Sep 15, 2020",
       deadline: "Dec 01, 2020",
       description:
@@ -667,7 +667,7 @@ class AppMock {
     Project(
       id: "PN0001244",
       name: "QA Testing",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage05,
       createTime: "Sep 20, 2020",
       deadline: "Sep 30, 2020",
       description:
@@ -679,7 +679,7 @@ class AppMock {
     Project(
       id: "PN0001246",
       name: "API Integration",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage07,
       createTime: "Sep 25, 2020",
       deadline: "Oct 15, 2020",
       description:
@@ -691,7 +691,7 @@ class AppMock {
     Project(
       id: "PN0001247",
       name: "E-commerce Platform",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage06,
       createTime: "Oct 1, 2020",
       deadline: "Jan 15, 2021",
       description:
@@ -703,7 +703,7 @@ class AppMock {
     Project(
       id: "PN0001248",
       name: "Data Analytics Tool",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage01,
       createTime: "Oct 5, 2020",
       deadline: "Dec 20, 2020",
       description:
@@ -715,7 +715,7 @@ class AppMock {
     Project(
       id: "PN0001249",
       name: "Security Audit",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage02,
       createTime: "Oct 10, 2020",
       deadline: "Oct 25, 2020",
       description:
@@ -727,7 +727,7 @@ class AppMock {
     Project(
       id: "PN0001250",
       name: "Mobile Banking App",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage03,
       createTime: "Oct 15, 2020",
       deadline: "Mar 10, 2021",
       description:
@@ -739,7 +739,7 @@ class AppMock {
     Project(
       id: "PN0001251",
       name: "Cloud Migration",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage02,
       createTime: "Oct 20, 2020",
       deadline: "Nov 15, 2020",
       description:
@@ -751,7 +751,7 @@ class AppMock {
     Project(
       id: "PN0001252",
       name: "AI Chatbot",
-      icon: Assets.images.projectImage,
+      icon: Assets.images.projectImage04,
       createTime: "Oct 25, 2020",
       deadline: "Dec 30, 2020",
       description:

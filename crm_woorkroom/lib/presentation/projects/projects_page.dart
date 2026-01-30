@@ -8,6 +8,8 @@ import 'package:crm_woorkroom/presentation/projects/component/projects_detail_ba
 import 'package:crm_woorkroom/presentation/projects/component/projects_task_details.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_task_info.dart';
 import 'package:crm_woorkroom/presentation/projects/component/projects_task_view.dart';
+import 'package:crm_woorkroom/presentation/projects/widgets/add_projects_dialog.dart';
+import 'package:crm_woorkroom/presentation/projects/widgets/add_task_dialog.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsPage extends StatefulWidget {
@@ -48,7 +50,7 @@ class _ProjectsPageState extends State<ProjectsPage> {
                             setState(() {
                               _showProjectDetail = false;
                               _activeProject = value;
-                              _activeTask=null;
+                              _activeTask = null;
                             });
                           },
                         ),
@@ -119,7 +121,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
                   ],
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AddTaskDialog();
+                      },
+                    );
+                  },
                   child: Row(
                     children: [
                       Icon(Icons.add, size: 15),
@@ -139,7 +148,14 @@ class _ProjectsPageState extends State<ProjectsPage> {
               children: [
                 Text("Projects", style: TextTheme.of(context).displayMedium),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AddProjectsDialog();
+                      },
+                    );
+                  },
                   child: Row(
                     children: [
                       Icon(Icons.add, size: 15),

@@ -1,6 +1,7 @@
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
 import 'package:crm_woorkroom/entity/project.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_animated_delay_item.dart';
 import 'package:crm_woorkroom/presentation/widgets/component/project_card.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,10 @@ class _ProfileProjectsState extends State<ProfileProjects> {
         itemCount: _projectList.length,
         itemBuilder: (context, index) {
           final Project project = _projectList[index];
-          return ProjectCard(project: project);
+          return CusAnimatedDelayItem(
+            index: index,
+            child: ProjectCard(project: project),
+          );
         },
       ),
     );

@@ -8,14 +8,9 @@ import 'package:crm_woorkroom/presentation/widgets/common/cus_label_textfile.dar
 import 'package:crm_woorkroom/presentation/widgets/common/cus_label_widget.dart';
 import 'package:flutter/material.dart';
 
-class ProfileAddRequest extends StatefulWidget {
-  const ProfileAddRequest({super.key});
+class VacationRequestDialog extends StatelessWidget {
+  const VacationRequestDialog({super.key});
 
-  @override
-  State<ProfileAddRequest> createState() => _ProfileAddRequestState();
-}
-
-class _ProfileAddRequestState extends State<ProfileAddRequest> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -23,7 +18,7 @@ class _ProfileAddRequestState extends State<ProfileAddRequest> {
         showDialog(
           context: context,
           builder: (context) {
-            return AddVacationRequest();
+            return RequestDialog();
           },
         );
       },
@@ -43,14 +38,14 @@ class _ProfileAddRequestState extends State<ProfileAddRequest> {
   }
 }
 
-class AddVacationRequest extends StatefulWidget {
-  const AddVacationRequest({super.key});
+class RequestDialog extends StatefulWidget {
+  const RequestDialog({super.key});
 
   @override
-  State<AddVacationRequest> createState() => _AddVacationRequestState();
+  State<RequestDialog> createState() => _RequestDialogState();
 }
 
-class _AddVacationRequestState extends State<AddVacationRequest> {
+class _RequestDialogState extends State<RequestDialog> {
   final List<String> _timeType = ["Days", "Hours"];
   String _activeType = "Days";
 
@@ -135,54 +130,71 @@ class _AddVacationRequestState extends State<AddVacationRequest> {
             ),
             AppLayout.paddingSmall.heightBox,
             CusDatePicker(),
-            if (_activeType == "Hours")
-              Column(
-                children: [
-                  AppLayout.paddingSmall.heightBox,
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CusLabelTextfile(
-                          label: "Form",
-                          hintText: "9:00 AM",
-                        ),
-                      ),
-                      AppLayout.paddingSmall.widthBox,
-                      Expanded(
-                        child: CusLabelTextfile(
-                          label: "To",
-                          hintText: "1:00 PM",
-                        ),
-                      ),
-                    ],
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              reverseDuration: const Duration(milliseconds: 250),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: SlideTransition(
+                    position: Tween<Offset>(
+                      begin: Offset(0, 0.1),
+                      end: Offset.zero,
+                    ).animate(animation),
+                    child: child,
                   ),
-                  AppLayout.paddingSmall.heightBox,
-                  Container(
-                    padding: AppLayout.paddingSmall.allPadding,
-                    decoration: BoxDecoration(
-                      color: AppColor.backgroundColor,
-                      borderRadius: BorderRadius.circular(
-                        AppLayout.borderRadius,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                );
+              },
+              child: _activeType == "Days"
+                  ? SizedBox.shrink()
+                  : Column(
                       children: [
-                        Text("Time for Vacation"),
-                        Text(
-                          "4h 0m",
-                          style: TextStyle(
-                            fontSize: TextTheme.of(
-                              context,
-                            ).displayMedium?.fontSize,
-                            color: Color(0xff15C0E6),
+                        AppLayout.paddingSmall.heightBox,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CusLabelTextfile(
+                                label: "Form",
+                                hintText: "9:00 AM",
+                              ),
+                            ),
+                            AppLayout.paddingSmall.widthBox,
+                            Expanded(
+                              child: CusLabelTextfile(
+                                label: "To",
+                                hintText: "1:00 PM",
+                              ),
+                            ),
+                          ],
+                        ),
+                        AppLayout.paddingSmall.heightBox,
+                        Container(
+                          padding: AppLayout.paddingSmall.allPadding,
+                          decoration: BoxDecoration(
+                            color: AppColor.backgroundColor,
+                            borderRadius: BorderRadius.circular(
+                              AppLayout.borderRadius,
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Time for Vacation"),
+                              Text(
+                                "4h 0m",
+                                style: TextStyle(
+                                  fontSize: TextTheme.of(
+                                    context,
+                                  ).displayMedium?.fontSize,
+                                  color: Color(0xff15C0E6),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
+            ),
             Spacer(),
             Align(
               alignment: AlignmentGeometry.bottomRight,

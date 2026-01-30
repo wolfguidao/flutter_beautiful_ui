@@ -1,8 +1,9 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
+import 'package:crm_woorkroom/presentation/widgets/component/vacation_request_dialog.dart';
 import 'package:flutter/material.dart';
 
-class VacationsHeader extends StatefulWidget {
+class VacationsHeader extends StatelessWidget {
   final Map<String, Widget> views;
   final String activeType;
   final ValueChanged<String> onChanged;
@@ -14,11 +15,6 @@ class VacationsHeader extends StatefulWidget {
   });
 
   @override
-  State<VacationsHeader> createState() => _VacationsHeaderState();
-}
-
-class _VacationsHeaderState extends State<VacationsHeader> {
-  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -26,7 +22,7 @@ class _VacationsHeaderState extends State<VacationsHeader> {
         final double totalWidth = width * 0.32;
         final double horizontalPadding = AppLayout.paddingSmall * 0.3;
         final double trackWidth = totalWidth - (horizontalPadding * 2);
-        final double itemWidth = trackWidth / widget.views.length;
+        final double itemWidth = trackWidth / views.length;
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -49,9 +45,7 @@ class _VacationsHeaderState extends State<VacationsHeader> {
                     duration: Duration(milliseconds: 200),
                     top: 0,
                     bottom: 0,
-                    left:
-                        widget.views.keys.toList().indexOf(widget.activeType) *
-                        itemWidth,
+                    left: views.keys.toList().indexOf(activeType) * itemWidth,
                     child: Container(
                       width: itemWidth,
                       decoration: BoxDecoration(
@@ -63,11 +57,11 @@ class _VacationsHeaderState extends State<VacationsHeader> {
                     ),
                   ),
                   Row(
-                    children: widget.views.entries.map((type) {
+                    children: views.entries.map((type) {
                       return Expanded(
                         flex: 1,
                         child: GestureDetector(
-                          onTap: () => widget.onChanged(type.key),
+                          onTap: () => onChanged(type.key),
                           child: Center(
                             child: Text(
                               type.key,
@@ -75,7 +69,7 @@ class _VacationsHeaderState extends State<VacationsHeader> {
                                 fontSize: TextTheme.of(
                                   context,
                                 ).labelMedium?.fontSize,
-                                color: widget.activeType == type.key
+                                color: activeType == type.key
                                     ? Colors.white
                                     : Colors.black,
                               ),
@@ -88,20 +82,7 @@ class _VacationsHeaderState extends State<VacationsHeader> {
                 ],
               ),
             ),
-            TextButton(
-              onPressed: () {},
-              child: Row(
-                children: [
-                  Icon(Icons.add, size: 15),
-                  Text(
-                    "Add Request",
-                    style: TextStyle(
-                      fontSize: TextTheme.of(context).labelMedium?.fontSize,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            VacationRequestDialog(),
           ],
         );
       },
