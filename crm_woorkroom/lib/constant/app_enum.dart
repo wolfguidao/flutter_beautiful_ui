@@ -94,3 +94,7 @@ enum VacationType {
     required this.pendingColor,
   });
 }
+
+enum SessionType { groups, direct }
+
+enum MessageType { text, image, file }

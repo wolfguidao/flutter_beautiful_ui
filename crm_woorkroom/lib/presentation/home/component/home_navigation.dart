@@ -18,7 +18,7 @@ class HomeNavigation extends StatelessWidget {
       CusNavigationItem(text: "Calendar", icon: Assets.images.calendar),
       CusNavigationItem(text: "Vacations", icon: Assets.images.vacations),
       CusNavigationItem(text: "Employees", icon: Assets.images.employees),
-      CusNavigationItem(text: "Messager", icon: Assets.images.messenger),
+      CusNavigationItem(text: "Messenger", icon: Assets.images.messenger),
       CusNavigationItem(text: "Info Protal", icon: Assets.images.portal),
     ];
 

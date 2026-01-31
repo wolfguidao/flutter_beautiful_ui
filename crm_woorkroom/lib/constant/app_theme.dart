@@ -46,14 +46,17 @@ class AppTheme {
           backgroundColor: AppColor.secondColor,
         ),
       ),
+      buttonTheme: ButtonThemeData(
+        hoverColor: Colors.transparent,
+        focusColor: Colors.transparent,
+      ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           backgroundColor: AppColor.primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppLayout.borderRadius),
           ),
-
-          shadowColor: Color(0xffDFECFF),
+          overlayColor: Colors.transparent,
           foregroundColor: Colors.white,
           textStyle: TextStyle(
             color: Colors.white,

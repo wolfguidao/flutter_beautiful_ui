@@ -66,4 +66,12 @@ extension EnglishMonth on DateTime {
   String get enMonthYear => "$enMonth,$year";
 
   String get fullDate => "$enMonth $day, $year";
+
+  String get messageTime{
+    DateTime now=DateTime.now();
+    if(difference(now).inDays!=0){
+      return "$month.$day";
+    }
+    return "$hour:$minute";
+  }
 }

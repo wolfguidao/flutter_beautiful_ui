@@ -9,6 +9,8 @@ import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/project_folder.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
+import 'package:crm_woorkroom/entity/message.dart';
+import 'package:crm_woorkroom/entity/session.dart';
 import 'package:crm_woorkroom/entity/sys_notification.dart' as entity;
 import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
@@ -970,10 +972,156 @@ class AppMock {
       content: "posted a new announcement: 'Quarterly Team Building Event'",
       sendTime: "4 days ago",
     ),
-    entity.SysNotification(
-      employee: userList[9],
-      content: "reviewed your code for 'Payment Gateway Integration'",
-      sendTime: "Last week",
+  ];
+
+  static List<Message> messageList = [
+    Message.text(
+      sender: userList[0],
+      sendTime: _now.subtract(const Duration(minutes: 60)),
+      content: "Has anyone seen the latest project requirements?",
+    ),
+    Message.file(
+      sender: userList[4],
+      sendTime: _now.subtract(const Duration(minutes: 55)),
+      fileName: "requirements_v2.docx",
+      fileUrl: "https://example.com/files/req_v2.docx",
+      fileSize: "450 KB",
+    ),
+    Message.text(
+      sender: userList[1],
+      sendTime: _now.subtract(const Duration(minutes: 50)),
+      content: "Thanks Alex! I'll review them now.",
+    ),
+    Message.text(
+      sender: userList[0],
+      sendTime: _now.subtract(const Duration(minutes: 15)),
+      content: "Hey team, has anyone reviewed the new design specs?",
+    ),
+    Message.image(
+      sender: userList[2],
+      sendTime: _now.subtract(const Duration(minutes: 10)),
+      imageUrl: Assets.images.taskFile.path,
+      caption: "Check out the latest dashboard layout.",
+    ),
+    Message.file(
+      sender: userList[1],
+      sendTime: _now.subtract(const Duration(minutes: 5)),
+      fileName: "API_Documentation_v3.pdf",
+      fileUrl: "https://example.com/docs/api_v3.pdf",
+      fileSize: "1.2 MB",
+    ),
+    Message.text(
+      sender: userList[3],
+      sendTime: _now.subtract(const Duration(minutes: 2)),
+      content: "Looks good! I'll start working on the integration tomorrow.",
+    ),
+    Message.text(
+      sender: userList[5],
+      sendTime: _now.subtract(const Duration(minutes: 1)),
+      content: "Great, let's sync up in the morning.",
+    ),
+  ];
+
+  static List<Conversation> sessionList = [
+    Conversation(
+      id: 1,
+      name: "Flutter Developers",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[0], userList[1], userList[2], userList[3]],
+      latestMessage: messageList[7],
+    ),
+    Conversation(
+      id: 2,
+      name: userList[0].name,
+      avatar: userList[0].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[0]],
+      latestMessage: messageList[0],
+    ),
+    Conversation(
+      id: 3,
+      name: "Design Team",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[2], userList[3], userList[8]],
+      latestMessage: messageList[4],
+    ),
+    Conversation(
+      id: 4,
+      name: userList[4].name,
+      avatar: userList[4].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[4]],
+      latestMessage: messageList[1],
+    ),
+    Conversation(
+      id: 5,
+      name: "Backend Sync",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[1], userList[5], userList[10]],
+      latestMessage: messageList[5],
+    ),
+    Conversation(
+      id: 6,
+      name: userList[7].name,
+      avatar: userList[7].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[7]],
+      latestMessage: Message.text(
+        sender: userList[7],
+        sendTime: _now.subtract(const Duration(hours: 1)),
+        content: "Drafted the quarterly report, any feedback?",
+      ),
+    ),
+    Conversation(
+      id: 7,
+      name: "Product Launch",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: userList.sublist(0, 5),
+      latestMessage: Message.text(
+        sender: userList[3],
+        sendTime: _now.subtract(const Duration(hours: 2)),
+        content: "Timeline looks tight, but feasible.",
+      ),
+    ),
+    Conversation(
+      id: 8,
+      name: userList[9].name,
+      avatar: userList[9].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[9]],
+      latestMessage: Message.text(
+        sender: userList[9],
+        sendTime: _now.subtract(const Duration(hours: 3)),
+        content: "The PR is ready for review.",
+      ),
+    ),
+    Conversation(
+      id: 9,
+      name: "Marketing & Strategy",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[11], userList[12], userList[0]],
+      latestMessage: Message.text(
+        sender: userList[11],
+        sendTime: _now.subtract(const Duration(hours: 5)),
+        content: "New campaign starts next Monday!",
+      ),
+    ),
+    Conversation(
+      id: 10,
+      name: "QA Reports",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[4], userList[0], userList[1]],
+      latestMessage: Message.text(
+        sender: userList[4],
+        sendTime: _now.subtract(const Duration(hours: 12)),
+        content: "Found 3 major issues in the release candidate.",
+      ),
     ),
   ];
 
