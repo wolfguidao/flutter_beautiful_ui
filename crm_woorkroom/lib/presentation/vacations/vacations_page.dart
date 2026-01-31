@@ -27,7 +27,9 @@ class _VacationsPageState extends State<VacationsPage> {
           views: _views,
           activeType: _activeType,
           onChanged: (value) {
-            setState(() => _activeType = value);
+            setState(() {
+              _activeType = value;
+            });
           },
         ),
         AppLayout.paddingSmall.heightBox,

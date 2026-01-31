@@ -2,9 +2,8 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/project_folder.dart';
-import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/presentation/portal/widgets/portal_projects_bar.dart';
-import 'package:crm_woorkroom/presentation/widgets/component/attachment_item.dart';
+import 'package:crm_woorkroom/presentation/portal/widgets/projetcs_all_task.dart';
 import 'package:flutter/material.dart';
 
 class FolderDetail extends StatefulWidget {
@@ -20,13 +19,28 @@ class FolderDetail extends StatefulWidget {
   State<FolderDetail> createState() => _FolderDetailState();
 }
 
-class _FolderDetailState extends State<FolderDetail> {
+class _FolderDetailState extends State<FolderDetail>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  late final Animation _animation;
   late Project _activeProject;
 
   @override
   void initState() {
     _activeProject = widget.projectFolder.projectList.first;
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 250),
+    );
+    _animation = CurvedAnimation(curve: Curves.easeIn, parent: _controller);
+    _controller.forward();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -83,74 +97,38 @@ class _FolderDetailState extends State<FolderDetail> {
             Expanded(
               child: Row(
                 children: [
-                  PortalProjectsBar(
-                    width: width,
-                    onTap: (value) {
-                      setState(() {
-                        _activeProject = value;
-                      });
+                  AnimatedBuilder(
+                    animation: _animation,
+                    builder: (context, child) {
+                      return Transform.translate(
+                        offset: Offset(-20.0 * (1 - _animation.value), 0),
+                        child: Opacity(opacity: _animation.value, child: child),
+                      );
                     },
-                    projectList: widget.projectFolder.projectList,
+                    child: PortalProjectsBar(
+                      width: width,
+                      onTap: (value) {
+                        setState(() {
+                          _activeProject = value;
+                        });
+                      },
+                      projectList: widget.projectFolder.projectList,
+                    ),
                   ),
                   AppLayout.paddingMedium.widthBox,
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          _activeProject.name,
-                          style: TextTheme.of(context).displaySmall,
-                        ),
-                        AppLayout.paddingSmall.heightBox,
-                        Expanded(
-                          child: Container(
-                            padding: AppLayout.paddingMedium.allPadding,
-                            decoration: BoxDecoration(
-                              color: AppColor.secondColor,
-                              borderRadius: BorderRadius.circular(
-                                AppLayout.borderRadius,
-                              ),
-                            ),
-                            child: ScrollConfiguration(
-                              behavior: ScrollConfiguration.of(
-                                context,
-                              ).copyWith(scrollbars: false),
-                              child: ListView.builder(
-                                itemCount: _activeProject.tasks.length,
-                                itemBuilder: (context, index) {
-                                  final Task task = _activeProject.tasks[index];
-                                  return Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        task.name,
-                                        style: TextTheme.of(
-                                          context,
-                                        ).displaySmall,
-                                      ),
-                                      AppLayout.paddingMedium.heightBox,
-                                      Text(
-                                        task.description,
-                                        style: TextTheme.of(
-                                          context,
-                                        ).labelMedium,
-                                      ),
-                                      AppLayout.paddingSmall.heightBox,
-                                      Wrap(
-                                        children: task.attachments.map((file) {
-                                          return AttachmentItem(taskFile: file);
-                                        }).toList(),
-                                      ),
-                                      AppLayout.paddingLarge.heightBox,
-                                    ],
-                                  );
-                                },
-                              ),
-                            ),
+                    child: AnimatedBuilder(
+                      animation: _animation,
+                      builder: (context, child) {
+                        return Transform.translate(
+                          offset: Offset(20.0 * (1 - _animation.value), 0),
+                          child: Opacity(
+                            opacity: _animation.value,
+                            child: child,
                           ),
-                        ),
-                      ],
+                        );
+                      },
+                      child: ProjetcsAllTask(project: _activeProject),
                     ),
                   ),
                 ],
