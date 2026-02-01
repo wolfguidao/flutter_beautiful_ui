@@ -23,7 +23,7 @@ class HomeNavigation extends StatelessWidget {
     ];
 
     void openSupportDialog() {
-      showDialog(
+      showDialog( 
         context: context,
         builder: (context) {
           return SupportDialog();

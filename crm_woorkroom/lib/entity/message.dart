@@ -5,17 +5,9 @@ class Message {
   final Employee sender;
   final DateTime sendTime;
   final MessageType type;
-
-  /// 文本内容 (用于纯文字消息或文件/图片的描述)
   final String? content;
-
-  /// 文件名 (当消息类型为 file 或 image 时使用)
   final String? fileName;
-
-  /// 文件 URL 或 路径
   final String? fileUrl;
-
-  /// 文件大小 (例如 "2.5 MB")
   final String? fileSize;
 
   Message({
@@ -28,25 +20,29 @@ class Message {
     this.fileSize,
   });
 
-  /// 快速创建文本消息
   factory Message.text({
     required Employee sender,
     required DateTime sendTime,
     required String content,
+    String? fileName,
+    String? fileSize,
   }) {
     return Message(
       sender: sender,
       sendTime: sendTime,
       type: MessageType.text,
       content: content,
+      fileName: fileName,
+      fileSize: fileSize,
     );
   }
 
-  /// 快速创建图片消息
   factory Message.image({
     required Employee sender,
     required DateTime sendTime,
     required String imageUrl,
+    String? fileName,
+    String? fileSize,
     String? caption,
   }) {
     return Message(
@@ -54,11 +50,12 @@ class Message {
       sendTime: sendTime,
       type: MessageType.image,
       fileUrl: imageUrl,
+      fileName: fileName,
+      fileSize: fileSize,
       content: caption,
     );
   }
 
-  /// 快速创建文件消息
   factory Message.file({
     required Employee sender,
     required DateTime sendTime,

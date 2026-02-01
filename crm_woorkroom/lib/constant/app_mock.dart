@@ -979,6 +979,7 @@ class AppMock {
       sender: userList[0],
       sendTime: _now.subtract(const Duration(minutes: 60)),
       content: "Has anyone seen the latest project requirements?",
+      fileName: "requirements_inquiry.txt",
     ),
     Message.file(
       sender: userList[4],
@@ -991,16 +992,20 @@ class AppMock {
       sender: userList[1],
       sendTime: _now.subtract(const Duration(minutes: 50)),
       content: "Thanks Alex! I'll review them now.",
+      fileName: "review_response.txt",
     ),
     Message.text(
       sender: userList[0],
       sendTime: _now.subtract(const Duration(minutes: 15)),
       content: "Hey team, has anyone reviewed the new design specs?",
+      fileName: "design_specs_query.txt",
     ),
     Message.image(
       sender: userList[2],
       sendTime: _now.subtract(const Duration(minutes: 10)),
       imageUrl: Assets.images.taskFile.path,
+      fileName: "dashboard_layout.png",
+      fileSize: "2.5 MB",
       caption: "Check out the latest dashboard layout.",
     ),
     Message.file(
@@ -1014,11 +1019,13 @@ class AppMock {
       sender: userList[3],
       sendTime: _now.subtract(const Duration(minutes: 2)),
       content: "Looks good! I'll start working on the integration tomorrow.",
+      fileName: "integration_plan.txt",
     ),
     Message.text(
       sender: userList[5],
       sendTime: _now.subtract(const Duration(minutes: 1)),
       content: "Great, let's sync up in the morning.",
+      fileName: "sync_request.txt",
     ),
   ];
 
@@ -1073,6 +1080,7 @@ class AppMock {
         sender: userList[7],
         sendTime: _now.subtract(const Duration(hours: 1)),
         content: "Drafted the quarterly report, any feedback?",
+        fileName: "quarterly_report_draft.txt",
       ),
     ),
     Conversation(
@@ -1085,6 +1093,7 @@ class AppMock {
         sender: userList[3],
         sendTime: _now.subtract(const Duration(hours: 2)),
         content: "Timeline looks tight, but feasible.",
+        fileName: "launch_timeline.txt",
       ),
     ),
     Conversation(
@@ -1097,6 +1106,7 @@ class AppMock {
         sender: userList[9],
         sendTime: _now.subtract(const Duration(hours: 3)),
         content: "The PR is ready for review.",
+        fileName: "pr_notification.txt",
       ),
     ),
     Conversation(
@@ -1109,6 +1119,7 @@ class AppMock {
         sender: userList[11],
         sendTime: _now.subtract(const Duration(hours: 5)),
         content: "New campaign starts next Monday!",
+        fileName: "campaign_start.txt",
       ),
     ),
     Conversation(
@@ -1121,6 +1132,7 @@ class AppMock {
         sender: userList[4],
         sendTime: _now.subtract(const Duration(hours: 12)),
         content: "Found 3 major issues in the release candidate.",
+        fileName: "qa_report_summary.txt",
       ),
     ),
   ];

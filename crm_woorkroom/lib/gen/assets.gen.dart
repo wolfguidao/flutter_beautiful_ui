@@ -20,8 +20,14 @@ class $ImagesGen {
   /// File path: images/add_employee_illus.svg
   String get addEmployeeIllus => 'images/add_employee_illus.svg';
 
+  /// File path: images/addlink.svg
+  String get addlink => 'images/addlink.svg';
+
   /// File path: images/apps.svg
   String get apps => 'images/apps.svg';
+
+  /// File path: images/attach.svg
+  String get attach => 'images/attach.svg';
 
   /// File path: images/auth_illus.svg
   String get authIllus => 'images/auth_illus.svg';
@@ -43,6 +49,9 @@ class $ImagesGen {
 
   /// File path: images/dashboard.svg
   String get dashboard => 'images/dashboard.svg';
+
+  /// File path: images/emoji.svg
+  String get emoji => 'images/emoji.svg';
 
   /// File path: images/employees.svg
   String get employees => 'images/employees.svg';
@@ -67,6 +76,9 @@ class $ImagesGen {
 
   /// File path: images/logo_blue.svg
   String get logoBlue => 'images/logo_blue.svg';
+
+  /// File path: images/mention.svg
+  String get mention => 'images/mention.svg';
 
   /// File path: images/messenger.svg
   String get messenger => 'images/messenger.svg';
@@ -113,6 +125,9 @@ class $ImagesGen {
   /// File path: images/safety.svg
   String get safety => 'images/safety.svg';
 
+  /// File path: images/send.svg
+  String get send => 'images/send.svg';
+
   /// File path: images/task_file.png
   AssetGenImage get taskFile => const AssetGenImage('images/task_file.png');
 
@@ -132,7 +147,9 @@ class $ImagesGen {
   List<dynamic> get values => [
     account,
     addEmployeeIllus,
+    addlink,
     apps,
+    attach,
     authIllus,
     avatar,
     board,
@@ -140,6 +157,7 @@ class $ImagesGen {
     company,
     confidentiality,
     dashboard,
+    emoji,
     employees,
     folder01,
     folder02,
@@ -148,6 +166,7 @@ class $ImagesGen {
     list,
     logo,
     logoBlue,
+    mention,
     messenger,
     navIllus,
     notification,
@@ -163,6 +182,7 @@ class $ImagesGen {
     projectImage07,
     projects,
     safety,
+    send,
     taskFile,
     timeTrackingIllus,
     timeline,
