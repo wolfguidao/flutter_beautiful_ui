@@ -9,6 +9,7 @@ class Conversation {
   final SessionType sessionType;
   final List<Employee> members;
   final Message latestMessage;
+  final int unread;
 
   Conversation({
     required this.name,
@@ -17,5 +18,6 @@ class Conversation {
     required this.members,
     required this.latestMessage,
     required this.id,
+    required this.unread,
   });
 }

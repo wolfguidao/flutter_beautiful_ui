@@ -133,21 +133,23 @@ class MessageContent extends StatelessWidget {
             ),
           ),
           AppLayout.paddingSmall.widthBox,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                message.fileName ?? "",
-                style: TextStyle(
-                  fontSize: TextTheme.of(context).labelMedium?.fontSize,
-                  fontWeight: FontWeight.bold,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  message.fileName ?? "",
+                  style: TextStyle(
+                    fontSize: TextTheme.of(context).labelMedium?.fontSize,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              Text(
-                message.fileSize ?? "",
-                style: TextTheme.of(context).labelSmall,
-              ),
-            ],
+                Text(
+                  message.fileSize ?? "",
+                  style: TextTheme.of(context).labelSmall,
+                ),
+              ],
+            ),
           ),
         ],
       );
@@ -164,11 +166,13 @@ class MessageContent extends StatelessWidget {
         children: [
           Icon(Icons.link, color: Color(0xff15C0E6), size: 20),
           (AppLayout.paddingSmall / 2).widthBox,
-          Text(
-            message.fileName ?? "",
-            style: TextStyle(
-              color: Color(0xff15C0E6),
-              fontSize: TextTheme.of(context).labelMedium?.fontSize,
+          Flexible(
+            child: Text(
+              message.fileName ?? "",
+              style: TextStyle(
+                color: Color(0xff15C0E6),
+                fontSize: TextTheme.of(context).labelMedium?.fontSize,
+              ),
             ),
           ),
         ],

@@ -50,6 +50,7 @@ class AppTheme {
         hoverColor: Colors.transparent,
         focusColor: Colors.transparent,
       ),
+      hoverColor: Colors.transparent,
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           backgroundColor: AppColor.primaryColor,

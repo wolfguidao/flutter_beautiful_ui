@@ -2,22 +2,30 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/message.dart';
-import 'package:crm_woorkroom/entity/session.dart';
+import 'package:crm_woorkroom/entity/conversation.dart';
 import 'package:crm_woorkroom/presentation/messenger/widgets/chat_input_area.dart';
 import 'package:crm_woorkroom/presentation/messenger/widgets/message_item.dart';
+import 'package:crm_woorkroom/presentation/messenger/widgets/message_search_input.dart';
+import 'package:crm_woorkroom/presentation/widgets/common/cus_animated_delay_item.dart';
 import 'package:crm_woorkroom/presentation/widgets/common/cus_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
-class MessengerChat extends StatefulWidget {
+class MessengerMessage extends StatefulWidget {
   final Conversation conversation;
-  const MessengerChat({super.key, required this.conversation});
+  final VoidCallback onDetail;
+  const MessengerMessage({
+    super.key,
+    required this.conversation,
+    required this.onDetail,
+  });
 
   @override
-  State<MessengerChat> createState() => _MessengerChatState();
+  State<MessengerMessage> createState() => _MessengerMessageState();
 }
 
-class _MessengerChatState extends State<MessengerChat> {
+class _MessengerMessageState extends State<MessengerMessage> {
   Message? _focusMessage;
+  bool _showSearch = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +61,11 @@ class _MessengerChatState extends State<MessengerChat> {
                 style: IconButton.styleFrom(
                   backgroundColor: AppColor.backgroundColor,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    _showSearch = true;
+                  });
+                },
                 icon: Icon(Icons.search, size: 20),
               ),
               AppLayout.paddingSmall.widthBox,
@@ -69,12 +81,20 @@ class _MessengerChatState extends State<MessengerChat> {
                 style: IconButton.styleFrom(
                   backgroundColor: AppColor.backgroundColor,
                 ),
-                onPressed: () {},
+                onPressed: () => widget.onDetail(),
                 icon: Icon(Icons.more_vert_outlined, size: 20),
               ),
             ],
           ),
         ),
+        if (_showSearch)
+          MessageSearchInput(
+            onClose: () {
+              setState(() {
+                _showSearch = false;
+              });
+            },
+          ),
         Expanded(
           child: ScrollConfiguration(
             behavior: ScrollConfiguration.of(
@@ -106,19 +126,22 @@ class _MessengerChatState extends State<MessengerChat> {
                   itemCount: AppMock.messageList.length,
                   itemBuilder: (context, index) {
                     final Message message = AppMock.messageList[index];
-                    return MessageItem(
-                      message: message,
-                      isFocus: message == _focusMessage,
-                      onFocus: (value) {
-                        setState(() {
-                          _focusMessage = value;
-                        });
-                      },
-                      onCancelFocus: () {
-                        setState(() {
-                          _focusMessage = null;
-                        });
-                      },
+                    return CusAnimatedDelayItem(
+                      index: index,
+                      child: MessageItem(
+                        message: message,
+                        isFocus: message == _focusMessage,
+                        onFocus: (value) {
+                          setState(() {
+                            _focusMessage = value;
+                          });
+                        },
+                        onCancelFocus: () {
+                          setState(() {
+                            _focusMessage = null;
+                          });
+                        },
+                      ),
                     );
                   },
                 ),

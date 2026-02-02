@@ -17,7 +17,25 @@ class MessageFocusTools extends StatefulWidget {
   State<MessageFocusTools> createState() => _MessageFocusToolsState();
 }
 
-class _MessageFocusToolsState extends State<MessageFocusTools> {
+class _MessageFocusToolsState extends State<MessageFocusTools>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+  @override
+  void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 200),
+    );
+    _controller.forward();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -26,7 +44,10 @@ class _MessageFocusToolsState extends State<MessageFocusTools> {
         children: [
           Positioned.fill(
             child: GestureDetector(
-              onTap: () => widget.onRemove(),
+              onTap: () async {
+                await _controller.reverse();
+                widget.onRemove();
+              },
               child: ColoredBox(color: Colors.transparent),
             ),
           ),
@@ -34,75 +55,78 @@ class _MessageFocusToolsState extends State<MessageFocusTools> {
             top: widget.messageOffset.dy.abs() - AppLayout.paddingLarge,
             left:
                 widget.messageOffset.dx.abs() + widget.messageSize.width * 0.7,
-            child: Container(
-              padding: (AppLayout.paddingSmall / 2).allPadding,
-              decoration: BoxDecoration(
-                color: AppColor.secondColor,
-                borderRadius: BorderRadius.circular(AppLayout.borderRadius),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 10,
-                    spreadRadius: 1,
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColor.backgroundColor,
-                      maximumSize: Size(25, 25),
-                      minimumSize: Size(25, 25),
+            child: ScaleTransition(
+              scale: CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+              child: Container(
+                padding: (AppLayout.paddingSmall / 2).allPadding,
+                decoration: BoxDecoration(
+                  color: AppColor.secondColor,
+                  borderRadius: BorderRadius.circular(AppLayout.borderRadius),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 10,
+                      spreadRadius: 1,
                     ),
-                    onPressed: () {},
-                    icon: Icon(Icons.push_pin_outlined, size: 15),
-                  ),
-                  (AppLayout.paddingSmall / 2).widthBox,
-                  IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColor.backgroundColor,
-                      maximumSize: Size(25, 25),
-                      minimumSize: Size(25, 25),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    IconButton(
+                      style: IconButton.styleFrom(
+                        backgroundColor: AppColor.backgroundColor,
+                        maximumSize: Size(25, 25),
+                        minimumSize: Size(25, 25),
+                      ),
+                      onPressed: () {},
+                      icon: Icon(Icons.push_pin_outlined, size: 15),
                     ),
-                    onPressed: () {},
-                    icon: Icon(Icons.bubble_chart_outlined, size: 15),
-                  ),
-                  (AppLayout.paddingSmall / 2).widthBox,
-                  IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColor.backgroundColor,
-                      maximumSize: Size(25, 25),
-                      minimumSize: Size(25, 25),
+                    (AppLayout.paddingSmall / 2).widthBox,
+                    IconButton(
+                      style: IconButton.styleFrom(
+                        backgroundColor: AppColor.backgroundColor,
+                        maximumSize: Size(25, 25),
+                        minimumSize: Size(25, 25),
+                      ),
+                      onPressed: () {},
+                      icon: Icon(Icons.bubble_chart_outlined, size: 15),
                     ),
-                    onPressed: () {},
-                    icon: Icon(Icons.share_outlined, size: 15),
-                  ),
-                  (AppLayout.paddingSmall / 2).widthBox,
-                  IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColor.backgroundColor,
-                      maximumSize: Size(25, 25),
-                      minimumSize: Size(25, 25),
+                    (AppLayout.paddingSmall / 2).widthBox,
+                    IconButton(
+                      style: IconButton.styleFrom(
+                        backgroundColor: AppColor.backgroundColor,
+                        maximumSize: Size(25, 25),
+                        minimumSize: Size(25, 25),
+                      ),
+                      onPressed: () {},
+                      icon: Icon(Icons.share_outlined, size: 15),
                     ),
-                    onPressed: () {},
-                    icon: Icon(Icons.edit_note_outlined, size: 15),
-                  ),
-                  (AppLayout.paddingSmall / 2).widthBox,
-                  IconButton(
-                    style: IconButton.styleFrom(
-                      backgroundColor: Color(0xffFEE7E9),
-                      maximumSize: Size(25, 25),
-                      minimumSize: Size(25, 25),
+                    (AppLayout.paddingSmall / 2).widthBox,
+                    IconButton(
+                      style: IconButton.styleFrom(
+                        backgroundColor: AppColor.backgroundColor,
+                        maximumSize: Size(25, 25),
+                        minimumSize: Size(25, 25),
+                      ),
+                      onPressed: () {},
+                      icon: Icon(Icons.edit_note_outlined, size: 15),
                     ),
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.delete_outline,
-                      size: 15,
-                      color: Color(0xffF65160),
+                    (AppLayout.paddingSmall / 2).widthBox,
+                    IconButton(
+                      style: IconButton.styleFrom(
+                        backgroundColor: Color(0xffFEE7E9),
+                        maximumSize: Size(25, 25),
+                        minimumSize: Size(25, 25),
+                      ),
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.delete_outline,
+                        size: 15,
+                        color: Color(0xffF65160),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

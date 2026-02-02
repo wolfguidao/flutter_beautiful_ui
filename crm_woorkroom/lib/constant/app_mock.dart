@@ -10,7 +10,7 @@ import 'package:crm_woorkroom/entity/project_folder.dart';
 import 'package:crm_woorkroom/entity/task.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
 import 'package:crm_woorkroom/entity/message.dart';
-import 'package:crm_woorkroom/entity/session.dart';
+import 'package:crm_woorkroom/entity/conversation.dart';
 import 'package:crm_woorkroom/entity/sys_notification.dart' as entity;
 import 'package:crm_woorkroom/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
@@ -977,32 +977,32 @@ class AppMock {
   static List<Message> messageList = [
     Message.text(
       sender: userList[0],
-      sendTime: _now.subtract(const Duration(minutes: 60)),
+      sendTime: _now.subtract(const Duration(minutes: 120)),
       content: "Has anyone seen the latest project requirements?",
       fileName: "requirements_inquiry.txt",
     ),
     Message.file(
       sender: userList[4],
-      sendTime: _now.subtract(const Duration(minutes: 55)),
+      sendTime: _now.subtract(const Duration(minutes: 110)),
       fileName: "requirements_v2.docx",
       fileUrl: "https://example.com/files/req_v2.docx",
       fileSize: "450 KB",
     ),
     Message.text(
       sender: userList[1],
-      sendTime: _now.subtract(const Duration(minutes: 50)),
+      sendTime: _now.subtract(const Duration(minutes: 100)),
       content: "Thanks Alex! I'll review them now.",
       fileName: "review_response.txt",
     ),
     Message.text(
       sender: userList[0],
-      sendTime: _now.subtract(const Duration(minutes: 15)),
+      sendTime: _now.subtract(const Duration(minutes: 90)),
       content: "Hey team, has anyone reviewed the new design specs?",
       fileName: "design_specs_query.txt",
     ),
     Message.image(
       sender: userList[2],
-      sendTime: _now.subtract(const Duration(minutes: 10)),
+      sendTime: _now.subtract(const Duration(minutes: 80)),
       imageUrl: Assets.images.taskFile.path,
       fileName: "dashboard_layout.png",
       fileSize: "2.5 MB",
@@ -1010,33 +1010,113 @@ class AppMock {
     ),
     Message.file(
       sender: userList[1],
-      sendTime: _now.subtract(const Duration(minutes: 5)),
+      sendTime: _now.subtract(const Duration(minutes: 70)),
       fileName: "API_Documentation_v3.pdf",
       fileUrl: "https://example.com/docs/api_v3.pdf",
       fileSize: "1.2 MB",
     ),
     Message.text(
       sender: userList[3],
-      sendTime: _now.subtract(const Duration(minutes: 2)),
+      sendTime: _now.subtract(const Duration(minutes: 60)),
       content: "Looks good! I'll start working on the integration tomorrow.",
       fileName: "integration_plan.txt",
     ),
     Message.text(
       sender: userList[5],
-      sendTime: _now.subtract(const Duration(minutes: 1)),
+      sendTime: _now.subtract(const Duration(minutes: 50)),
       content: "Great, let's sync up in the morning.",
       fileName: "sync_request.txt",
     ),
+    Message.text(
+      sender: userList[6],
+      sendTime: _now.subtract(const Duration(minutes: 40)),
+      content:
+          "I've updated the database schema. Please check the migration scripts.",
+      fileName: "schema_update.txt",
+    ),
+    Message.image(
+      sender: userList[0],
+      sendTime: _now.subtract(const Duration(minutes: 35)),
+      imageUrl: Assets.images.taskFile.path,
+      fileName: "login_flow.png",
+      fileSize: "1.8 MB",
+      caption: "New login flow visualization.",
+    ),
+    Message.file(
+      sender: userList[10],
+      sendTime: _now.subtract(const Duration(minutes: 30)),
+      fileName: "Security_Audit_Report.pdf",
+      fileUrl: "https://example.com/docs/security_audit.pdf",
+      fileSize: "3.5 MB",
+    ),
+    Message.text(
+      sender: userList[7],
+      sendTime: _now.subtract(const Duration(minutes: 25)),
+      content: "The roadmap for Q3 is now available on the shared drive.",
+      fileName: "roadmap_announcement.txt",
+    ),
+    Message.text(
+      sender: userList[8],
+      sendTime: _now.subtract(const Duration(minutes: 20)),
+      content: "New mobile assets have been uploaded to the design folder.",
+      fileName: "assets_update.txt",
+    ),
+    Message.image(
+      sender: userList[2],
+      sendTime: _now.subtract(const Duration(minutes: 15)),
+      imageUrl: Assets.images.taskFile.path,
+      fileName: "icon_set_v2.png",
+      fileSize: "800 KB",
+      caption: "Updated icon set for the mobile app.",
+    ),
+    Message.text(
+      sender: userList[12],
+      sendTime: _now.subtract(const Duration(minutes: 10)),
+      content: "Can someone help me with the local environment setup?",
+      fileName: "setup_help.txt",
+    ),
+    Message.text(
+      sender: userList[1],
+      sendTime: _now.subtract(const Duration(minutes: 5)),
+      content: "Sure Kevin, I'll jump on a call with you in 5 minutes.",
+      fileName: "help_response.txt",
+    ),
+    Message.file(
+      sender: userList[13],
+      sendTime: _now.subtract(const Duration(minutes: 4)),
+      fileName: "Backend_Logs_Error.log",
+      fileUrl: "https://example.com/logs/error.log",
+      fileSize: "150 KB",
+    ),
+    Message.text(
+      sender: userList[14],
+      sendTime: _now.subtract(const Duration(minutes: 3)),
+      content: "I'm seeing some spikes in the latency on the dev server.",
+      fileName: "latency_report.txt",
+    ),
+    Message.text(
+      sender: userList[5],
+      sendTime: _now.subtract(const Duration(minutes: 2)),
+      content: "Checking the server metrics now.",
+      fileName: "metric_check.txt",
+    ),
+    Message.text(
+      sender: userList[11],
+      sendTime: _now.subtract(const Duration(minutes: 1)),
+      content: "Don't forget the demo session at 4 PM today.",
+      fileName: "demo_reminder.txt",
+    ),
   ];
 
-  static List<Conversation> sessionList = [
+  static List<Conversation> conversationList = [
     Conversation(
       id: 1,
       name: "Flutter Developers",
       avatar: Assets.images.avatar.path,
       sessionType: SessionType.groups,
       members: [userList[0], userList[1], userList[2], userList[3]],
-      latestMessage: messageList[7],
+      latestMessage: messageList[19],
+      unread: 12,
     ),
     Conversation(
       id: 2,
@@ -1045,6 +1125,7 @@ class AppMock {
       sessionType: SessionType.direct,
       members: [userList[0]],
       latestMessage: messageList[0],
+      unread: 11,
     ),
     Conversation(
       id: 3,
@@ -1052,7 +1133,8 @@ class AppMock {
       avatar: Assets.images.avatar.path,
       sessionType: SessionType.groups,
       members: [userList[2], userList[3], userList[8]],
-      latestMessage: messageList[4],
+      latestMessage: messageList[13],
+      unread: 1122,
     ),
     Conversation(
       id: 4,
@@ -1061,6 +1143,7 @@ class AppMock {
       sessionType: SessionType.direct,
       members: [userList[4]],
       latestMessage: messageList[1],
+      unread: 0,
     ),
     Conversation(
       id: 5,
@@ -1068,7 +1151,8 @@ class AppMock {
       avatar: Assets.images.avatar.path,
       sessionType: SessionType.groups,
       members: [userList[1], userList[5], userList[10]],
-      latestMessage: messageList[5],
+      latestMessage: messageList[16],
+      unread: 0,
     ),
     Conversation(
       id: 6,
@@ -1076,12 +1160,8 @@ class AppMock {
       avatar: userList[7].avatar,
       sessionType: SessionType.direct,
       members: [userList[7]],
-      latestMessage: Message.text(
-        sender: userList[7],
-        sendTime: _now.subtract(const Duration(hours: 1)),
-        content: "Drafted the quarterly report, any feedback?",
-        fileName: "quarterly_report_draft.txt",
-      ),
+      latestMessage: messageList[11],
+      unread: 0,
     ),
     Conversation(
       id: 7,
@@ -1095,6 +1175,7 @@ class AppMock {
         content: "Timeline looks tight, but feasible.",
         fileName: "launch_timeline.txt",
       ),
+      unread: 0,
     ),
     Conversation(
       id: 8,
@@ -1108,6 +1189,7 @@ class AppMock {
         content: "The PR is ready for review.",
         fileName: "pr_notification.txt",
       ),
+      unread: 0,
     ),
     Conversation(
       id: 9,
@@ -1115,12 +1197,8 @@ class AppMock {
       avatar: Assets.images.avatar.path,
       sessionType: SessionType.groups,
       members: [userList[11], userList[12], userList[0]],
-      latestMessage: Message.text(
-        sender: userList[11],
-        sendTime: _now.subtract(const Duration(hours: 5)),
-        content: "New campaign starts next Monday!",
-        fileName: "campaign_start.txt",
-      ),
+      latestMessage: messageList[19],
+      unread: 0,
     ),
     Conversation(
       id: 10,
@@ -1128,12 +1206,103 @@ class AppMock {
       avatar: Assets.images.avatar.path,
       sessionType: SessionType.groups,
       members: [userList[4], userList[0], userList[1]],
+      latestMessage: messageList[10],
+      unread: 0,
+    ),
+    Conversation(
+      id: 11,
+      name: "Project Management",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[3], userList[7], userList[11]],
+      latestMessage: messageList[11],
+      unread: 5,
+    ),
+    Conversation(
+      id: 12,
+      name: userList[12].name,
+      avatar: userList[12].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[12]],
+      latestMessage: messageList[14],
+      unread: 2,
+    ),
+    Conversation(
+      id: 13,
+      name: "SecOps",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[10], userList[5], userList[1]],
+      latestMessage: messageList[10],
+      unread: 0,
+    ),
+    Conversation(
+      id: 14,
+      name: userList[13].name,
+      avatar: userList[13].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[13]],
+      latestMessage: messageList[16],
+      unread: 0,
+    ),
+    Conversation(
+      id: 15,
+      name: "Data Analytics Team",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[9], userList[7], userList[1]],
       latestMessage: Message.text(
-        sender: userList[4],
-        sendTime: _now.subtract(const Duration(hours: 12)),
-        content: "Found 3 major issues in the release candidate.",
-        fileName: "qa_report_summary.txt",
+        sender: userList[9],
+        sendTime: _now.subtract(const Duration(hours: 1)),
+        content: "New user retention report is ready.",
+        fileName: "retention_report.txt",
       ),
+      unread: 1,
+    ),
+    Conversation(
+      id: 16,
+      name: userList[2].name,
+      avatar: userList[2].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[2]],
+      latestMessage: messageList[13],
+      unread: 0,
+    ),
+    Conversation(
+      id: 17,
+      name: "Frontend Sync",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: [userList[0], userList[12], userList[2]],
+      latestMessage: messageList[14],
+      unread: 0,
+    ),
+    Conversation(
+      id: 18,
+      name: userList[5].name,
+      avatar: userList[5].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[5]],
+      latestMessage: messageList[18],
+      unread: 0,
+    ),
+    Conversation(
+      id: 19,
+      name: "General",
+      avatar: Assets.images.avatar.path,
+      sessionType: SessionType.groups,
+      members: userList,
+      latestMessage: messageList[12],
+      unread: 0,
+    ),
+    Conversation(
+      id: 20,
+      name: userList[14].name,
+      avatar: userList[14].avatar,
+      sessionType: SessionType.direct,
+      members: [userList[14]],
+      latestMessage: messageList[17],
+      unread: 3,
     ),
   ];
 

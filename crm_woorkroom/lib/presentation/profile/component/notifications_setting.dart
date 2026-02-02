@@ -11,7 +11,7 @@ class NotificationsSetting extends StatefulWidget {
 }
 
 class _NotificationsSettingState extends State<NotificationsSetting> {
-  Map<String, String> _notificationType = {
+  final Map<String, String> _notificationType = {
     "Issue Activity": "Send me email notifications for issue activity",
     "Tracking Activity":
         "Send me notifications when someone’ve tracked time in tasks",
@@ -60,7 +60,11 @@ class _NotificationsSettingState extends State<NotificationsSetting> {
                     scale: 0.75,
                     child: Switch(
                       value: _activeList[index],
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        setState(() {
+                          _activeList[index]=value;
+                        });
+                      },
                     ),
                   ),
                 ],

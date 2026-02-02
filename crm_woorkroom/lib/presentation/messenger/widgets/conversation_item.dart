@@ -1,6 +1,6 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/entity/session.dart';
+import 'package:crm_woorkroom/entity/conversation.dart';
 import 'package:crm_woorkroom/presentation/widgets/common/cus_circle_avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,7 @@ class _ConversationItemState extends State<ConversationItem> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         widget.onTap(widget.conversation.id);
       },
       child: Container(
@@ -73,19 +73,51 @@ class _ConversationItemState extends State<ConversationItem> {
                         ),
                         AppLayout.paddingSmall.widthBox,
                         Text(
-                          widget.conversation.latestMessage.sendTime.messageTime,
+                          widget
+                              .conversation
+                              .latestMessage
+                              .sendTime
+                              .messageTime,
                           style: TextTheme.of(context).labelSmall,
                         ),
                       ],
                     ),
                     (AppLayout.paddingSmall / 2).heightBox,
-                    Text(
-                      widget.conversation.latestMessage.content ??
-                          widget.conversation.latestMessage.fileName ??
-                          "",
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextTheme.of(context).labelSmall,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            widget.conversation.latestMessage.content ??
+                                widget.conversation.latestMessage.fileName ??
+                                "",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextTheme.of(context).labelSmall,
+                          ),
+                        ),
+                        (AppLayout.paddingSmall / 2).widthBox,
+                        if (widget.conversation.unread != 0)
+                          Container(
+                            width: 15,
+                            height: 15,
+                            padding: (AppLayout.paddingSmall * 0.2).allPadding,
+                            decoration: BoxDecoration(
+                              color: Colors.redAccent,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Center(
+                              child: Text(
+                                "${widget.conversation.unread <= 99 ? widget.conversation.unread : 99}",
+                                style: TextStyle(
+                                  fontSize: TextTheme.of(
+                                    context,
+                                  ).labelSmall?.fontSize,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ],
                 ),
