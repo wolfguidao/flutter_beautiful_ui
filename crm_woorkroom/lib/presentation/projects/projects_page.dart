@@ -3,13 +3,12 @@ import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/task.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_bar.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_detail_bar.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_task_details.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_task_info.dart';
-import 'package:crm_woorkroom/presentation/projects/component/projects_task_view.dart';
-import 'package:crm_woorkroom/presentation/projects/widgets/add_projects_dialog.dart';
-import 'package:crm_woorkroom/presentation/projects/widgets/add_task_dialog.dart';
+import 'package:crm_woorkroom/presentation/projects/sections/projects_bar.dart';
+import 'package:crm_woorkroom/presentation/projects/sections/projects_detail_bar.dart';
+import 'package:crm_woorkroom/presentation/projects/sections/projects_header.dart';
+import 'package:crm_woorkroom/presentation/projects/sections/projects_task_details.dart';
+import 'package:crm_woorkroom/presentation/projects/sections/projects_task_info.dart';
+import 'package:crm_woorkroom/presentation/projects/sections/projects_task_view.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsPage extends StatefulWidget {
@@ -31,7 +30,15 @@ class _ProjectsPageState extends State<ProjectsPage> {
         final double width = constraints.maxWidth;
         return Column(
           children: [
-            _builderHeader(),
+            ProjectsHeader(
+              showProjectDetail: _showProjectDetail,
+              projectName: _activeProject.name,
+              onBack: () {
+                setState(() {
+                  _showProjectDetail = false;
+                });
+              },
+            ),
             AppLayout.paddingSmall.heightBox,
             Expanded(
               child: Row(
@@ -76,100 +83,6 @@ class _ProjectsPageState extends State<ProjectsPage> {
           ],
         );
       },
-    );
-  }
-
-  Widget _builderHeader() {
-    return AnimatedSwitcher(
-      duration: Duration(seconds: 10),
-      child: _showProjectDetail
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _showProjectDetail = false;
-                        });
-                      },
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.arrow_back,
-                            color: AppColor.primaryColor,
-                            size: 15,
-                          ),
-                          Text(
-                            "Back to Project",
-                            style: TextStyle(
-                              fontSize: TextTheme.of(
-                                context,
-                              ).labelMedium?.fontSize,
-                              color: AppColor.primaryColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      _activeProject.name,
-                      style: TextTheme.of(context).displayMedium,
-                    ),
-                  ],
-                ),
-                TextButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AddTaskDialog();
-                      },
-                    );
-                  },
-                  child: Row(
-                    children: [
-                      Icon(Icons.add, size: 15),
-                      Text(
-                        "Add Task",
-                        style: TextStyle(
-                          fontSize: TextTheme.of(context).labelMedium?.fontSize,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            )
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Projects", style: TextTheme.of(context).displayMedium),
-                TextButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AddProjectsDialog();
-                      },
-                    );
-                  },
-                  child: Row(
-                    children: [
-                      Icon(Icons.add, size: 15),
-                      Text(
-                        "Add Project",
-                        style: TextStyle(
-                          fontSize: TextTheme.of(context).labelMedium?.fontSize,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
     );
   }
 }

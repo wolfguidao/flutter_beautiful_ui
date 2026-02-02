@@ -1,10 +1,10 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/employee.dart';
-import 'package:crm_woorkroom/presentation/employees/component/employees_activity.dart';
-import 'package:crm_woorkroom/presentation/employees/component/employees_detail.dart';
-import 'package:crm_woorkroom/presentation/employees/component/employees_header.dart';
-import 'package:crm_woorkroom/presentation/employees/component/employees_listview.dart';
+import 'package:crm_woorkroom/presentation/employees/sections/employees_activity.dart';
+import 'package:crm_woorkroom/presentation/employees/sections/employees_detail.dart';
+import 'package:crm_woorkroom/presentation/employees/sections/employees_header.dart';
+import 'package:crm_woorkroom/presentation/employees/sections/employees_listview.dart';
 import 'package:flutter/material.dart';
 
 class EmployeesPage extends StatefulWidget {

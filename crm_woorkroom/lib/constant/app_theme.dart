@@ -14,6 +14,7 @@ class AppTheme {
           return Color(0xffCED5E0);
         }),
       ),
+      dividerColor: AppColor.hintColor,
       textTheme: TextTheme(
         displayLarge: AppTextStyle.h1,
         displayMedium: AppTextStyle.h2,

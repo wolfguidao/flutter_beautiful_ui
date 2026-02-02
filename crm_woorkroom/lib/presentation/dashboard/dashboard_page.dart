@@ -1,10 +1,10 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/presentation/dashboard/component/dash_activity_stream.dart';
-import 'package:crm_woorkroom/presentation/dashboard/component/dash_header.dart';
-import 'package:crm_woorkroom/presentation/dashboard/component/dash_nearest_events.dart';
-import 'package:crm_woorkroom/presentation/dashboard/component/dash_projects.dart';
-import 'package:crm_woorkroom/presentation/dashboard/component/dash_workload.dart';
+import 'package:crm_woorkroom/presentation/dashboard/sections/dash_activity_stream.dart';
+import 'package:crm_woorkroom/presentation/dashboard/sections/dash_header.dart';
+import 'package:crm_woorkroom/presentation/dashboard/sections/dash_nearest_events.dart';
+import 'package:crm_woorkroom/presentation/dashboard/sections/dash_projects.dart';
+import 'package:crm_woorkroom/presentation/dashboard/sections/dash_workload.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {

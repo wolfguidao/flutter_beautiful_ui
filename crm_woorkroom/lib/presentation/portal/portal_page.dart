@@ -1,6 +1,6 @@
 import 'package:crm_woorkroom/entity/project_folder.dart';
-import 'package:crm_woorkroom/presentation/portal/component/folder_detail.dart';
-import 'package:crm_woorkroom/presentation/portal/component/info_portal.dart';
+import 'package:crm_woorkroom/presentation/portal/sections/folder_detail.dart';
+import 'package:crm_woorkroom/presentation/portal/sections/info_portal.dart';
 import 'package:flutter/material.dart';
 
 class PortalPage extends StatefulWidget {

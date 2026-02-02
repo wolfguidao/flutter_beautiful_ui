@@ -1,9 +1,9 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/conversation.dart';
-import 'package:crm_woorkroom/presentation/messenger/component/messenger_message.dart';
-import 'package:crm_woorkroom/presentation/messenger/component/messenger_conversation_bar.dart';
-import 'package:crm_woorkroom/presentation/messenger/widgets/conversation_detail.dart';
+import 'package:crm_woorkroom/presentation/messenger/sections/messenger_message.dart';
+import 'package:crm_woorkroom/presentation/messenger/sections/messenger_conversation_bar.dart';
+import 'package:crm_woorkroom/presentation/messenger/sections/conversation_detail.dart';
 import 'package:flutter/material.dart';
 
 class MessengerPage extends StatefulWidget {

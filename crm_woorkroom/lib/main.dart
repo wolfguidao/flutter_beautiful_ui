@@ -1,5 +1,5 @@
 import 'package:crm_woorkroom/constant/app_theme.dart';
-import 'package:crm_woorkroom/presentation/home/home_page.dart';
+import 'package:crm_woorkroom/presentation/auth/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      home: HomePage(),
+      home: AuthPage(),
     );
   }
 }

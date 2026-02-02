@@ -51,7 +51,7 @@ class _PortalProjectsBarState extends State<PortalProjectsBar> {
               ],
             ),
           ),
-          (AppLayout.paddingSmall/2).heightBox,
+          (AppLayout.paddingSmall / 2).heightBox,
           ...List.generate(widget.projectList.length, (index) {
             final Project project = widget.projectList[index];
             return GestureDetector(
@@ -84,7 +84,7 @@ class _PortalProjectsBarState extends State<PortalProjectsBar> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(project.name),
-                      (AppLayout.paddingSmall/2).heightBox,
+                      (AppLayout.paddingSmall / 2).heightBox,
                       Text(
                         project.deadline,
                         style: TextTheme.of(context).labelMedium,

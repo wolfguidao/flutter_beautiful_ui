@@ -1,7 +1,7 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/presentation/calendar/component/calendar_header.dart';
-import 'package:crm_woorkroom/presentation/calendar/component/calendar_view.dart';
+import 'package:crm_woorkroom/presentation/calendar/sections/calendar_header.dart';
+import 'package:crm_woorkroom/presentation/calendar/sections/calendar_view.dart';
 import 'package:flutter/material.dart';
 
 class CalendarPage extends StatefulWidget {

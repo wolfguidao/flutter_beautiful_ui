@@ -1,6 +1,6 @@
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/presentation/auth/components/sign_in.dart';
-import 'package:crm_woorkroom/presentation/auth/components/sign_up_step.dart';
+import 'package:crm_woorkroom/presentation/auth/sections/sign_in.dart';
+import 'package:crm_woorkroom/presentation/auth/sections/sign_up_step.dart';
 import 'package:flutter/material.dart';
 
 class AuthPage extends StatefulWidget {

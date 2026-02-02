@@ -1,9 +1,9 @@
 import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_mock.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
-import 'package:crm_woorkroom/presentation/profile/component/profile_setting.dart';
-import 'package:crm_woorkroom/presentation/widgets/component/profile/profile_detail.dart';
-import 'package:crm_woorkroom/presentation/widgets/component/profile/profile_detail_bar.dart';
+import 'package:crm_woorkroom/presentation/profile/sections/profile_setting.dart';
+import 'package:crm_woorkroom/presentation/widgets/profile/profile_detail.dart';
+import 'package:crm_woorkroom/presentation/widgets/profile/profile_detail_bar.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -51,7 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Expanded(
               child: Row(
                 children: [
-                  ProfileDetailBar(width: width, employee: AppMock.userList[0]),
+                  ProfileDetailBar(width: width, employee: AppMock.user),
                   AppLayout.paddingSmall.widthBox,
                   Expanded(
                     child: _showSetting
@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               });
                             },
                           )
-                        : ProfileDetail(employee: AppMock.userList[0]),
+                        : ProfileDetail(employee: AppMock.user),
                   ),
                 ],
               ),

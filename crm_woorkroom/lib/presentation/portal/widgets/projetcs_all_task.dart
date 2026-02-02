@@ -2,8 +2,8 @@ import 'package:crm_woorkroom/constant/app_extension.dart';
 import 'package:crm_woorkroom/constant/app_style.dart';
 import 'package:crm_woorkroom/entity/project.dart';
 import 'package:crm_woorkroom/entity/task.dart';
-import 'package:crm_woorkroom/presentation/portal/widgets/share_folder_dialog.dart';
-import 'package:crm_woorkroom/presentation/widgets/component/attachment_item.dart';
+import 'package:crm_woorkroom/presentation/portal/dialog/share_folder_dialog.dart';
+import 'package:crm_woorkroom/presentation/widgets/attachment_item.dart';
 import 'package:flutter/material.dart';
 
 class ProjetcsAllTask extends StatelessWidget {
@@ -24,20 +24,7 @@ class ProjetcsAllTask extends StatelessWidget {
               icon: Icon(Icons.edit_note_rounded, size: 20),
             ),
             AppLayout.paddingSmall.widthBox,
-            TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: AppColor.secondColor,
-              ),
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return ShareFolderDialog();
-                  },
-                );
-              },
-              child: Text("Share", style: TextTheme.of(context).bodyMedium),
-            ),
+            ShareFolderButton(),
           ],
         ),
         AppLayout.paddingSmall.heightBox,
