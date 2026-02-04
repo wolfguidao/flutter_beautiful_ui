@@ -38,13 +38,18 @@ class AppTextStyle {
     color: AppColors.defaultTextColor,
   );
 
+  static final TextStyle labelLarge = TextStyle(
+    fontSize: 13,
+    color: AppColors.hintTextColor,
+  );
+
   static final TextStyle labelMedium = TextStyle(
-    fontSize: 8,
+    fontSize: 11,
     color: AppColors.hintTextColor,
   );
 
   static final TextStyle labelSmall = TextStyle(
-    fontSize: 6,
+    fontSize: 7,
     color: AppColors.defaultTextColor,
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telegram_redesign/constant/app_colors.dart';
+import 'package:telegram_redesign/presentation/chats/sections/session_bar.dart';
 
 class ChatsPage extends StatefulWidget {
   const ChatsPage({super.key});
@@ -12,7 +13,10 @@ class _ChatsPageState extends State<ChatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: AppColors.secondColor, title: Column()),
+      appBar: AppBar(
+        backgroundColor: AppColors.secondColor,
+        title: SessionBar(),
+      ),
       body: Container(
         decoration: BoxDecoration(
           color: AppColors.backgroundColor,
