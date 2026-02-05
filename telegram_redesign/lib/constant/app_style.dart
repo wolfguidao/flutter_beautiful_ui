@@ -21,35 +21,35 @@ class AppTextStyle {
   );
 
   static final TextStyle bodyLarge = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.w500,
     color: AppColors.defaultTextColor,
   );
 
   static final TextStyle bodyMedium = TextStyle(
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
     color: AppColors.defaultTextColor,
   );
 
   static final TextStyle bodySmall = TextStyle(
-    fontSize: 8,
+    fontSize: 10,
     fontWeight: FontWeight.w500,
     color: AppColors.defaultTextColor,
   );
 
   static final TextStyle labelLarge = TextStyle(
-    fontSize: 13,
+    fontSize: 15,
     color: AppColors.hintTextColor,
   );
 
   static final TextStyle labelMedium = TextStyle(
-    fontSize: 11,
+    fontSize: 13,
     color: AppColors.hintTextColor,
   );
 
   static final TextStyle labelSmall = TextStyle(
-    fontSize: 7,
+    fontSize: 9,
     color: AppColors.defaultTextColor,
   );
 }

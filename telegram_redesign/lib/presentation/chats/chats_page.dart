@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:telegram_redesign/constant/app_colors.dart';
+import 'package:telegram_redesign/entity/session.dart';
+import 'package:telegram_redesign/mock/mock_data.dart';
 import 'package:telegram_redesign/presentation/chats/sections/session_bar.dart';
+import 'package:telegram_redesign/presentation/chats/widgets/session_item.dart';
 
 class ChatsPage extends StatefulWidget {
   const ChatsPage({super.key});
@@ -26,8 +29,10 @@ class _ChatsPageState extends State<ChatsPage> {
           ),
         ),
         child: ListView.builder(
+          itemCount: MockData.sessions.length,
           itemBuilder: (context, index) {
-            return Text(index.toString());
+            final Session session=MockData.sessions[index];
+            return SessionItem(session: session);
           },
         ),
       ),
