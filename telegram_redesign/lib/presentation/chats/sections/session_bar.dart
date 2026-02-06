@@ -50,7 +50,7 @@ class _SessionBarState extends State<SessionBar> {
                   bottom: 0,
                   right: index * 20,
                   child: CusCircleAvatar(
-                    avatr: Assets.images.avatar.path,
+                    avatar: Assets.images.avatar.path,
                     showStatus: false,
                     showProgress: true,
                     size: 25,

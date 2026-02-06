@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:telegram_redesign/constant/app_colors.dart';
+import 'package:telegram_redesign/constant/app_extension.dart';
 import 'package:telegram_redesign/constant/app_layout.dart';
 import 'package:telegram_redesign/entity/session.dart';
 import 'package:telegram_redesign/widgets/cus_circle_progress.dart';
 
 class CusCircleAvatar extends StatelessWidget {
-  final String avatr;
+  final String avatar;
   final double size;
   final SessionStatus sessionStatus;
   final bool showStatus;
@@ -13,7 +14,7 @@ class CusCircleAvatar extends StatelessWidget {
   final double progressValue;
   const CusCircleAvatar({
     super.key,
-    required this.avatr,
+    required this.avatar,
     this.size = 40,
     this.showProgress = false,
     this.progressValue = 1,
@@ -42,7 +43,7 @@ class CusCircleAvatar extends StatelessWidget {
           ),
         ClipOval(
           child: Image.asset(
-            avatr,
+            avatar,
             fit: BoxFit.fill,
             width: size,
             height: size,
@@ -69,6 +70,7 @@ class CusCircleAvatar extends StatelessWidget {
             child: Container(
               width: 17,
               height: 17,
+              padding: 1.allPadding,
               decoration: BoxDecoration(
                 color: Color(0xff66CC53),
                 border: Border.all(color: Colors.white, width: 1),
@@ -78,7 +80,7 @@ class CusCircleAvatar extends StatelessWidget {
                 child: Icon(
                   Icons.graphic_eq_rounded,
                   color: Colors.white,
-                  size: 15,
+                  size: 12,
                 ),
               ),
             ),
@@ -90,6 +92,7 @@ class CusCircleAvatar extends StatelessWidget {
             child: Container(
               width: 17,
               height: 17,
+              padding: 1.allPadding,
               decoration: BoxDecoration(
                 color: Color(0xff66CC53),
                 border: Border.all(color: Colors.white, width: 1),
@@ -99,7 +102,7 @@ class CusCircleAvatar extends StatelessWidget {
                 child: Icon(
                   Icons.video_call_outlined,
                   color: Colors.white,
-                  size: 15,
+                  size: 12,
                 ),
               ),
             ),

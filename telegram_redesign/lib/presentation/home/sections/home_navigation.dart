@@ -79,7 +79,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
                         ),
                       ),
                       child: index == _navItem.length - 1
-                          ? CusCircleAvatar(avatr: item.iconPath, size: 30)
+                          ? CusCircleAvatar(avatar: item.iconPath, size: 30)
                           : SvgPicture.asset(
                               item.iconPath,
                               colorFilter: ColorFilter.mode(

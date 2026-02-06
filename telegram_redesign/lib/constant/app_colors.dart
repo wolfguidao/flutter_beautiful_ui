@@ -8,4 +8,5 @@ class AppColors {
   static final Color hintTextColor = Color(0xff738C96);
   static final Color primaryColor = Color(0xff5286EF);
   static final Color borderColor = Color(0xff1F272D);
+  static final Color pinnedColor=Color(0xff0B0E10);
 }
