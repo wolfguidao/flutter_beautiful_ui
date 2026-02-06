@@ -93,7 +93,7 @@ class _HomeNavigationState extends State<HomeNavigation> {
                     Text(
                       item.text,
                       style: TextStyle(
-                        fontSize: context.textTheme.bodyMedium?.fontSize,
+                        fontSize: context.textTheme.bodySmall?.fontSize,
                         color: widget.activeIndex == index
                             ? _activeColor
                             : _defaultColor,

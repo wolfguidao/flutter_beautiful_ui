@@ -27,4 +27,12 @@ class Session {
     this.latestMessage,
     this.members = const [],
   });
+
+  List<String> get avatarList {
+    List<String> avatarList = [];
+    for (User user in members) {
+      avatarList.add(user.avatar);
+    }
+    return avatarList;
+  }
 }

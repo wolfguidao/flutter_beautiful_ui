@@ -21,7 +21,7 @@ class MockData {
   static List<User> users = [
     User(
       userId: 'u1',
-      avatar: 'https://i.pravatar.cc/150?u=u1',
+      avatar: Assets.images.avatar.path,
       nickname: 'Alice W.',
       username: 'alice_w',
       userStatus: 'online',
@@ -31,7 +31,7 @@ class MockData {
     ),
     User(
       userId: 'u2',
-      avatar: 'https://i.pravatar.cc/150?u=u2',
+      avatar: Assets.images.avatar.path,
       nickname: 'Bob Vance',
       username: 'bob_v',
       userStatus: 'offline',
@@ -41,7 +41,7 @@ class MockData {
     ),
     User(
       userId: 'u3',
-      avatar: 'https://i.pravatar.cc/150?u=u3',
+      avatar: Assets.images.avatar.path,
       nickname: 'Charlie Day',
       username: 'wildcard',
       userStatus: 'online',
@@ -51,7 +51,7 @@ class MockData {
     ),
     User(
       userId: 'u4',
-      avatar: 'https://i.pravatar.cc/150?u=u4',
+      avatar: Assets.images.avatar.path,
       nickname: 'Diana Prince',
       username: 'wonder_woman',
       userStatus: 'online',
@@ -61,7 +61,7 @@ class MockData {
     ),
     User(
       userId: 'u5',
-      avatar: 'https://i.pravatar.cc/150?u=u5',
+      avatar: Assets.images.avatar.path,
       nickname: 'Edward Norton',
       username: 'narrator',
       userStatus: 'offline',
@@ -71,7 +71,7 @@ class MockData {
     ),
     User(
       userId: 'u6',
-      avatar: 'https://i.pravatar.cc/150?u=u6',
+      avatar: Assets.images.avatar.path,
       nickname: 'Fiona Gallagher',
       username: 'fiona_g',
       userStatus: 'online',
@@ -81,7 +81,7 @@ class MockData {
     ),
     User(
       userId: 'u7',
-      avatar: 'https://i.pravatar.cc/150?u=u7',
+      avatar: Assets.images.avatar.path,
       nickname: 'George Costanza',
       username: 'art_vandelay',
       userStatus: 'offline',
@@ -91,7 +91,7 @@ class MockData {
     ),
     User(
       userId: 'u8',
-      avatar: 'https://i.pravatar.cc/150?u=u8',
+      avatar: Assets.images.avatar.path,
       nickname: 'Hannah Montana',
       username: 'hannah_m',
       userStatus: 'online',
@@ -101,7 +101,7 @@ class MockData {
     ),
     User(
       userId: 'u9',
-      avatar: 'https://i.pravatar.cc/150?u=u9',
+      avatar: Assets.images.avatar.path,
       nickname: 'Ian Malcolm',
       username: 'chaos_theory',
       userStatus: 'offline',
@@ -111,7 +111,7 @@ class MockData {
     ),
     User(
       userId: 'u10',
-      avatar: 'https://i.pravatar.cc/150?u=u10',
+      avatar: Assets.images.avatar.path,
       nickname: 'Jim Halpert',
       username: 'jim_h',
       userStatus: 'online',

@@ -3,6 +3,8 @@ import 'package:telegram_redesign/constant/app_colors.dart';
 import 'package:telegram_redesign/constant/app_extension.dart';
 import 'package:telegram_redesign/constant/app_layout.dart';
 import 'package:telegram_redesign/entity/session.dart';
+import 'package:telegram_redesign/mock/mock_data.dart';
+import 'package:telegram_redesign/widgets/cus_calls_floating.dart';
 import 'package:telegram_redesign/widgets/cus_circle_avatar.dart';
 
 class SessionItem extends StatefulWidget {
@@ -50,6 +52,12 @@ class _SessionItemState extends State<SessionItem>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final double rightProgress = (_dragExtent / -_maxActionWidth).clamp(
       0.0,
@@ -66,7 +74,7 @@ class _SessionItemState extends State<SessionItem>
               progress: leftProgress,
               iconData: Icons.volume_down_outlined,
               text: "Mute",
-              onTap: () {},
+              onTap: () => CallsTools.show(MockData.sessions[0]),
             ),
             SessionAction(
               backgroundColor: Color(0xff2F3D43),
@@ -114,7 +122,7 @@ class SessionAction extends StatelessWidget {
         height: context.screenHeight * 0.075,
         decoration: BoxDecoration(color: backgroundColor),
         child: IconButton(
-          onPressed: onTap,
+          onPressed: () => onTap(),
           icon: Column(
             children: [
               Icon(iconData, color: Colors.white),
@@ -141,9 +149,7 @@ class SessionContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: context.screenHeight * 0.075,
-      decoration: BoxDecoration(
-        color: AppColors.backgroundColor,
-      ),
+      decoration: BoxDecoration(color: AppColors.backgroundColor),
       child: Row(
         children: [
           CusCircleAvatar(
@@ -216,7 +222,15 @@ class SessionContent extends StatelessWidget {
                             color: Colors.blueAccent,
                             shape: BoxShape.circle,
                           ),
-                          child: Center(child: Text("${session.unreadCount}")),
+                          child: Center(
+                            child: Text(
+                              "${session.unreadCount}",
+                              style: TextStyle(
+                                fontSize:
+                                    context.textTheme.labelMedium?.fontSize,
+                              ),
+                            ),
+                          ),
                         ),
                       if (session.isPinned)
                         Icon(

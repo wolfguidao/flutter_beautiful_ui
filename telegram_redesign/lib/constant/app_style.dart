@@ -21,13 +21,13 @@ class AppTextStyle {
   );
 
   static final TextStyle bodyLarge = TextStyle(
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: FontWeight.w500,
     color: AppColors.defaultTextColor,
   );
 
   static final TextStyle bodyMedium = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.w500,
     color: AppColors.defaultTextColor,
   );
@@ -44,12 +44,12 @@ class AppTextStyle {
   );
 
   static final TextStyle labelMedium = TextStyle(
-    fontSize: 13,
+    fontSize: 12,
     color: AppColors.hintTextColor,
   );
 
   static final TextStyle labelSmall = TextStyle(
     fontSize: 9,
-    color: AppColors.defaultTextColor,
+    color: AppColors.hintTextColor,
   );
 }
