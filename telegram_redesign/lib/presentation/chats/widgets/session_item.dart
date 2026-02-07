@@ -74,7 +74,11 @@ class _SessionItemState extends State<SessionItem>
               progress: leftProgress,
               iconData: Icons.volume_down_outlined,
               text: "Mute",
-              onTap: () => CallsTools.show(MockData.sessions[0]),
+              onTap: () {
+                _controller.animateTo(0, curve: Curves.easeOut).then((_) {
+                  CallsTools.show(MockData.sessions[0]);
+                });
+              },
             ),
             SessionAction(
               backgroundColor: Color(0xff2F3D43),

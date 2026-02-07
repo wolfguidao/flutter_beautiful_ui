@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:telegram_redesign/constant/app_colors.dart';
+import 'package:telegram_redesign/constant/app_layout.dart';
 import 'package:telegram_redesign/entity/session.dart';
 import 'package:telegram_redesign/mock/mock_data.dart';
 import 'package:telegram_redesign/presentation/chats/sections/session_bar.dart';
+import 'package:telegram_redesign/presentation/chats/sections/session_selected_bar.dart';
 import 'package:telegram_redesign/presentation/chats/widgets/session_item.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -13,12 +15,34 @@ class ChatsPage extends StatefulWidget {
 }
 
 class _ChatsPageState extends State<ChatsPage> {
+  final List<String> _selectedSessionIds = [];
+  bool _showSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.secondColor,
-        title: SessionBar(),
+        title: _showSelected
+            ? SessionSelectedBar(
+                selectedSessionIds: _selectedSessionIds,
+                onClose: () {
+                  setState(() {
+                    _showSelected = false;
+                    _selectedSessionIds.clear();
+                  });
+                },
+              )
+            : SessionBar(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.primaryColor,
+        foregroundColor: Colors.white,
+        shape: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppLayout.borderRadius * 10),
+        ),
+        child: Icon(Icons.edit),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -31,8 +55,33 @@ class _ChatsPageState extends State<ChatsPage> {
         child: ListView.builder(
           itemCount: MockData.sessions.length,
           itemBuilder: (context, index) {
-            final Session session=MockData.sessions[index];
-            return SessionItem(session: session);
+            final Session session = MockData.sessions[index];
+            return Row(
+              children: [
+                if (_showSelected)
+                  Checkbox(
+                    value: _selectedSessionIds.contains(session.id),
+                    onChanged: (value) {
+                      setState(() {
+                        value!
+                            ? _selectedSessionIds.add(session.id)
+                            : _selectedSessionIds.remove(session.id);
+                      });
+                    },
+                  ),
+                Expanded(
+                  child: GestureDetector(
+                    onLongPress: () {
+                      setState(() {
+                        _showSelected = true;
+                        _selectedSessionIds.add(session.id);
+                      });
+                    },
+                    child: SessionItem(session: session),
+                  ),
+                ),
+              ],
+            );
           },
         ),
       ),
