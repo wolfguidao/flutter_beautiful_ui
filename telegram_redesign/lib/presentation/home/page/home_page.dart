@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:telegram_redesign/presentation/calls/calls_page.dart';
-import 'package:telegram_redesign/presentation/chats/chats_page.dart';
-import 'package:telegram_redesign/presentation/contacts/contacts_page.dart';
+import 'package:telegram_redesign/presentation/calls/page/calls_page.dart';
+import 'package:telegram_redesign/presentation/chats/page/chats_page.dart';
+import 'package:telegram_redesign/presentation/contacts/page/contacts_page.dart';
 import 'package:telegram_redesign/presentation/home/sections/home_navigation.dart';
 import 'package:telegram_redesign/presentation/setting/setting_page.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:telegram_redesign/constant/app_colors.dart';
-import 'package:telegram_redesign/constant/app_layout.dart';
 import 'package:telegram_redesign/entity/session.dart';
 import 'package:telegram_redesign/mock/mock_data.dart';
 import 'package:telegram_redesign/presentation/chats/sections/session_bar.dart';
+import 'package:telegram_redesign/presentation/chats/sections/session_edit_sheet.dart';
 import 'package:telegram_redesign/presentation/chats/sections/session_selected_bar.dart';
 import 'package:telegram_redesign/presentation/chats/widgets/session_item.dart';
 
@@ -36,12 +36,14 @@ class _ChatsPageState extends State<ChatsPage> {
             : SessionBar(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColors.primaryColor,
-        foregroundColor: Colors.white,
-        shape: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppLayout.borderRadius * 10),
-        ),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return SessionEditSheet();
+            },
+          );
+        },
         child: Icon(Icons.edit),
       ),
       body: Container(

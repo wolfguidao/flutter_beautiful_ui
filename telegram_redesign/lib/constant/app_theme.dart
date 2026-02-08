@@ -42,6 +42,11 @@ class AppTheme {
       fillColor: Color(0xff0F1215),
       contentPadding: AppLayout.paddingSmall.horizontalPadding,
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primaryColor,
+      foregroundColor: Colors.white,
+      shape: CircleBorder()
+    ),
     textTheme: TextTheme(
       bodyMedium: AppTextStyle.bodyMedium,
       bodySmall: AppTextStyle.bodySmall,

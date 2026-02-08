@@ -33,7 +33,7 @@ class AppTextStyle {
   );
 
   static final TextStyle bodySmall = TextStyle(
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
     color: AppColors.defaultTextColor,
   );

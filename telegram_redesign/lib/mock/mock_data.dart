@@ -1,6 +1,7 @@
 import '../entity/message.dart';
 import '../entity/session.dart';
 import '../entity/user.dart';
+import '../entity/call.dart';
 import '../gen/assets.gen.dart';
 
 class MockData {
@@ -340,6 +341,94 @@ class MockData {
       isMe: true,
       voiceUrl: 'https://example.com/recording.mp3',
       duration: const Duration(seconds: 12),
+    ),
+  ];
+
+  static List<Call> calls = [
+    Call(
+      id: 'c1',
+      user: users[0], // Alice W.
+      status: CallStatus.missed,
+      type: CallType.voice,
+      time: DateTime.now().subtract(const Duration(minutes: 5)),
+      isOutgoing: false,
+    ),
+    Call(
+      id: 'c2',
+      user: users[1], // Bob Vance
+      status: CallStatus.answered,
+      type: CallType.video,
+      time: DateTime.now().subtract(const Duration(hours: 1)),
+      isOutgoing: true,
+      duration: const Duration(minutes: 5, seconds: 23),
+    ),
+    Call(
+      id: 'c3',
+      user: users[2], // Charlie Day
+      status: CallStatus.answered,
+      type: CallType.voice,
+      time: DateTime.now().subtract(const Duration(hours: 3)),
+      isOutgoing: false,
+      duration: const Duration(minutes: 2, seconds: 45),
+    ),
+    Call(
+      id: 'c4',
+      user: users[3], // Diana Prince
+      status: CallStatus.rejected,
+      type: CallType.voice,
+      time: DateTime.now().subtract(const Duration(days: 1)),
+      isOutgoing: true,
+    ),
+    Call(
+      id: 'c5',
+      user: users[4], // Edward Norton
+      status: CallStatus.missed,
+      type: CallType.video,
+      time: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
+      isOutgoing: false,
+    ),
+    Call(
+      id: 'c6',
+      user: users[5], // Fiona Gallagher
+      status: CallStatus.answered,
+      type: CallType.voice,
+      time: DateTime.now().subtract(const Duration(days: 2)),
+      isOutgoing: true,
+      duration: const Duration(minutes: 15, seconds: 10),
+    ),
+    Call(
+      id: 'c7',
+      user: users[6], // George Costanza
+      status: CallStatus.answered,
+      type: CallType.video,
+      time: DateTime.now().subtract(const Duration(days: 3)),
+      isOutgoing: false,
+      duration: const Duration(minutes: 8, seconds: 30),
+    ),
+    Call(
+      id: 'c8',
+      user: users[7], // Hannah Montana
+      status: CallStatus.missed,
+      type: CallType.voice,
+      time: DateTime.now().subtract(const Duration(days: 5)),
+      isOutgoing: true,
+    ),
+    Call(
+      id: 'c9',
+      user: users[8], // Ian Malcolm
+      status: CallStatus.rejected,
+      type: CallType.video,
+      time: DateTime.now().subtract(const Duration(days: 6)),
+      isOutgoing: false,
+    ),
+    Call(
+      id: 'c10',
+      user: users[9], // Jim Halpert
+      status: CallStatus.answered,
+      type: CallType.video,
+      time: DateTime.now().subtract(const Duration(days: 7)),
+      isOutgoing: true,
+      duration: const Duration(minutes: 45, seconds: 0),
     ),
   ];
 }

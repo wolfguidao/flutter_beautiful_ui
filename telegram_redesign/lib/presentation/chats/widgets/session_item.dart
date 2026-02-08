@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:telegram_redesign/constant/app_colors.dart';
 import 'package:telegram_redesign/constant/app_extension.dart';
 import 'package:telegram_redesign/constant/app_layout.dart';
@@ -92,6 +93,9 @@ class _SessionItemState extends State<SessionItem>
         GestureDetector(
           onHorizontalDragUpdate: (details) => _onHorizontalDragUpdate(details),
           onHorizontalDragEnd: (details) => _onHorizontalDragEnd(details),
+          onTap: () {
+            context.push('/message', extra: widget.session);
+          },
           child: Transform.translate(
             offset: Offset(_dragExtent, 0),
             child: SessionContent(session: widget.session),
