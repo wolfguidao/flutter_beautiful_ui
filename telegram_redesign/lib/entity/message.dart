@@ -1,4 +1,4 @@
-enum MessageType { text, image, file, voice, video, link, mention }
+enum MessageType { text, image, file, voice, video, link, voiceCall, videoCall }
 
 class Message {
   final String id;
@@ -8,7 +8,6 @@ class Message {
   final bool isMe;
 
   /// 消息主要内容（用于列表预览等）
-  /// 文字消息为文字，链接消息为网页名/标题，文件/图片/视频为文件名
   final String content;
 
   /// 文字内容，也可用作媒体文件的说明（Caption）
@@ -32,8 +31,9 @@ class Message {
   /// 链接地址
   final String? linkUrl;
 
-  /// 被 @ 的用户 ID 或用户名
-  final String? mentionedUser;
+  String get durationString {
+    return "${duration?.inMinutes}:${duration?.inSeconds}";
+  }
 
   Message({
     required this.id,
@@ -49,7 +49,6 @@ class Message {
     this.fileSize,
     this.duration,
     this.linkUrl,
-    this.mentionedUser,
   });
 
   /// 快捷构造：文字消息
@@ -187,24 +186,69 @@ class Message {
     );
   }
 
-  /// 快捷构造：@提醒消息
-  factory Message.mention({
+  /// 快捷构造：语音通话消息
+  factory Message.voiceCall({
     required String id,
     required String senderId,
     required DateTime timestamp,
     required bool isMe,
-    required String text,
-    required String mentionedUser,
+    bool answered = false,
+    Duration? duration,
+    String? note,
   }) {
+    String content;
+    if (!answered) {
+      content = 'Missed voice call';
+    } else if (duration != null) {
+      final m = duration.inMinutes;
+      final s = (duration.inSeconds % 60).toString().padLeft(2, '0');
+      content = 'Voice call — ${m}:$s';
+    } else {
+      content = 'Voice call';
+    }
+
     return Message(
       id: id,
       senderId: senderId,
       timestamp: timestamp,
-      type: MessageType.mention,
+      type: MessageType.voiceCall,
       isMe: isMe,
-      content: text,
-      text: text,
-      mentionedUser: mentionedUser,
+      content: content,
+      text: note,
+      duration: duration,
+    );
+  }
+
+  /// 快捷构造：视频通话消息
+  factory Message.videoCall({
+    required String id,
+    required String senderId,
+    required DateTime timestamp,
+    required bool isMe,
+    bool answered = false,
+    Duration? duration,
+    String? note,
+  }) {
+    String content;
+    if (!answered) {
+      content = 'Missed video call';
+    } else if (duration != null) {
+      final m = duration.inMinutes;
+      final s = (duration.inSeconds % 60).toString().padLeft(2, '0');
+      content = 'Video call — ${m}:$s';
+    } else {
+      content = 'Video call';
+    }
+
+    return Message(
+      id: id,
+      senderId: senderId,
+      timestamp: timestamp,
+      type: MessageType.videoCall,
+      isMe: isMe,
+      content: content,
+      text: note,
+      duration: duration,
     );
   }
 }

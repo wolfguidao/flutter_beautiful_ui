@@ -265,14 +265,14 @@ class MockData {
       text: 'Check out the latest Flutter 3.x features!',
       linkUrl: 'https://flutter.dev',
     ),
-    Message.mention(
+    Message.text(
       id: 'm7',
       senderId: 'u2',
       timestamp: DateTime.now().subtract(const Duration(hours: 2)),
       isMe: false,
       text: 'Hey @JiuShuang, focus on the message entity design.',
-      mentionedUser: 'JiuShuang',
     ),
+
     Message.text(
       id: 'm8',
       senderId: 'u3',
@@ -326,13 +326,12 @@ class MockData {
       isMe: false,
       text: 'The campaign is live! Check the stats.',
     ),
-    Message.mention(
+    Message.text(
       id: 'm15',
       senderId: 'u6',
       timestamp: DateTime.now().subtract(const Duration(hours: 5, minutes: 30)),
       isMe: false,
       text: 'Great job @Team on the successful launch!',
-      mentionedUser: 'Team',
     ),
     Message.voice(
       id: 'm16',
@@ -341,6 +340,23 @@ class MockData {
       isMe: true,
       voiceUrl: 'https://example.com/recording.mp3',
       duration: const Duration(seconds: 12),
+    ),
+    Message.voiceCall(
+      id: 'm17',
+      senderId: 'u5',
+      timestamp: DateTime.now().subtract(const Duration(hours: 8)),
+      isMe: false,
+      answered: false,
+      note: 'Missed voice call from Edward Norton',
+    ),
+    Message.videoCall(
+      id: 'm18',
+      senderId: currentUserId,
+      timestamp: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
+      isMe: true,
+      answered: true,
+      duration: const Duration(minutes: 5, seconds: 23),
+      note: 'Video call with Bob Vance',
     ),
   ];
 

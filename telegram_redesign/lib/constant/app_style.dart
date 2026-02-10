@@ -49,7 +49,7 @@ class AppTextStyle {
   );
 
   static final TextStyle labelSmall = TextStyle(
-    fontSize: 9,
+    fontSize: 10,
     color: AppColors.hintTextColor,
   );
 }

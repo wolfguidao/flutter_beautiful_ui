@@ -4,6 +4,7 @@ import 'package:telegram_redesign/constant/app_extension.dart';
 import 'package:telegram_redesign/constant/app_layout.dart';
 import 'package:telegram_redesign/mock/mock_data.dart';
 import 'package:telegram_redesign/presentation/contacts/widgets/contacts_item.dart';
+import 'package:telegram_redesign/widgets/cus_animation_delay_item.dart';
 
 class ContactsPage extends StatefulWidget {
   const ContactsPage({super.key});
@@ -101,7 +102,10 @@ class _ContactsPageState extends State<ContactsPage> {
             SliverList.builder(
               itemCount: MockData.users.length,
               itemBuilder: (context, index) {
-                return ContactsItem(user: MockData.users[index]);
+                return CusAnimationDelayItem(
+                  index: index,
+                  child: ContactsItem(user: MockData.users[index]),
+                );
               },
             ),
           ],
