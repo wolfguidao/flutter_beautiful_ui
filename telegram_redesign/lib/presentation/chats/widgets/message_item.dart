@@ -3,6 +3,7 @@ import 'package:telegram_redesign/constant/app_colors.dart';
 import 'package:telegram_redesign/constant/app_extension.dart';
 import 'package:telegram_redesign/constant/app_layout.dart';
 import 'package:telegram_redesign/entity/message.dart';
+import 'package:telegram_redesign/presentation/chats/sections/message_hover_tools.dart';
 import 'package:telegram_redesign/presentation/chats/widgets/message/file_message.dart';
 import 'package:telegram_redesign/presentation/chats/widgets/message/image_message.dart';
 import 'package:telegram_redesign/presentation/chats/widgets/message/link_message.dart';
@@ -20,14 +21,36 @@ class MessageItem extends StatefulWidget {
 }
 
 class _MessageItemState extends State<MessageItem> {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: AppLayout.paddingSmall.horizontalPadding,
-      child: Align(
-        alignment: widget.message.isMe
-            ? AlignmentGeometry.centerRight
-            : AlignmentGeometry.centerLeft,
+  void _showContextMenu() {
+    final RenderBox renderBox = context.findRenderObject() as RenderBox;
+    final offset = renderBox.localToGlobal(Offset.zero);
+    final size = renderBox.size;
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        opaque: false,
+        barrierDismissible: true,
+        transitionDuration: const Duration(milliseconds: 200),
+        reverseTransitionDuration: const Duration(milliseconds: 200),
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return MessageHoverTools(
+            message: widget.message,
+            position: offset,
+            size: size,
+            messageWidget: _buildMessageBubble(),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildMessageBubble() {
+    return Align(
+      alignment: widget.message.isMe
+          ? AlignmentGeometry.centerRight
+          : AlignmentGeometry.centerLeft,
+      child: Material(
+        color: Colors.transparent,
         child: Container(
           constraints: BoxConstraints(maxWidth: context.screenWidth * 0.65),
           padding: (AppLayout.paddingSmall / 2).allPadding,
@@ -49,6 +72,17 @@ class _MessageItemState extends State<MessageItem> {
             _ => Text(widget.message.content),
           },
         ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: AppLayout.paddingSmall.horizontalPadding,
+      child: GestureDetector(
+        onLongPress: _showContextMenu,
+        child: Hero(tag: widget.message.id, child: _buildMessageBubble()),
       ),
     );
   }

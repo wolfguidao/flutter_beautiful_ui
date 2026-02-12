@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telegram_redesign/entity/message.dart';
 import 'package:telegram_redesign/entity/session.dart';
 import 'package:telegram_redesign/mock/mock_data.dart';
 import 'package:telegram_redesign/presentation/chats/sections/message_bar.dart';
@@ -22,10 +23,11 @@ class _MessagePageState extends State<MessagePage> {
         children: [
           Expanded(
             child: ListView.builder(
-              reverse: true,
               itemCount: MockData.messages.length,
+              reverse: true,
               itemBuilder: (context, index) {
-                final message = MockData.messages.reversed.toList()[index];
+                final Message message = MockData.messages.reversed
+                    .toList()[index];
                 return MessageItem(message: message);
               },
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:telegram_redesign/constant/app_colors.dart';
 import 'package:telegram_redesign/constant/app_extension.dart';
 import 'package:telegram_redesign/constant/app_layout.dart';
+import 'package:telegram_redesign/presentation/chats/sections/emoji_sheet.dart';
 
 class MessageInputPanel extends StatefulWidget {
   const MessageInputPanel({super.key});
@@ -15,7 +16,7 @@ class _MessageInputPanelState extends State<MessageInputPanel> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: EdgeInsetsGeometry.only(bottom: AppLayout.paddingSmall),
+        padding: EdgeInsetsGeometry.symmetric(vertical: AppLayout.paddingSmall),
         child: Row(
           children: [
             Expanded(
@@ -34,7 +35,14 @@ class _MessageInputPanelState extends State<MessageInputPanel> {
                         backgroundColor: AppColors.backgroundColor,
                         foregroundColor: AppColors.hintTextColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return EmojiSheet();
+                          },
+                        );
+                      },
                       icon: Icon(Icons.emoji_emotions_outlined),
                     ),
                     Expanded(
