@@ -3,6 +3,7 @@ import 'package:telegram_redesign/constant/app_colors.dart';
 import 'package:telegram_redesign/constant/app_extension.dart';
 import 'package:telegram_redesign/constant/app_layout.dart';
 import 'package:telegram_redesign/presentation/chats/sections/emoji_sheet.dart';
+import 'package:telegram_redesign/presentation/chats/sections/mult_file_sheet.dart';
 
 class MessageInputPanel extends StatefulWidget {
   const MessageInputPanel({super.key});
@@ -61,7 +62,15 @@ class _MessageInputPanelState extends State<MessageInputPanel> {
                         backgroundColor: AppColors.backgroundColor,
                         foregroundColor: AppColors.hintTextColor,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        showModalBottomSheet(
+                          backgroundColor: AppColors.secondColor,
+                          context: context,
+                          builder: (conyexy) {
+                            return MultFileSheet();
+                          },
+                        );
+                      },
                       icon: Icon(Icons.link),
                     ),
                   ],
